@@ -61,13 +61,13 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Rules</h5>
+                        <h5 class="modal-title">Rules of Scrambled</h5>
                         <button class="btn" data-bs-dismiss="modal">
                             <span class="bi bi-x-square"></span>
                         </button>    
                     </div>
                     <div class="modal-body">
-                        <h5>The aim of Scrambled</h5>
+                        <h6>Aim of Scrambled</h6>
                         <ul>
                             <li>Each day there is a new random set of 7 letters</li>
                             <li>With these letters, you will make 7 different words</li>
@@ -75,6 +75,12 @@
                             <li>Letters can only be used once</li>
                             <li>Each letter has a different value</li>
                             <li>The aim is to get the highest score possible</li>
+                        </ul>
+                        <hr>
+                        <h6>Other Rules</h6>
+                        <ul>
+                            <li></li>
+                            <li></li>
                         </ul>
                     </div>
                 </div>
@@ -124,7 +130,11 @@
 
         <div class="container-fluid row">
             <span class="col-lg-3"></span>
-            <div class="col-lg-6">
+            <div class="col-lg-6" id="gamebox">
+                <h6>Score:</h6>
+                <table cellspacing="5" cellpadding="5"> 
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                </table>
             </div>
             <span class="col-lg-3"></span>
         </div>

@@ -1,3 +1,13 @@
+.attemptTable {
+
+}
+
+.attemptBox {
+    border: solid grey 2px;
+    height:4vw;
+    width: 4vw;
+}
+
 .title {
     text-align:center; 
 }
@@ -23,33 +33,3 @@
     text-align:right;
     
 }
-/* .modal {
-    display: none;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    overflow:auto;
-}
-
-.modal-content {
-    margin-top: 5em;
-    margin-left: 20% auto;
-    margin-right: 20% auto;
-    padding: 20px;
-    border: 2px solid black; 
-    width: 70%;
-} */
-
-/* .closeButton {
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-
-#rulesPage {
-    visibility: hidden;
-    width: 75%;
-    background-color: grey;
-    
-} */
