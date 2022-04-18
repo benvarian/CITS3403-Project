@@ -6,3 +6,5 @@ Agile Web Dev Project for CITS3403
 3. describe how to launch the web application.
 4. describe some unit tests for the web application, and how to run them.
 5. Include commit logs, showing contributions and review from both contributing students
+
+6. test 
