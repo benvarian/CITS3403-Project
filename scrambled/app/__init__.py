@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
-
+import os
 
 
 
@@ -16,7 +16,7 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-from app import routes, models, errors, os
+from app import routes, models, errors
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
