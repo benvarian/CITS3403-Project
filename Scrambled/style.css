@@ -1,35 +1,23 @@
-.attemptTable {
+.title {
+    text-align:center;
+}
 
+h6 {
+    text-align:center;
 }
 
 .attemptBox {
-    border: solid grey 2px;
-    height:4vw;
-    width: 4vw;
+    border: solid grey 1px;
+    height:3vw;
+    width:3vw;
 }
 
-.title {
-    text-align:center; 
+.border-right {
+    border-right: 1px solid grey;
 }
 
-.letterBox {
-    height:5vw;
-    width:5vw;
-    border: 2px solid black;
-    background-color: black;
-    text-align:center;
-    border-radius: 1vw;
-    margin:auto;
-}
-
-.letter {
-    font:5vw Verdana;
-    color: white;
-}
-
-.number {
-    font:0.4em;
-    color:white;
-    text-align:right;
-    
+table {
+    border-collapse: separate;
+    margin-right:50%;
+    width:100%;
 }

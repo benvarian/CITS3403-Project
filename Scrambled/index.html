@@ -42,15 +42,26 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Settings</h5>
+                        <h4 class="modal-title">Settings</h5>
                         <button class="btn" data-bs-dismiss="modal">
                             <span class="bi bi-x-square"></span>
                         </button>    
                     </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>Rules</li>
-                        </ul>
+                    <div class="modal-body row">
+                        <div class="col-10">
+                            <span>Dark Mode</span>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-dark" id="darkMode">Dark</button>
+                       </div>
+                        <hr>
+                        <div class="col-10">
+                            <span>High Constrast Mode</span>
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-dark" id="HCMMode">HCM</button>
+                       </div>
+                        <hr>
                     </div>
                 </div>
             </div>
@@ -76,31 +87,32 @@
                             <li>Each letter has a different value</li>
                             <li>The aim is to get the highest score possible</li>
                         </ul>
-                        <hr>
-                        <h6>Other Rules</h6>
-                        <ul>
-                            <li></li>
-                            <li></li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
   
-        <!--Leaderboard Modal-->
+        <!--Statistics Modal-->
         <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Rules</h5>
+                        <h5 class="modal-title">Statistics</h5>
                         <button class="btn" data-bs-dismiss="modal">
                             <span class="bi bi-x-square"></span>
                         </button>    
                     </div>
-                    <div class="modal-body">
-                        <ul>
-                            <li>Rules</li>
-                        </ul>
+                    <div class="modal-body row">
+                        <div>
+
+                        </div>
+                        <hr>
+                        <div class="col-6 border-right">
+                            <h6>Time Until Next Puzzle</h6>
+                        </div>
+                        <div class="col-6">
+                            <h6>Share</h6>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,14 +141,41 @@
         </div>
 
         <div class="container-fluid row">
-            <span class="col-lg-3"></span>
-            <div class="col-lg-6" id="gamebox">
-                <h6>Score:</h6>
-                <table cellspacing="5" cellpadding="5"> 
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+            <span class="col-3"></span>
+            <div class="col-6 row">
+                <div class="col-6 border-right">
+                    <h6><b>Score</b></h6>
+                </div>
+                <div class="col-6">
+                    <h6><b>Time Taken</b></h6>
+                </div>
+                <hr>
+            </div>
+        </div>
+
+        <div class="container-fluid row">
+            <div class="col-3"></div> 
+            <div class="col-6">
+                <table class="table-responsive"> 
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
                 </table>
             </div>
-            <span class="col-lg-3"></span>
+            <div class="col-3"></div>
+        </div>
+
+        <hr>      
+
+        <div class="container-fluid row">
+            <h6>Letters</h6>
+            <table>
+                <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
+            </table>
         </div>
     </body>
 </html>
