@@ -20,7 +20,7 @@
     <body>
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
-            <div class="container-fluid row">
+            <div class="container-fluid row gx-0">
                 <button class="col-1 btn" data-bs-toggle="modal" data-bs-target="#settingsModal">
                     <span class="bi bi-gear"></span>
                 </button>
@@ -140,42 +140,51 @@
             </div>
         </div>
 
-        <div class="container-fluid row">
-            <span class="col-3"></span>
-            <div class="col-6 row">
-                <div class="col-6 border-right">
-                    <h6><b>Score</b></h6>
+        <div class="container-fluid">
+            <div class="row gx-0">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 row gx-0">
+                    <div class="col-6 border-right">
+                        <h6><b>Score</b></h6>
+                    </div>
+                    <div class="col-6">
+                        <h6><b>Time Taken</b></h6>
+                    </div>
+                    <hr>
                 </div>
-                <div class="col-6">
-                    <h6><b>Time Taken</b></h6>
-                </div>
-                <hr>
+                <div class="col-lg-4"></div>
             </div>
         </div>
 
-        <div class="container-fluid row">
-            <div class="col-3"></div> 
-            <div class="col-6">
-                <table class="table-responsive"> 
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                    <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-                </table>
+        <div class="container-fluid">
+            <div class="row gx-0">
+                <div class="col-lg-4"></div> 
+                <div class="col-lg-4">
+                    <table class="guessTable"> 
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                    </table>
+                    <hr>
+                </div>
+                <div class="col-lg-4"></div>
             </div>
-            <div class="col-3"></div>
         </div>
-
-        <hr>      
-
-        <div class="container-fluid row">
-            <h6>Letters</h6>
-            <table>
-                <tr><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td><td class="attemptBox"></td></tr>
-            </table>
+        
+        <div class="container-fluid">
+            <div class="row gx-0">
+                <h6>Letters</h6>
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <table class="letterTable">
+                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                    </table>
+                </div>
+                <div class="col-lg-4"></div>
+            
         </div>
     </body>
 </html>

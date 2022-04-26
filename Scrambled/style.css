@@ -1,3 +1,33 @@
+body {
+    height:100vh;
+}
+
+.letterTable {
+    border-collapse: separate;
+    border-spacing:0.5vw;
+    width:80%;
+    height:8vh;
+    margin:auto;
+}
+
+.guessTable {
+    border-collapse: separate;
+    border-spacing:0.5vw;
+    height:54vh;
+    width:80%;
+    margin:auto;
+}
+
+.guessLetter {
+    border: solid grey 1px;
+    background-color:rgb(200, 200, 200);
+    width:5vw;
+}
+
+.letterBox {
+
+}
+
 .title {
     text-align:center;
 }
@@ -6,18 +36,6 @@ h6 {
     text-align:center;
 }
 
-.attemptBox {
-    border: solid grey 1px;
-    height:3vw;
-    width:3vw;
-}
-
 .border-right {
     border-right: 1px solid grey;
-}
-
-table {
-    border-collapse: separate;
-    margin-right:50%;
-    width:100%;
 }
