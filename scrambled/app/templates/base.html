@@ -1,67 +1,181 @@
-{% extends 'bootstrap/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Bootstrap icons-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <!--Bootstrap CSS and JS CDN-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
-{% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
-{% endblock %}
+    <!--Link to CSS and JS-->
+    <link rel="stylesheet" href="style.css" />
+    {% block title %} {% if title %}{{ title }} - Microblog{% else %}{{
+    ('Welcome to Microblog') }}{% endif %} {% endblock %}
+  </head>
 
-{% block navbar %}
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url_for('main.index') }}">{{ _('Home') }}</a></li>
-                    <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
-                </ul>
-                {% if g.search_form %}
-                <form class="navbar-form navbar-left" method="get" action="{{ url_for('main.search') }}">
-                    <div class="form-group">
-                        {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
-                    </div>
-                </form>
-                {% endif %}
-                <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_anonymous %}
-                    <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
-                    {% else %}
-                    <li>
-                        <a href="{{ url_for('main.messages') }}">{{ _('Messages') }}
-                            {% set new_messages = current_user.new_messages() %}
-                            <span id="message_count" class="badge"
-                                  style="visibility: {% if new_messages %} visible
-                                                     {% else %}hidden{% endif %};">
-                                {{ new_messages }}
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
-                    <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-{% endblock %}
-
-{% block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
-
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+  {% block navbar %}
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
+    <div class="container-fluid row">
+      <button
+        class="col-1 btn"
+        data-bs-toggle="modal"
+        data-bs-target="#settingsModal"
+      >
+        <span class="bi bi-gear"></span>
+      </button>
+      <button
+        class="col-1 btn"
+        data-bs-toggle="modal"
+        data-bs-target="#rulesModal"
+      >
+        <span class="bi bi-question-circle"></span>
+      </button>
+      <h1 class="col-8 title">Scrambled</h1>
+      <button
+        class="col-1 btn"
+        data-bs-toggle="modal"
+        data-bs-target="#leaderboardModal"
+      >
+        <span class="bi bi-graph-up"></span>
+      </button>
+      <button
+        class="col-1 btn"
+        data-bs-toggle="modal"
+        data-bs-target="#userModal"
+      >
+        <span class="bi bi-person-circle"></span>
+      </button>
     </div>
-{% endblock %}
+  </nav>
+
+  <!--Settings Modal-->
+  <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Settings</h5>
+          <button class="btn" data-bs-dismiss="modal">
+            <span class="bi bi-x-square"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Rules</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Rules Modal-->
+  <div class="modal row" id="rulesModal" tabindex="-1" role="dialog">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rules</h5>
+          <button class="btn" data-bs-dismiss="modal">
+            <span class="bi bi-x-square"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>The aim of Scrambled</h5>
+          <ul>
+            <li>Each day there is a new random set of 7 letters</li>
+            <li>With these letters, you will make 7 different words</li>
+            <li>The words can be of any length up to 7 letters</li>
+            <li>Letters can only be used once</li>
+            <li>Each letter has a different value</li>
+            <li>The aim is to get the highest score possible</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Leaderboard Modal-->
+  <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rules</h5>
+          <button class="btn" data-bs-dismiss="modal">
+            <span class="bi bi-x-square"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>Rules</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--User Modal-->
+  <div class="modal row modal-fade" id="userModal" tabindex="-1" role="dialog">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+          <button class="btn" data-bs-dismiss="modal">
+            <span class="bi bi-x-square"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="username">Username</label> <br />
+            <input type="text" name="username" id="username" /> <br />
+            <label for="password">Password</label> <br />
+            <input type="text" name="password" id="password" /> <br />
+            <p>
+              New User?
+              <a href="{{ url_for('register') }}">Click to Register!</a>
+            </p>
+            <p>
+              Forgot Your Password?
+              <a href="{{ url_for('reset_password_request') }}"
+                >Click to Reset It</a
+              >
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %} {% block content %}
+  <div class="container">
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %} {# application content needs to be
+    provided in the app_content block #} {% block app_content %}{% endblock %}
+  </div>
+  {% endblock %}
+</html>
