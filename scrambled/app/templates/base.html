@@ -23,14 +23,13 @@
 
     <!--Link to CSS and JS-->
     <link rel="stylesheet" href="style.css" />
-    {% block title %} {% if title %}{{ title }} - Microblog{% else %}{{
-    ('Welcome to Microblog') }}{% endif %} {% endblock %}
   </head>
 
-  {% block navbar %}
+  {% block title %} {% if title %}{{ title }} - Microblog{% else %}{{ ('Welcome
+  to Microblog') }}{% endif %} {% endblock %} {% block navbar %}
   <!--Navbar-->
   <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
-    <div class="container-fluid row">
+    <div class="container-fluid row gx-0">
       <button
         class="col-1 btn"
         data-bs-toggle="modal"
@@ -71,15 +70,26 @@
     >
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Settings</h5>
+          <h4 class="modal-title">Settings</h4>
           <button class="btn" data-bs-dismiss="modal">
             <span class="bi bi-x-square"></span>
           </button>
         </div>
-        <div class="modal-body">
-          <ul>
-            <li>Rules</li>
-          </ul>
+        <div class="modal-body row">
+          <div class="col-10">
+            <span>Dark Mode</span>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-dark" id="darkMode">Dark</button>
+          </div>
+          <hr />
+          <div class="col-10">
+            <span>High Constrast Mode</span>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-dark" id="HCMMode">HCM</button>
+          </div>
+          <hr />
         </div>
       </div>
     </div>
@@ -93,13 +103,13 @@
     >
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Rules</h5>
+          <h5 class="modal-title">Rules of Scrambled</h5>
           <button class="btn" data-bs-dismiss="modal">
             <span class="bi bi-x-square"></span>
           </button>
         </div>
         <div class="modal-body">
-          <h5>The aim of Scrambled</h5>
+          <h6>Aim of Scrambled</h6>
           <ul>
             <li>Each day there is a new random set of 7 letters</li>
             <li>With these letters, you will make 7 different words</li>
@@ -113,7 +123,7 @@
     </div>
   </div>
 
-  <!--Leaderboard Modal-->
+  <!--Statistics Modal-->
   <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
     <div
       class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
@@ -121,20 +131,24 @@
     >
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Rules</h5>
+          <h5 class="modal-title">Statistics</h5>
           <button class="btn" data-bs-dismiss="modal">
             <span class="bi bi-x-square"></span>
           </button>
         </div>
-        <div class="modal-body">
-          <ul>
-            <li>Rules</li>
-          </ul>
+        <div class="modal-body row">
+          <div></div>
+          <hr />
+          <div class="col-6 border-right">
+            <h6>Time Until Next Puzzle</h6>
+          </div>
+          <div class="col-6">
+            <h6>Share</h6>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <!--User Modal-->
   <div class="modal row modal-fade" id="userModal" tabindex="-1" role="dialog">
     <div
@@ -153,22 +167,21 @@
             <label for="username">Username</label> <br />
             <input type="text" name="username" id="username" /> <br />
             <label for="password">Password</label> <br />
-            <input type="text" name="password" id="password" /> <br />
+            <input type="text" name="password" id="password" /> <br>
             <p>
               New User?
               <a href="{{ url_for('register') }}">Click to Register!</a>
             </p>
             <p>
               Forgot Your Password?
-              <a href="{{ url_for('reset_password_request') }}"
-                >Click to Reset It</a
-              >
+              <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
             </p>
           </form>
         </div>
       </div>
     </div>
   </div>
+
   {% endblock %} {% block content %}
   <div class="container">
     {% with messages = get_flashed_messages() %} {% if messages %} {% for
