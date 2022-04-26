@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  {% block title %} {% if title %}{{ title }} - Microblog{% else %}{{ ('Welcome
-  to Microblog') }}{% endif %} {% endblock %} {% block navbar %}
+  {% block navbar %}
   <!--Navbar-->
   <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
     <div class="container-fluid row gx-0">
@@ -163,26 +162,19 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <label for="username">Username</label> <br />
-            <input type="text" name="username" id="username" /> <br />
-            <label for="password">Password</label> <br />
-            <input type="text" name="password" id="password" /> <br>
-            <p>
-              New User?
-              <a href="{{ url_for('register') }}">Click to Register!</a>
-            </p>
-            <p>
-              Forgot Your Password?
-              <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
-            </p>
-          </form>
+          {% if current_user.is_anonymous %}
+          <h1>Test if ur logged in </h1>
+          {% else %}
+          <h2>ur not logged in</h2>
+          {% endif %}
         </div>
       </div>
     </div>
   </div>
 
-  {% endblock %} {% block content %}
+  {% endblock %} 
+  
+  {% block content %}
   <div class="container">
     {% with messages = get_flashed_messages() %} {% if messages %} {% for
     message in messages %}
