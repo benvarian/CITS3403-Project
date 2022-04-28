@@ -1,14 +1,32 @@
 function init() {
-    let attemptTable = document.createElement("table");
-    for(let i=0; i < 7; i++) {
-        let attempt = document.createElement("tr");
+    // Loads in the guess table 
+    for(let i=0; i < 6; i++) {
+        let attemptRow = document.createElement("tr");
         for(let j=0; j < 7; j++) {
-            let box = document.createElement("td");
-            box.className = ;
-            attempt.appendChild(box);
+            let attemptLetter = document.createElement("td");
+            attemptLetter.className = "guessBox";
+            attemptRow.appendChild(attemptLetter);
         }
-        attemptTable.appendChild(attempt);
+        document.getElementById("guessTable").append(attemptRow);
     }
-    let gamebox = document.getElementById("gamebox");
-    gamebox.appendChild(attemptTable);
+
+    // Loads in the letters
+    let letterRow = document.createElement("tr");
+    for(let k = 0; k < 7; k++) {
+        let letter = document.createElement("td");
+        letter.innerHTML = "A<sub>1</sub>";
+        letter.className = "guessLetter";
+        // letter.onclick = clickedLetter();
+        letterRow.append(letter);
+    }
+    document.getElementById("letterTable").append(letterRow);
+
+    // Opens rules modal 
+    var rulesModal = new bootstrap.Modal(document.getElementById('rulesModal'), {})
+    rulesModal.toggle()
+
 }
+
+// function clickedLetter() {
+//     target.className = "clickedLetter";
+// }

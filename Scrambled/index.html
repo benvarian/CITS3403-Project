@@ -16,8 +16,11 @@
         <!--Link to CSS and JS-->
         <link rel="stylesheet" href="style.css">
 
+        <!--Link to JS-->
+        <script src="app.js"></script>
     </head>
-    <body>
+
+    <body onload="init()">
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
             <div class="container-fluid row gx-0">
@@ -38,7 +41,7 @@
         </nav>
 
         <!--Settings Modal-->
-        <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
+        <div class="modal row gx-0" id="settingsModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -68,7 +71,7 @@
         </div>
 
         <!--Rules Modal-->
-        <div class="modal row" id="rulesModal" tabindex="-1" role="dialog">
+        <div class="modal row gx-0" id="rulesModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -93,7 +96,7 @@
         </div>
   
         <!--Statistics Modal-->
-        <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
+        <div class="modal row gx-0" id="leaderboardModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -119,7 +122,7 @@
         </div>
 
         <!--User Modal-->
-        <div class="modal row modal-fade" id="userModal" tabindex="-1" role="dialog">
+        <div class="modal row gx-0" id="userModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -160,13 +163,7 @@
             <div class="row gx-0">
                 <div class="col-lg-4"></div> 
                 <div class="col-lg-4">
-                    <table class="guessTable"> 
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                    <table class="guessTable" id="guessTable"> 
                     </table>
                     <hr>
                 </div>
@@ -179,8 +176,7 @@
                 <h6>Letters</h6>
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4">
-                    <table class="letterTable">
-                        <tr><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td><td class="guessLetter"></td></tr>
+                    <table class="letterTable" id="letterTable">
                     </table>
                 </div>
                 <div class="col-lg-4"></div>
