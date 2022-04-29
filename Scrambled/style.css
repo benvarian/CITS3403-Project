@@ -12,9 +12,15 @@
     margin:auto;
 }
 
+<<<<<<< Updated upstream
 .letter {
     font:5vw Verdana;
     color: white;
+=======
+.guessBox {
+    background-color:white;
+    text-align:center;
+>>>>>>> Stashed changes
 }
 
 .number {
