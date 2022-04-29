@@ -29,6 +29,7 @@
     ></script>
 
     <!--Link to CSS and JS-->
+    <link rel="stylesheet" href="{{  url_for('static', filename='css/style.css')  }}">
     <script src="static/app.js"></script>
   </head>
 
@@ -84,7 +85,6 @@
           </div>
           <div class="modal-body row">
             <div class="col-lg-8">
-              
               <button class="btn btn-dark" id="dark-mode">
                 Dark Mode
               </button>
@@ -179,7 +179,8 @@
             {% if current_user.is_anonymous %}
             <h2>ur not logged in</h2>
             {% else %}
-            <h1>ur logged in</h1>
+            <h1>Hi, {{ current_user.username }}!</h1>
+            <a href="{{ url_for('logout') }}">Logout</a>
             {% endif %}
           </div>
         </div>
