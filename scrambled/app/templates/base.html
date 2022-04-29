@@ -21,166 +21,180 @@
       crossorigin="anonymous"
     ></script>
 
+    <!--AJAX-->
+    <script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+    ></script>
+
     <!--Link to CSS and JS-->
-    <link rel="stylesheet" href="style.css" />
+    <script src="static/app.js"></script>
   </head>
 
   {% block navbar %}
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
-    <div class="container-fluid row gx-0">
-      <button
-        class="col-1 btn"
-        data-bs-toggle="modal"
-        data-bs-target="#settingsModal"
-      >
-        <span class="bi bi-gear"></span>
-      </button>
-      <button
-        class="col-1 btn"
-        data-bs-toggle="modal"
-        data-bs-target="#rulesModal"
-      >
-        <span class="bi bi-question-circle"></span>
-      </button>
-      <h1 class="col-8 title">Scrambled</h1>
-      <button
-        class="col-1 btn"
-        data-bs-toggle="modal"
-        data-bs-target="#leaderboardModal"
-      >
-        <span class="bi bi-graph-up"></span>
-      </button>
-      <button
-        class="col-1 btn"
-        data-bs-toggle="modal"
-        data-bs-target="#userModal"
-      >
-        <span class="bi bi-person-circle"></span>
-      </button>
-    </div>
-  </nav>
-
-  <!--Settings Modal-->
-  <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
-    <div
-      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Settings</h4>
-          <button class="btn" data-bs-dismiss="modal">
-            <span class="bi bi-x-square"></span>
-          </button>
-        </div>
-        <div class="modal-body row">
-          <div class="col-10">
-            <span>Dark Mode</span>
-          </div>
-          <div class="col-2">
-            <button class="btn btn-dark" id="darkMode">Dark</button>
-          </div>
-          <hr />
-          <div class="col-10">
-            <span>High Constrast Mode</span>
-          </div>
-          <div class="col-2">
-            <button class="btn btn-dark" id="HCMMode">HCM</button>
-          </div>
-          <hr />
-        </div>
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top">
+      <div class="container-fluid row gx-0">
+        <button
+          class="col-1 btn"
+          data-bs-toggle="modal"
+          data-bs-target="#settingsModal"
+        >
+          <span class="bi bi-gear"></span>
+        </button>
+        <button
+          class="col-1 btn"
+          data-bs-toggle="modal"
+          data-bs-target="#rulesModal"
+        >
+          <span class="bi bi-question-circle"></span>
+        </button>
+        <h1 class="col-8 title" onclick="location.href='index'">Scrambled</h1>
+        <button
+          class="col-1 btn"
+          data-bs-toggle="modal"
+          data-bs-target="#leaderboardModal"
+        >
+          <span class="bi bi-graph-up"></span>
+        </button>
+        <button
+          class="col-1 btn"
+          data-bs-toggle="modal"
+          data-bs-target="#userModal"
+        >
+          <span class="bi bi-person-circle"></span>
+        </button>
       </div>
-    </div>
-  </div>
+    </nav>
 
-  <!--Rules Modal-->
-  <div class="modal row" id="rulesModal" tabindex="-1" role="dialog">
-    <div
-      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Rules of Scrambled</h5>
-          <button class="btn" data-bs-dismiss="modal">
-            <span class="bi bi-x-square"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h6>Aim of Scrambled</h6>
-          <ul>
-            <li>Each day there is a new random set of 7 letters</li>
-            <li>With these letters, you will make 7 different words</li>
-            <li>The words can be of any length up to 7 letters</li>
-            <li>Letters can only be used once</li>
-            <li>Each letter has a different value</li>
-            <li>The aim is to get the highest score possible</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--Statistics Modal-->
-  <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
-    <div
-      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Statistics</h5>
-          <button class="btn" data-bs-dismiss="modal">
-            <span class="bi bi-x-square"></span>
-          </button>
-        </div>
-        <div class="modal-body row">
-          <div></div>
-          <hr />
-          <div class="col-6 border-right">
-            <h6>Time Until Next Puzzle</h6>
+    <!--Settings Modal-->
+    <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Settings</h4>
+            <button class="btn" data-bs-dismiss="modal">
+              <span class="bi bi-x-square"></span>
+            </button>
           </div>
-          <div class="col-6">
-            <h6>Share</h6>
+          <div class="modal-body row">
+            <div class="col-lg-8">
+              
+              <button class="btn btn-dark" id="dark-mode">
+                Dark Mode
+              </button>
+            </div>
+            <hr />
+            <div class="col-10">
+              <span>High Constrast Mode</span>
+            </div>
+            <div class="col-2">
+              <button class="btn btn-dark" id="HCMMode">HCM</button>
+            </div>
+            <hr />
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--User Modal-->
-  <div class="modal row modal-fade" id="userModal" tabindex="-1" role="dialog">
-    <div
-      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Login</h5>
-          <button class="btn" data-bs-dismiss="modal">
-            <span class="bi bi-x-square"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          {% if current_user.is_anonymous %}
-          <h1>Test if ur logged in </h1>
-          {% else %}
-          <h2>ur not logged in</h2>
-          {% endif %}
+
+    <!--Rules Modal-->
+    <div class="modal row" id="rulesModal" tabindex="-1" role="dialog">
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Rules of Scrambled</h5>
+            <button class="btn" data-bs-dismiss="modal">
+              <span class="bi bi-x-square"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h6>Aim of Scrambled</h6>
+            <ul>
+              <li>Each day there is a new random set of 7 letters</li>
+              <li>With these letters, you will make 7 different words</li>
+              <li>The words can be of any length up to 7 letters</li>
+              <li>Letters can only be used once</li>
+              <li>Each letter has a different value</li>
+              <li>The aim is to get the highest score possible</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  {% endblock %} 
-  
-  {% block content %}
-  <div class="container">
-    {% with messages = get_flashed_messages() %} {% if messages %} {% for
-    message in messages %}
-    <div class="alert alert-info" role="alert">{{ message }}</div>
-    {% endfor %} {% endif %} {% endwith %} {# application content needs to be
-    provided in the app_content block #} {% block app_content %}{% endblock %}
-  </div>
+    <!--Statistics Modal-->
+    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Statistics</h5>
+            <button class="btn" data-bs-dismiss="modal">
+              <span class="bi bi-x-square"></span>
+            </button>
+          </div>
+          <div class="modal-body row">
+            <div></div>
+            <hr />
+            <div class="col-6 border-right">
+              <h6>Time Until Next Puzzle</h6>
+            </div>
+            <div class="col-6">
+              <h6>Share</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--User Modal-->
+    <div
+      class="modal row modal-fade"
+      id="userModal"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button class="btn" data-bs-dismiss="modal">
+              <span class="bi bi-x-square"></span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            {% if current_user.is_anonymous %}
+            <h2>ur not logged in</h2>
+            {% else %}
+            <h1>ur logged in</h1>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %} {% block content %}
+
+    <div class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="alert alert-info" role="alert">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %} {# application content needs to be
+      provided in the app_content block #} {% block app_content %}{% endblock %}
+    </div>
+  </body>
   {% endblock %}
 </html>
