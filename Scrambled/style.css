@@ -10,7 +10,6 @@ nav {
     margin:auto;
     table-layout:fixed;
 }
-
 .guessTable {
     border-collapse: separate;
     border-spacing:0.5vw;
@@ -18,6 +17,10 @@ nav {
     width:80%;
     margin:auto;
     table-layout:fixed;
+
+.guessBox {
+    background-color:white;
+    text-align:center;
 }
 
 .guessBox {

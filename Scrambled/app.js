@@ -26,7 +26,3 @@ function init() {
     rulesModal.toggle()
 
 }
-
-// function clickedLetter() {
-//     target.className = "clickedLetter";
-// }
