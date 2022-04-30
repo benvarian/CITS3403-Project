@@ -9,6 +9,7 @@ $(window).on('load', () => {
         navBarColor.classList.add("bg-dark")
         gearColor.classList.remove("gear-light")
         gearColor.classList.add("gear-dark")
+       
     })
     })
     hcmMode.addEventListener('click', function(){
