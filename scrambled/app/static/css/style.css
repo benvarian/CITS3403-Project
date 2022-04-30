@@ -1,40 +1,40 @@
 nav {
-  margin-bottom:1vw;
+  margin-bottom: 1vw;
 }
 .letterTable {
   border-collapse: separate;
-  border-spacing:0.5vw;
-  width:80%;
-  height:8vh;
-  margin:auto;
-  table-layout:fixed;
+  border-spacing: 0.5vw;
+  width: 80%;
+  height: 8vh;
+  margin: auto;
+  table-layout: fixed;
 }
 .guessTable {
   border-collapse: separate;
-  border-spacing:0.5vw;
-  height:54vh;
-  width:80%;
-  margin:auto;
-  table-layout:fixed;
+  border-spacing: 0.5vw;
+  height: 54vh;
+  width: 80%;
+  margin: auto;
+  table-layout: fixed;
 }
 .guessBox {
-  background-color:white;
-  text-align:center;
+  background-color: white;
+  text-align: center;
 }
 .guessBox {
   border: solid black 2px;
-  background-color:white;
-  text-align:center;
+  background-color: white;
+  text-align: center;
 }
 .guessLetter {
   border: solid black 2px;
-  background-color:black;
-  text-align:center;
-  color:white;
+  background-color: black;
+  text-align: center;
+  color: white;
 }
 .guessLetter:hover {
-  background-color:whitesmoke;
-  color:black;
+  background-color: whitesmoke;
+  color: black;
 }
 /* .clickedLetter {
   border: solid black 2px;
@@ -48,11 +48,139 @@ nav {
   background-color: black;
 } */
 .title {
-  text-align:center;
+  text-align: center;
+  color: var(--secondary-color);
+}
+h1 {
+  color: var(--secondary-color);
+}
+h2 {
+  color: var(--secondary-color);
+}
+h3 {
+  color: var(--secondary-color);
+}
+h4 {
+  color: var(--secondary-color);
+}
+h5 {
+  color: var(--secondary-color);
 }
 h6 {
-  text-align:center;
+  text-align: center;
 }
 .border-right {
   border-right: 1px solid grey;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+.col-4 {
+  align-items: center;
+}
+.modal-content {
+  background-color: var(--primary-color);
+}
+
+/* DARK THEME STUFF */
+:root {
+  --primary-color: #edf2fc;
+  --secondary-color: #212121;
+  --background: #2ecc71;
+}
+.dark-theme {
+  --primary-color: #303030;
+  --secondary-color: #fff;
+  --background: rgb(222, 30, 30);
+}
+/* .high-contrast {
+  to do: add highcontrast capabilties 
+} */
+.gear-light {
+  color: black;
+}
+.gear-dark {
+  color: white;
+}
+
+/* toggle stuff */
+
+.inactiveMixin {
+  content: "";
+  position: absolute;
+  display: block;
+}
+.beforeAnimation {
+  -moz-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  -o-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  -webkit-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+}
+.afterAnimation {
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13), 0 3px 3px hsla(0, 0%, 0%, 0.05);
+  -moz-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  -o-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  -webkit-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+}
+
+.toggleWrapper input.mobileToggle {
+  opacity: 0;
+  position: absolute;
+}
+.toggleWrapper input.mobileToggle + label {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  -moz-transition: 0.4s ease;
+  -o-transition: 0.4s ease;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+  -webkit-tap-highlight-color: transparent;
+  height: 30px;
+  width: 55px;
+  border: 1px solid #e4e4e4;
+  border-radius: 60px;
+}
+.toggleWrapper input.mobileToggle + label:before {
+  content: "";
+  position: absolute;
+  display: block;
+  -moz-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  -o-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  -webkit-transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+  height: 30px;
+  width: 51px;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+}
+.toggleWrapper input.mobileToggle + label:after {
+  content: "";
+  position: absolute;
+  display: block;
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13), 0 3px 3px hsla(0, 0%, 0%, 0.05);
+  -moz-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  -o-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  -webkit-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+  background: whitesmoke;
+  height: 28px;
+  width: 28px;
+  top: 1px;
+  left: 0px;
+  border-radius: 60px;
+}
+.toggleWrapper input.mobileToggle:checked + label:before {
+  background: var(--background);
+  -moz-transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+  -o-transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+  -webkit-transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+  transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+}
+.toggleWrapper input.mobileToggle:checked + label:after {
+  left: 24px;
 }

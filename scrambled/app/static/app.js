@@ -1,10 +1,20 @@
 $(window).on('load', () => {
-    const btn = document.getElementById("dark-mode")
-    btn.addEventListener('click', function(){
-            console.log("clicked")
+    const darkModebtn = document.getElementById("dark-mode")
+    const hcmMode = document.getElementById("HCM-mode")
+    const navBarColor = document.getElementById("navBar")
+    const gearColor = document.getElementById("gearMode")
+    darkModebtn.addEventListener('click', function(){
+        document.body.classList.toggle("dark-theme")
+        navBarColor.classList.remove("bg-light")
+        navBarColor.classList.add("bg-dark")
+        gearColor.classList.remove("gear-light")
+        gearColor.classList.add("gear-dark")
     })
     })
-
+    hcmMode.addEventListener('click', function(){
+        document.body.classList.toggle("high-contrast")
+    })
+  
 function init() {
     // Loads in the guess table 
     for(let i=0; i < 6; i++) {
