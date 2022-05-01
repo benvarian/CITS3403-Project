@@ -72,7 +72,7 @@ h6 {
   text-align: center;
 }
 li {
-  color: var(--secondary-color)
+  color: var(--secondary-color);
 }
 p {
   color: var(--secondary-color);
@@ -100,11 +100,10 @@ body {
 }
 .dark-theme {
   --primary-color: #303030;
-  --secondary-color: #fff;
-  --background: rgb(222, 30, 30);
+  --secondary-color: rgb(250, 250, 250);
 }
 /* .high-contrast {
-  to do: add highcontrast capabilties 
+  --background: rgb(222, 30, 30);
 } */
 .gear-light {
   color: black;
@@ -136,7 +135,6 @@ body {
 .squareColor-dark {
   color: white;
 }
-
 
 /* toggle stuff for settings modal */
 
