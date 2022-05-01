@@ -47,6 +47,7 @@ nav {
   color:white;
   background-color: black;
 } */
+
 .title {
   text-align: center;
   color: var(--secondary-color);
@@ -67,7 +68,14 @@ h5 {
   color: var(--secondary-color);
 }
 h6 {
+  color: var(--secondary-color);
   text-align: center;
+}
+li {
+  color: var(--secondary-color)
+}
+p {
+  color: var(--secondary-color);
 }
 .border-right {
   border-right: 1px solid grey;
@@ -104,8 +112,33 @@ body {
 .gear-dark {
   color: white;
 }
+.question-light {
+  color: black;
+}
+.question-dark {
+  color: white;
+}
+.graph-light {
+  color: black;
+}
+.graph-dark {
+  color: white;
+}
+.id-light {
+  color: black;
+}
+.id-dark {
+  color: white;
+}
+.squareColor-light {
+  color: black;
+}
+.squareColor-dark {
+  color: white;
+}
 
-/* toggle stuff */
+
+/* toggle stuff for settings modal */
 
 .inactiveMixin {
   content: "";
@@ -119,7 +152,8 @@ body {
   transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
 }
 .afterAnimation {
-  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13), 0 3px 3px hsla(0, 0%, 0%, 0.05);
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 0px 0 hsla(0, 0%, 0%, 0.04),
+    0 4px 9px hsla(0, 0%, 0%, 0.13), 0 3px 3px hsla(0, 0%, 0%, 0.05);
   -moz-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
   -o-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
   -webkit-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
@@ -162,7 +196,8 @@ body {
   content: "";
   position: absolute;
   display: block;
-  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 0px 0 hsla(0, 0%, 0%, 0.04), 0 4px 9px hsla(0, 0%, 0%, 0.13), 0 3px 3px hsla(0, 0%, 0%, 0.05);
+  box-shadow: 0 0 0 1px hsla(0, 0%, 0%, 0.1), 0 4px 0px 0 hsla(0, 0%, 0%, 0.04),
+    0 4px 9px hsla(0, 0%, 0%, 0.13), 0 3px 3px hsla(0, 0%, 0%, 0.05);
   -moz-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
   -o-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
   -webkit-transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);

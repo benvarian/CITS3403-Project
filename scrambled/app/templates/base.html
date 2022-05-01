@@ -53,7 +53,7 @@
           data-bs-toggle="modal"
           data-bs-target="#rulesModal"
         >
-          <span class="bi bi-question-circle"></span>
+          <span class="bi bi-question-circle question-light" id="questionMode"></span>
         </button>
         <h1 class="col-8 title" onclick="location.href='/index'">Scrambled</h1>
         <button
@@ -61,14 +61,14 @@
           data-bs-toggle="modal"
           data-bs-target="#leaderboardModal"
         >
-          <span class="bi bi-graph-up"></span>
+          <span class="bi bi-graph-up graph-light" id="graphMode"></span>
         </button>
         <button
           class="col-1 btn"
           data-bs-toggle="modal"
           data-bs-target="#userModal"
         >
-          <span class="bi bi-person-circle"></span>
+          <span class="bi bi-person-circle id-light" id="idMode"></span>
         </button>
       </div>
     </nav>
@@ -83,7 +83,7 @@
           <div class="modal-header">
             <h4 class="modal-title">Settings</h4>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square"></span>
+              <span class="bi bi-x-square squareColor-light" id="squareColor1"></span>
             </button>
           </div>
           <div class="modal-body row">
@@ -91,7 +91,12 @@
               <h5>Dark Mod</h5>
             </div>
             <div class="col-lg-4 toggleWrapper">
-              <input type="checkbox" name="toggle1" class="mobileToggle" id="dark-mode">
+              <input
+                type="checkbox"
+                name="toggle1"
+                class="mobileToggle"
+                id="dark-mode"
+              />
               <label for="dark-mode"></label>
             </div>
             <hr />
@@ -99,7 +104,13 @@
               <h5>High Constrast Mode</h5>
             </div>
             <div class="col-lg-4 toggleWrapper">
-              <input type="checkbox" name="toggle1" class="mobileToggle" id="HCM-mode" checked>
+              <input
+                type="checkbox"
+                name="toggle1"
+                class="mobileToggle"
+                id="HCM-mode"
+                checked
+              />
               <label for="HCM-mode"></label>
             </div>
             <hr />
@@ -118,7 +129,7 @@
           <div class="modal-header">
             <h5 class="modal-title">Rules of Scrambled</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square"></span>
+              <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
             </button>
           </div>
           <div class="modal-body">
@@ -146,7 +157,7 @@
           <div class="modal-header">
             <h5 class="modal-title">Statistics</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square"></span>
+              <span class="bi bi-x-square squareColor-light" id="squareColor3"></span>
             </button>
           </div>
           <div class="modal-body row">
@@ -177,7 +188,7 @@
           <div class="modal-header">
             <h5 class="modal-title">Login</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square"></span>
+              <span class="bi bi-x-square squareColor-light" id="squareColor4"></span>
             </button>
           </div>
 
