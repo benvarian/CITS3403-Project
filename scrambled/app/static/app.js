@@ -18,8 +18,6 @@ $(window).on('load', () => {
     const xColor3 = document.getElementById("squareColor3")
     const xColor4 = document.getElementById("squareColor4")
 
-   
-
     darkModebtn.addEventListener('click', function(){
         document.body.classList.toggle("dark-theme")
        
@@ -73,4 +71,27 @@ $(window).on('load', () => {
     hcmMode.addEventListener('click', function(){
         document.body.classList.toggle("high-contrast")
     })
-  
+
+    function startTimer() {
+        
+        var minutesLabel = document.getElementById("minutes");
+        var secondsLabel = document.getElementById("seconds");
+        var totalSeconds = 0;
+        setInterval(setTime, 1000);
+    
+        function setTime() {
+          ++totalSeconds;
+          secondsLabel.innerHTML = pad(totalSeconds % 60);
+          minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+        }
+    
+        function pad(val) {
+          var valString = val + "";
+          if (valString.length < 2) {
+            return "0" + valString;
+          } else {
+            return valString;
+          }
+        }
+      }
+    

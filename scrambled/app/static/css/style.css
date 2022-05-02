@@ -80,11 +80,14 @@ p {
 .border-right {
   border-right: 1px solid grey;
 }
+hr {
+  margin-bottom: 8px;
+ 
+}
 
 body {
   background-color: var(--primary-color);
 }
-
 .col-4 {
   align-items: center;
 }
