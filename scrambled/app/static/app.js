@@ -1,10 +1,5 @@
 $(window).on('load', () => {
 
-    let theme = localStorage.getItem('dark-mode');
-    
-    const changeThemetoDark = () => {
-        localStorage.setItem("da")
-    }
     
     const darkModebtn = document.getElementById("dark-mode")
     const hcmMode = document.getElementById("HCM-mode")
@@ -72,26 +67,9 @@ $(window).on('load', () => {
         document.body.classList.toggle("high-contrast")
     })
 
-    function startTimer() {
-        
-        var minutesLabel = document.getElementById("minutes");
-        var secondsLabel = document.getElementById("seconds");
-        var totalSeconds = 0;
-        setInterval(setTime, 1000);
-    
-        function setTime() {
-          ++totalSeconds;
-          secondsLabel.innerHTML = pad(totalSeconds % 60);
-          minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-        }
-    
-        function pad(val) {
-          var valString = val + "";
-          if (valString.length < 2) {
-            return "0" + valString;
-          } else {
-            return valString;
-          }
-        }
-      }
+    $(".btn").click(function () {
+        var content = $("#newtask").val();
+        var fixingContent = "<li>" + content + "</li>";
+        $(".todolist").append(fixingContent);
+      });
     
