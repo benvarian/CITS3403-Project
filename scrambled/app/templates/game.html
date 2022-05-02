@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% block content %}
+
+<head>
+  <title>Scrambled</title>
+</head>
+
+<body onload="init()">
+  <div class="container-fluid">
+    <div class="row gx-0">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 row gx-0">
+        <div class="col-6 border-right">
+          <h6><b>Score</b></h6>
+        </div>
+        <div class="col-6">
+          <h6><b>Time Taken</b></h6>
+        </div>
+        <hr />
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row gx-0">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <table class="guessTable" id="guessTable"></table>
+        <hr />
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row gx-0">
+      <h6>Letters</h6>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <table class="letterTable" id="letterTable"></table>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+</body>
+<script>
+  function init() {
+    // Loads in the guess table
+    for (let i = 0; i < 6; i++) {
+      let attemptRow = document.createElement("tr");
+      for (let j = 0; j < 7; j++) {
+        let attemptLetter = document.createElement("td");
+        attemptLetter.className = "guessBox";
+        attemptRow.appendChild(attemptLetter);
+      }
+      document.getElementById("guessTable").append(attemptRow);
+    }
+
+    // Loads in the letters
+    let letterRow = document.createElement("tr");
+    for (let k = 0; k < 7; k++) {
+      let letter = document.createElement("td");
+      letter.innerHTML = "A<sub>1</sub>";
+      letter.className = "guessLetter";
+      // letter.onclick = clickedLetter();
+      letterRow.append(letter);
+    }
+    document.getElementById("letterTable").append(letterRow);
+
+    // Opens rules modal
+    var rulesModal = new bootstrap.Modal(
+      document.getElementById("rulesModal"),
+      {}
+    );
+    rulesModal.toggle();
+  }
+</script>
+{% endblock %}
