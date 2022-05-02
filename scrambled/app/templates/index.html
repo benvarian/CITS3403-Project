@@ -2,7 +2,51 @@
 
 {% block content %}
 
-<h1>Hi, {{ current_user.username }}!</h1>
+<div class="container-fluid">
+  <div class="row gx-0">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 row gx-0">
+          <div class="col-6 border-right">
+              <h6 class="title"><b>Score</b></h6>
+          </div>
+          <div class="col-6">
+              <h6 class="title"><b>Time Taken</b></h6>
+          </div>
+          <hr>
+      </div>
+      <div class="col-lg-4"></div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row gx-0">
+      <div class="col-lg-4"></div> 
+      <div class="col-lg-4">
+          <table class="guessTable" id="guessTable"> 
+              
+          </table>
+          <hr>
+      </div>
+      <div class="col-lg-4"></div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row gx-0">
+      <h6 class="title">Letters</h6>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+          <table class="letterTable" id="letterTable">
+          </table>
+      </div>
+      <div class="col-lg-4"></div>
+  </div>
+</div>
+<script>
+  initGuessTable();
+</script>
+
+<!-- <h1>Hi, {{ current_user.username }}!</h1>
 {% if form %}
 <form action="" method="post">
   {{ form.hidden_tag() }}
@@ -20,6 +64,6 @@ if prev_url %}
 <a href="{{ prev_url }}">Newer posts</a>
 {% endif %} {% if next_url %}
 <a href="{{ next_url }}">Older posts</a>
-{% endif %} 
+{% endif %}  -->
 
 {% endblock %}
