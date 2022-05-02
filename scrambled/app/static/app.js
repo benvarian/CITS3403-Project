@@ -1,10 +1,5 @@
 $(window).on('load', () => {
 
-    let theme = localStorage.getItem('dark-mode');
-    
-    const changeThemetoDark = () => {
-        localStorage.setItem("da")
-    }
     
     const darkModebtn = document.getElementById("dark-mode")
     const hcmMode = document.getElementById("HCM-mode")
@@ -17,8 +12,6 @@ $(window).on('load', () => {
     const xColor2 = document.getElementById("squareColor2")
     const xColor3 = document.getElementById("squareColor3")
     const xColor4 = document.getElementById("squareColor4")
-
-   
 
     darkModebtn.addEventListener('click', function(){
         document.body.classList.toggle("dark-theme")
@@ -73,4 +66,10 @@ $(window).on('load', () => {
     hcmMode.addEventListener('click', function(){
         document.body.classList.toggle("high-contrast")
     })
-  
+
+    $(".btn").click(function () {
+        var content = $("#newtask").val();
+        var fixingContent = "<li>" + content + "</li>";
+        $(".todolist").append(fixingContent);
+      });
+    

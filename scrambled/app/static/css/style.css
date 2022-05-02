@@ -1,3 +1,8 @@
+/* TODO FOR MAX MARKS ACCORDING TO SCEHEM
+1. add evident mobile views */
+
+
+
 nav {
   margin-bottom: 1vw;
 }
@@ -77,14 +82,19 @@ li {
 p {
   color: var(--secondary-color);
 }
+span {
+  color: var(--secondary-color);
+}
 .border-right {
   border-right: 1px solid grey;
 }
-
+hr { 
+  /* change this to a adaptive measurement */
+  margin-bottom: 8px;
+}
 body {
   background-color: var(--primary-color);
 }
-
 .col-4 {
   align-items: center;
 }
