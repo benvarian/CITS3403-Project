@@ -1,0 +1,49 @@
+<script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+></script>
+<script>
+    $(document).ready(function () {
+      $(".btn").click(function () {
+        var content = $("#newtask").val();
+        var fixingContent = "<li>" + content + "</li>";
+        $(".todolist").append(fixingContent);
+      });
+    });
+    function clear (){
+        document.getElementById("newtask").value = "";
+    }
+</script>
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<h1>Form </h1>
+</br>
+<form action="?action=save" name="myform" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }}
+    {{ form.name }}
+    </br>
+    {{ form.submit() }} <input type="reset" value="Reset" />
+    </form>
+</form>
+<form>
+    <input
+      type="text"
+      id="newtask"
+      name="newtask"
+      placeholder="Enter new task here"
+      
+    />
+    <input class="btn" type="button" id="addtask" name="addtask" value="Add Task" onclick="clear()"/>
+</form>
+<p1>{{name}}</p1>
+
+{% endblock %}
