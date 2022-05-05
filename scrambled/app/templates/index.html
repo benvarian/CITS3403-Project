@@ -1,25 +1,114 @@
 {% extends "base.html" %} {% block content %}
-<div class="container-sm">
-  <div class="row">
-    <h1 style="text-align: center;">Hi, {{ current_user.username }}!</h1>
+
+<head>
+  <title>Scrambled</title>
+</head>
+
+<body onload="init()">
+  <div class="container-fluid">
+    <div class="row gx-0">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 row gx-0">
+        <div class="col-6 border-right">
+          <h6><b>Score</b></h6>
+        </div>
+        <div class="col-6">
+          <h6><b>Time Taken</b></h6>
+        </div>
+        <hr />
+        <div class="col-6">
+          <div id="score" style="text-align: center">
+            <span id="score2">420</span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div id="timer" style="text-align: center">
+            <span id="minutes">00</span><span>:</span><span id="seconds">00</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
   </div>
-  {% if form %}
-  <form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-      {{ form.post.label }}<br />
-      {{ form.post(cols=32, rows=4) }}<br />
-      {% for error in form.post.errors %}
-      <span style="color: red">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>{{ form.submit() }}</p>
-  </form>
-  {% endif %} {% for post in posts %} {% include '_post.html' %} {% endfor %} {%
-  if prev_url %}
-  <a href="{{ prev_url }}">Newer posts</a>
-  {% endif %} {% if next_url %}
-  <a href="{{ next_url }}">Older posts</a>
-  {% endif %}
-</div>
+
+  <div class="container-fluid">
+    <div class="row gx-0">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <table class="guessTable" id="guessTable"></table>
+        <hr/>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row gx-0">
+      <h6>Letters</h6>
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <table
+          class="letterTable testTrue"
+          id="letterTable"
+          onclick="startTimer(); this.onclick=null "
+        ></table>
+        <!-- this.onclick=null -->
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+  </div>
+</body>
+<script>
+  function init() {
+    // Loads in the guess table
+    for (let i = 0; i < 6; i++) {
+      let attemptRow = document.createElement("tr");
+      for (let j = 0; j < 7; j++) {
+        let attemptLetter = document.createElement("td");
+        attemptLetter.className = "guessBox";
+        attemptRow.appendChild(attemptLetter);
+      }
+      document.getElementById("guessTable").append(attemptRow);
+    }
+
+    // Loads in the letters
+    let letterRow = document.createElement("tr");
+    for (let k = 0; k < 7; k++) {
+      let letter = document.createElement("td");
+      letter.innerHTML = "A<sub>1</sub>";
+      letter.className = "guessLetter";
+      // letter.onclick = clickedLetter();
+      letterRow.append(letter);
+    }
+    document.getElementById("letterTable").append(letterRow);
+
+    // Opens rules modal
+    var rulesModal = new bootstrap.Modal(
+      document.getElementById("rulesModal"),
+      {}
+    );
+    rulesModal.toggle();
+  }
+  function startTimer() {
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
+
+    function setTime() {
+      ++totalSeconds;
+      secondsLabel.innerHTML = pad(totalSeconds % 60);
+      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
+  }
+</script>
 {% endblock %}

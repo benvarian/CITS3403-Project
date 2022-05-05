@@ -7,11 +7,15 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
 
+@app.route('/index', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
+    return render_template('index.html')
+
+@app.route('/game',methods=['GET','POST'])
+def game():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user)
@@ -26,9 +30,10 @@ def index():
         if posts.has_next else None
     prev_url = url_for('index', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title='Home', form=form,
+    return render_template('game.html', title='Home', form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -152,7 +157,7 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template("index.html", title='Explore', posts=posts.items,
+    return render_template("game.html", title='Explore', posts=posts.items,
                           next_url=next_url, prev_url=prev_url)
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -184,6 +189,5 @@ def reset_password(token):
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)       
 
-@app.route('/game', methods=['GET','POST'])
-def game():
-    return render_template('game.html')
+
+

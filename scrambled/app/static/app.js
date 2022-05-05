@@ -68,6 +68,18 @@ $(window).on('load', () => {
         
     })
 
+    function date() {
+    const moment = require('moment');
+    const date = new Date();
+    const oTime = "00:00:00"
+    var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+    var test = moment('2010-10-10')
+
+    console.log(time)
+    console.log(test)
+   
+   
+    }
     // $(".btn").click(function () {
     //     var content = $("#newtask").val();
     //     var fixingContent = "<li>" + content + "</li>";

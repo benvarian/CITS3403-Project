@@ -37,7 +37,7 @@
   </head>
 
   {% block navbar %}
-  <body>
+  <body onload="date()">
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top" id="navBar">
       <div class="container-fluid row gx-0">
@@ -53,7 +53,10 @@
           data-bs-toggle="modal"
           data-bs-target="#rulesModal"
         >
-          <span class="bi bi-question-circle question-light" id="questionMode"></span>
+          <span
+            class="bi bi-question-circle question-light"
+            id="questionMode"
+          ></span>
         </button>
         <h1 class="col-8 title" onclick="location.href='/index'">Scrambled</h1>
         <button
@@ -73,7 +76,7 @@
       </div>
     </nav>
 
-    <!--Settings Modal-->
+    <!-- Settings Modal FIX THE BUTTONS TO BE CENTRED EVEN WHEN IN MOBILE VIEW -->
     <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
@@ -83,14 +86,17 @@
           <div class="modal-header">
             <h4 class="modal-title">Settings</h4>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor1"></span>
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor1"
+              ></span>
             </button>
           </div>
           <div class="modal-body row">
-            <div class="col-lg-8">
+            <div class="col-lg-4">
               <h5>Dark Mode</h5>
             </div>
-            <div class="col-lg-4 toggleWrapper">
+            <div class="col-lg-4 toggleWrapper" style="display: grid; place-items: center;">
               <input
                 type="checkbox"
                 name="toggle1"
@@ -100,10 +106,10 @@
               <label for="dark-mode"></label>
             </div>
             <hr />
-            <div class="col-lg-8">
+            <div class="col-lg-4" >
               <h5>High Constrast Mode</h5>
             </div>
-            <div class="col-lg-4 toggleWrapper">
+            <div class="col-lg-4 toggleWrapper" style="display: grid; place-items: center;">
               <input
                 type="checkbox"
                 name="toggle1"
@@ -128,7 +134,10 @@
           <div class="modal-header">
             <h5 class="modal-title">Rules of Scrambled</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor2"
+              ></span>
             </button>
           </div>
           <div class="modal-body">
@@ -147,7 +156,7 @@
     </div>
 
     <!--Statistics Modal-->
-    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
+    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog" >
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
         role="document"
@@ -156,17 +165,22 @@
           <div class="modal-header">
             <h5 class="modal-title">Statistics</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor3"></span>
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor3"
+              ></span>
             </button>
           </div>
-          <div class="modal-body row">
-            <div></div>
-            <hr />
-            <div class="col-6 border-right">
-              <h6>Time Until Next Puzzle</h6>
+          <div class="modal-body">
+            <div class="col-6" style="text-align: center">
+              <h6>Next Puzzle:</h6>
+              <p >test</p>
             </div>
-            <div class="col-6">
+            <hr />
+            <div class="col-6" style="text-align: center">
               <h6>Share</h6>
+
+              <a style="text-align: inline" href="{{ url_for('explore') }}">Click</a>
             </div>
           </div>
         </div>
@@ -187,7 +201,10 @@
           <div class="modal-header">
             <h5 class="modal-title">Login</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor4"></span>
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor4"
+              ></span>
             </button>
           </div>
 
