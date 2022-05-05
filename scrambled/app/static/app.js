@@ -1,8 +1,7 @@
 $(window).on('load', () => {
 
-    
     const darkModebtn = document.getElementById("dark-mode")
-    const hcmMode = document.getElementById("HCM-mode")
+    const hcmModebtn = document.getElementById("HCM-mode")
     const navBarColor = document.getElementById("navBar")
     const gearColor = document.getElementById("gearMode")
     const questionColor = document.getElementById("questionMode")
@@ -63,13 +62,15 @@ $(window).on('load', () => {
        
     })
     })
-    hcmMode.addEventListener('click', function(){
+    
+    hcmModebtn.addEventListener('click', function(){
         document.body.classList.toggle("high-contrast")
+        
     })
 
-    $(".btn").click(function () {
-        var content = $("#newtask").val();
-        var fixingContent = "<li>" + content + "</li>";
-        $(".todolist").append(fixingContent);
-      });
+    // $(".btn").click(function () {
+    //     var content = $("#newtask").val();
+    //     var fixingContent = "<li>" + content + "</li>";
+    //     $(".todolist").append(fixingContent);
+    //   });
     

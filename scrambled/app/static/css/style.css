@@ -112,9 +112,9 @@ body {
   --primary-color: #303030;
   --secondary-color: rgb(250, 250, 250);
 }
-/* .high-contrast {
+.high-contrast {
   --background: rgb(222, 30, 30);
-} */
+}
 .gear-light {
   color: black;
 }
