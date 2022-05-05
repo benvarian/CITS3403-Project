@@ -3,7 +3,25 @@
 <head>
   <title>Scrambled</title>
 </head>
-
+<!-- Shayan Testing Stuff between two comment lines -->
+<script
+      src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+      crossorigin="anonymous"
+></script>
+<script>
+  $(document).ready(function () {
+    $(".btn").click(function () {
+      var content = $("#newtask").val();
+      var fixingContent = "<li>" + content + "</li>";
+      $(".todolist").append(fixingContent);
+    });
+  });
+  function clear (){
+      document.getElementById("newtask").value = "";
+  }
+</script>
+<!-- Shayan Testing Stuff between two comment lines -->
 <body onload="init()">
   <div class="container-fluid">
     <div class="row gx-0">
@@ -30,7 +48,7 @@
       <div class="col-lg-4"></div>
     </div>
   </div>
-
+<!--
   <div class="container-fluid">
     <div class="row gx-0">
       <div class="col-lg-4"></div>
@@ -41,7 +59,51 @@
       <div class="col-lg-4"></div>
     </div>
   </div>
+-->
+<!-- Shayan Testing Stuff between two comment lines -->
+</br>
+</br>
+</br>
+<center>
+  <table>
+      <tr>
+        <td>1) {{words.0}}</td>
+        <td>4) {{words.3}}</td>
+      </tr>
+      <tr>
+        <td>2) {{words.1}}</td>
+        <td>5) {{words.4}}</td>
+      </tr>
+      <tr>
+        <td>3) {{words.2}}</td>
+        <td>6) {{words.5}}</td>
+      </tr>
+    </table>
+</center>
+</br>
+</br>
+</br>
+<center>
+  <form>
+    <input
+      type="text"
+      id="newtask"
+      name="newtask"
+      placeholder="Word"
+      
+    />
+    <input class="btn" type="button" id="addtask" name="addtask" value="Submit" onclick="clear()"/>
+  </form>
+<center>
 
+<div class="left">
+  <h1>To Do</h1>
+  <ul class="todolist">
+
+  </ul>
+</div>
+<!-- Shayan Testing Stuff between two comment lines -->
+</div>
   <div class="container-fluid">
     <div class="row gx-0">
       <h6>Letters</h6>
