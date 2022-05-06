@@ -16,6 +16,16 @@
           <h6><b>Time Taken</b></h6>
         </div>
         <hr />
+        <div class="col-6">
+          <div id="score" style="text-align: center">
+            <span id="score2">420</span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div id="timer" style="text-align: center">
+            <span id="minutes">00</span><span>:</span><span id="seconds">00</span>
+          </div>
+        </div>
       </div>
       <div class="col-lg-4"></div>
     </div>
@@ -26,7 +36,7 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
         <table class="guessTable" id="guessTable"></table>
-        <hr />
+        <hr/>
       </div>
       <div class="col-lg-4"></div>
     </div>
@@ -37,7 +47,12 @@
       <h6>Letters</h6>
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
-        <table class="letterTable" id="letterTable"></table>
+        <table
+          class="letterTable testTrue"
+          id="letterTable"
+          onclick="startTimer(); this.onclick=null "
+        ></table>
+        <!-- this.onclick=null -->
       </div>
       <div class="col-lg-4"></div>
     </div>
@@ -73,6 +88,27 @@
       {}
     );
     rulesModal.toggle();
+  }
+  function startTimer() {
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
+
+    function setTime() {
+      ++totalSeconds;
+      secondsLabel.innerHTML = pad(totalSeconds % 60);
+      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+      var valString = val + "";
+      if (valString.length < 2) {
+        return "0" + valString;
+      } else {
+        return valString;
+      }
+    }
   }
 </script>
 {% endblock %}
