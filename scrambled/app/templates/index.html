@@ -5,12 +5,14 @@
 <div class="container-fluid">
   <div class="row gx-0">
       <div class="col-lg-4"></div>
-      <div class="col-lg-4 row gx-0">
+      <div class="col-lg-4 row gx-0 game-header">
           <div class="col-6 border-right">
               <h6 class="title"><b>Score</b></h6>
+              <h4></h4>
           </div>
           <div class="col-6">
               <h6 class="title"><b>Time Taken</b></h6>
+              <h4 id="timeTaken title"></h4>
           </div>
           <hr>
       </div>
@@ -25,6 +27,17 @@
           <table class="guessTable" id="guessTable"> 
               
           </table>
+          <div class="container-fluid row gx-0">
+              <div class="col-3"></div>
+              <div class="col-2">
+                  <button class='btn btn-dark buttonMargins' onclick="submitWord()">Submit</button>
+              </div>
+              <div class="col-2"></div>
+              <div class="col-2">
+                  <button class='btn btn-dark buttonMargins' onclick="resetWord()">Reset</button>
+              </div>
+              <div class="col-3"></div>
+          </div>
           <hr>
       </div>
       <div class="col-lg-4"></div>
@@ -36,34 +49,15 @@
       <h6 class="title">Letters</h6>
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
-          <table class="letterTable" id="letterTable">
+          <table class="letterTable">
           </table>
       </div>
       <div class="col-lg-4"></div>
   </div>
 </div>
-<script>
-  initGuessTable();
-</script>
 
-<!-- <h1>Hi, {{ current_user.username }}!</h1>
-{% if form %}
-<form action="" method="post">
-  {{ form.hidden_tag() }}
-  <p>
-    {{ form.post.label }}<br />
-    {{ form.post(cols=32, rows=4) }}<br />
-    {% for error in form.post.errors %}
-    <span style="color: red">[{{ error }}]</span>
-    {% endfor %}
-  </p>
-  <p>{{ form.submit() }}</p>
-</form>
-{% endif %} {% for post in posts %} {% include '_post.html' %} {% endfor %} {%
-if prev_url %}
-<a href="{{ prev_url }}">Newer posts</a>
-{% endif %} {% if next_url %}
-<a href="{{ next_url }}">Older posts</a>
-{% endif %}  -->
+<script>
+  init();
+</script>
 
 {% endblock %}
