@@ -68,9 +68,80 @@ $(window).on('load', () => {
         
     })
 
-    // $(".btn").click(function () {
-    //     var content = $("#newtask").val();
-    //     var fixingContent = "<li>" + content + "</li>";
-    //     $(".todolist").append(fixingContent);
-    //   });
+    var rowNum;
+var colNum;
+
+function init() {
+    rowNum = 0;
+    colNum = 0;
+    for(let i=0; i < 6; i++) {
+        let guessRow = document.createElement("tr");
+        for(let j=0; j < 7; j++) {
+            let guessBox = document.createElement("td");
+            guessBox.setAttribute("id", String(i) + String(j));
+            guessBox.className = "guessBox";
+            guessRow.appendChild(guessBox);
+        }
+        $("#guessTable").append(guessRow);
+    }
+
+    let letterRow = document.createElement("tr");
+    for(let k = 0; k < 7; k++) {
+        let letter = document.createElement("td");
+        letter.innerHTML = "A<sub>1</sub>";
+        letter.className = "letter";
+        letter.setAttribute("id",  "L" + k);
+        letter.addEventListener("click", function() {
+            clickedLetter(letter);
+        })
+        letterRow.append(letter);
+    } 
+    $(".letterTable").append(letterRow);
+}
+
+function clickedLetter(letter) {
+    if(colNum < 7) {
+        let id = String(rowNum) + String(colNum);
+        let guessBox = document.getElementById(id)
+        guessBox.innerHTML = letter.innerHTML;
+        guessBox.className = "guessedLetter";
+        letter.className="clickedLetter";
+        colNum++;
+    }
+    else {
+       //alert
+    }
+}
+
+function resetWord() {
+    for(let i = 0; i < 7; i++) {
+        let id = String(rowNum) + String(i);
+        document.getElementById(id).innerHTML = "";
+        document.getElementById(id).className = "guessBox";
+    }
+    for(let k = 0; k < 7; k++) {
+        let letterID = "L" + k;
+        let letter = document.getElementById(letterID)
+        letter.className="letter";
+    }
+    colNum = 0;
+}
+
+function submitWord() {
+    if(colNum)
+    var guess = "";
+    for(let k = 0; k < colNum; k++) {
+        let letterID =  "L" + k;
+        document.getElementById(letterID).className = "letter";
+        let id = String(rowNum) + String(k);
+        let letter = document.getElementById(id).innerText;
+        guess += letter;
+    }
+    console.log(guess);
+    // Check guess
+    // if positive
+    // for
+    rowNum++;
+    colNum = 0;
+}
     
