@@ -20,7 +20,7 @@ nav {
   border-collapse: separate;
   border-spacing:0.5vw;
   width:80%;
-  height:8vh;
+  height:7vh;
   margin:auto;
   table-layout:fixed;
 }
@@ -28,21 +28,19 @@ nav {
 .submittedTable {
   border-collapse: separate;
   border-spacing:0.5vw;
-  height:48vh;
+  height:42vh;
   width:80%;
   margin:auto;
   table-layout:fixed;
 }
 
-.submittedLetter {
+.submittedBox {
+  height:7vh;
   text-align:center;
-  background-color:red;
-  color:white;
-  height: 8vh;
 }
 
 .guessBox {
-  height: 5vh;
+  height: 7vh;
   text-align: center;
   border-bottom: solid 2px black;
 }
@@ -50,7 +48,7 @@ nav {
 .letter {
   border: solid 2px black;
   text-align:center;
-  height: 8vh;
+  height: 7vh;
 }
 
 
@@ -59,7 +57,7 @@ nav {
   background-color: black;
   color:white;
   text-align:center;
-  height: 8vh;
+  height: 7vh;
 }
 
 .buttonMargins {

@@ -77,12 +77,13 @@ var timeTaken;
 function init() {
     createSubmitTable();
     createWordAndGuessTable();
-    if(true) {
+    if(getCookie("timeTaken") != "") {
+        timeTaken = getCookie('timeTaken');
         rowNum = parseInt(getCookie("rowNum"));
-        for(let i = 0; i < rowNum; i++) {
-
+        if(rowNum > 0) {
+            loadPreviousWords();
         }
-
+        colNum = 0;
     }
     else {
         rowNum = 0;
@@ -92,7 +93,6 @@ function init() {
         timeTaken = 0;
     }
 }
-
 
 function createSubmitTable() {
     for(let i=0; i < 6; i++) {
@@ -169,7 +169,6 @@ function submitWord() {
             guess += guessLetter.slice(0,1);
             score += guessLetter.slice(1);
         }
-        let xhttp = new XMLHttpRequest();
         if(true) {
             for(let k = 0; k < colNum; k++) {
                 let guessBoxID =  "G" + k;
@@ -183,14 +182,26 @@ function submitWord() {
 
             createCookie("words", words);
             createCookie("score", score);
-            createCookie("rowNum", row);
-
-            rowNum++;
+            createCookie("rowNum", rowNum);
+            createCookie("timeTaken", 5);
             resetWord();
         }
         else {
             //alert about incorrect word
             resetWord();
+        }
+    }
+}
+
+function loadPreviousWords() {
+    words = getCookie("words").split(",");
+    for(let i = 0; i < words.length; i++) {
+        let word = words[i];
+        for(let k = 0; k < word.length; k++) {
+            let submittedID = String(i) + String(k);
+            let submittedBox = document.getElementById(submittedID);
+            let letter = word.charAt(k);
+            submittedBox.innerText = letter;
         }
     }
 }
@@ -211,7 +222,7 @@ function getCookie(name) {
             cookie = cookie.substring(1);
         }
         if(cookie.indexOf(cname) == 0) {
-            return cookie.substring(name.length, cookie.length);
+            return cookie.substring(name.length + 1, cookie.length);
         }
     }
     return "";
