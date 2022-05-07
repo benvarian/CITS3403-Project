@@ -138,24 +138,31 @@ function submitWord() {
         //ALERT LESS THAN 3 Letter word
     }
     else {
-        
+        var guess = "";
+        for(let i = 0; i < colNum; i++) {
+            let guessBoxID =  "G" + i;
+            let guessLetter = document.getElementById(guessBoxID).innerText;
+            guess += guessLetter.slice(0,1);
+        }
+        let xhttp = new XMLHttpRequest();
+        if(true) {
+            for(let k = 0; k < colNum; k++) {
+                let guessBoxID =  "G" + k;
+                let guessLetter = document.getElementById(guessBoxID);
+                let submittedID = String(rowNum) + String(k);
+                let submittedLetter = document.getElementById(submittedID);
+                submittedLetter.innerHTML = guessLetter.innerHTML;
+            }
+            rowNum++;
+            resetWord();
+        }
+        else {
+            //alert about incorrect word
+            resetWord();
+        }
     }
-    var guess = "";
-    for(let k = 0; k < colNum; k++) {
-        let letterID =  "L" + k;
-        document.getElementById(letterID).className = "letter";
-        let id = String(rowNum) + String(k);
-        let letter = document.getElementById(id).innerText;
-        guess += letter;
-    }
-    console.log(guess);
-    // Check guess
-    // if positive
-    // for
-    rowNum++;
-    colNum = 0;
 }
-  
+
 function openRules() {
     var rulesModal = new bootstrap.Modal(
         document.getElementById("rulesModal"),
