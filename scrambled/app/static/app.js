@@ -68,12 +68,33 @@ $(window).on('load', () => {
         
     })
 
-    var rowNum;
+var rowNum;
 var colNum;
+var words;
+var score;
+var timeTaken;
 
 function init() {
-    rowNum = 0;
-    colNum = 0;
+    createSubmitTable();
+    createWordAndGuessTable();
+    if(true) {
+        rowNum = parseInt(getCookie("rowNum"));
+        for(let i = 0; i < rowNum; i++) {
+
+        }
+
+    }
+    else {
+        rowNum = 0;
+        colNum = 0;
+        words = [];
+        score = 0;
+        timeTaken = 0;
+    }
+}
+
+
+function createSubmitTable() {
     for(let i=0; i < 6; i++) {
         let submittedRow = document.createElement("tr");
         for(let j=0; j < 7; j++) {
@@ -84,7 +105,9 @@ function init() {
         }
         $("#submittedTable").append(submittedRow);
     }
+}
 
+function createWordAndGuessTable() {
     for(let k = 0; k < 7; k++) {
         let letter = document.createElement("td");
         letter.innerHTML = "A<sub>1</sub>";
@@ -139,10 +162,12 @@ function submitWord() {
     }
     else {
         var guess = "";
+        var score = 0;
         for(let i = 0; i < colNum; i++) {
             let guessBoxID =  "G" + i;
             let guessLetter = document.getElementById(guessBoxID).innerText;
             guess += guessLetter.slice(0,1);
+            score += guessLetter.slice(1);
         }
         let xhttp = new XMLHttpRequest();
         if(true) {
@@ -153,6 +178,13 @@ function submitWord() {
                 let submittedLetter = document.getElementById(submittedID);
                 submittedLetter.innerHTML = guessLetter.innerHTML;
             }
+            words[rowNum] = guess;
+            rowNum++;
+
+            createCookie("words", words);
+            createCookie("score", score);
+            createCookie("rowNum", row);
+
             rowNum++;
             resetWord();
         }
@@ -161,6 +193,28 @@ function submitWord() {
             resetWord();
         }
     }
+}
+
+function createCookie(name, value) {
+    var date = new Date();
+    var midnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+    expires = "; expires=" + midnight.toGMTString();
+    document.cookie =  name + "=" + value + expires;
+}
+
+function getCookie(name) {
+    let cname = name + "=";
+    let cookieArray = document.cookie.split(';');
+    for(let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i];
+        while (cookie.charAt(0) == " ") {
+            cookie = cookie.substring(1);
+        }
+        if(cookie.indexOf(cname) == 0) {
+            return cookie.substring(name.length, cookie.length);
+        }
+    }
+    return "";
 }
 
 function openRules() {
@@ -176,7 +230,6 @@ function startTimer() {
     var secondsLabel = document.getElementById("seconds");
     var totalSeconds = 0;
     setInterval(setTime, 1000);
-
     function setTime() {
       ++totalSeconds;
       secondsLabel.innerHTML = pad(totalSeconds % 60);
