@@ -1,1 +1,2 @@
 FLASK_APP=scrambled.py
+FLASK_ENV=development

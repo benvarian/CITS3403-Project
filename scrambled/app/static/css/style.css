@@ -25,7 +25,7 @@ nav {
   table-layout:fixed;
 }
 
-.guessTable {
+.submittedTable {
   border-collapse: separate;
   border-spacing:0.5vw;
   height:48vh;
@@ -34,8 +34,17 @@ nav {
   table-layout:fixed;
 }
 
-.guessBox {
+.submittedLetter {
+  text-align:center;
+  background-color:red;
+  color:white;
   height: 8vh;
+}
+
+.guessBox {
+  height: 5vh;
+  text-align: center;
+  border-bottom: solid 2px black;
 }
 
 .letter {
@@ -44,12 +53,6 @@ nav {
   height: 8vh;
 }
 
-.guessedLetter {
-  text-align:center;
-  background-color:red;
-  color:white;
-  height: 8vh;
-}
 
 .clickedLetter {
   border: solid 2px black;
@@ -60,7 +63,7 @@ nav {
 }
 
 .buttonMargins {
-  margin-top: 0.5vh;
+  margin-top: 1vh;
 }
 
 .title {
