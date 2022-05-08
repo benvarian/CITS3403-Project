@@ -77,22 +77,25 @@ var timeTaken;
 function init() {
     createSubmitTable();
     createWordAndGuessTable();
+    updateScore(0);
+    rowNum = 0;
+    colNum = 0;
+    words = [];
+    score = 0;
+    timeTaken = 0;
     if(getCookie("timeTaken") != "") {
-        timeTaken = getCookie('timeTaken');
-        rowNum = parseInt(getCookie("rowNum"));
-        if(rowNum > 0) {
+        timeTaken = parseInt(getCookie('timeTaken'));
+        startTimer(timeTaken);
+        if(getCookie("rowNum") != "") {
+            rowNum = parseInt(getCookie("rowNum"));
             loadPreviousWords();
+            updateScore(getCookie("score"));
         }
-        colNum = 0;
+        else if(rowNum = 7) {
+            //modal
+        }
     }
-    else {
-        rowNum = 0;
-        colNum = 0;
-        words = [];
-        score = 0;
-        timeTaken = 0;
-    }
-}
+} 
 
 function createSubmitTable() {
     for(let i=0; i < 6; i++) {
@@ -125,14 +128,17 @@ function createWordAndGuessTable() {
     } 
 }
 
+function updateScore(scoreUpdated) {
+    score = scoreUpdated;
+    let scoreDisplay = document.getElementById("score")
+    scoreDisplay.innerHTML = "<b>" + score + "</b>";
+}
+
 function clickedLetter(letter) {
     if(colNum < 7) {
         let guessBoxID = "G" + colNum;
         let guessBox = document.getElementById(guessBoxID);
-        if(letter.className == "clickedLetter") {
-
-        }
-        else {
+        if(letter.className != "clickedLetter") {
             guessBox.innerHTML = letter.innerHTML;
             letter.className="clickedLetter";
             colNum++;
@@ -161,13 +167,13 @@ function submitWord() {
         //ALERT LESS THAN 3 Letter word
     }
     else {
-        var guess = "";
-        var score = 0;
+        var wordGuess = "";
+        var wordScore = 0;
         for(let i = 0; i < colNum; i++) {
             let guessBoxID =  "G" + i;
             let guessLetter = document.getElementById(guessBoxID).innerText;
-            guess += guessLetter.slice(0,1);
-            score += guessLetter.slice(1);
+            wordGuess += guessLetter.charAt(0);
+            wordScore += parseInt(guessLetter.charAt(1));
         }
         if(true) {
             for(let k = 0; k < colNum; k++) {
@@ -177,13 +183,12 @@ function submitWord() {
                 let submittedLetter = document.getElementById(submittedID);
                 submittedLetter.innerHTML = guessLetter.innerHTML;
             }
-            words[rowNum] = guess;
+            words[rowNum] = wordGuess;
             rowNum++;
 
             createCookie("words", words);
             createCookie("score", score);
             createCookie("rowNum", rowNum);
-            createCookie("timeTaken", 5);
             resetWord();
         }
         else {
@@ -236,23 +241,25 @@ function openRules() {
       rulesModal.toggle();
 }
 
-function startTimer() {
+function startTimer(timeTaken) {
+    function pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+    }
     var minutesLabel = document.getElementById("minutes");
     var secondsLabel = document.getElementById("seconds");
-    var totalSeconds = 0;
+    secondsLabel.innerHTML = pad(timeTaken % 60);
+    minutesLabel.innerHTML = parseInt(timeTaken / 60);
     setInterval(setTime, 1000);
+    
     function setTime() {
-      ++totalSeconds;
-      secondsLabel.innerHTML = pad(totalSeconds % 60);
-      minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+      ++timeTaken;
+      createCookie("timeTaken", timeTaken);
+      secondsLabel.innerHTML = pad(timeTaken % 60);
+      minutesLabel.innerHTML = parseInt(timeTaken / 60);
     }
-
-    function pad(val) {
-      var valString = val + "";
-      if (valString.length < 2) {
-        return "0" + valString;
-      } else {
-        return valString;
-      }
-    }
-  }
+} 
