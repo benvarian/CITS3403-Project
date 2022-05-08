@@ -1,7 +1,16 @@
 /* TODO FOR MAX MARKS ACCORDING TO SCEHEM
 1. add evident mobile views */
 
-
+.title {
+  text-align: center;
+  color: var(--secondary-color);
+}
+h1 {
+  color: var(--secondary-color);
+}
+h2 {
+  color: var(--secondary-color);
+}
 
 nav {
   margin-bottom: 1vw;
@@ -53,16 +62,7 @@ nav {
   background-color: black;
 } */
 
-.title {
-  text-align: center;
-  color: var(--secondary-color);
-}
-h1 {
-  color: var(--secondary-color);
-}
-h2 {
-  color: var(--secondary-color);
-}
+
 h3 {
   color: var(--secondary-color);
 }
