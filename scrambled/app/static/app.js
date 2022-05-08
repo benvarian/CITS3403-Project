@@ -73,7 +73,11 @@ var colNum;
 var words;
 var score;
 var timeTaken;
+var timer;
 
+//Initialisation and helper functions
+//Initialises index page, with global variables and creating guess, letter and submitted table
+//Uses cookies to reload previous game state (words, score, time, etc) if played within the day 
 function init() {
     createSubmitTable();
     createWordAndGuessTable();
@@ -85,18 +89,19 @@ function init() {
     timeTaken = 0;
     if(getCookie("timeTaken") != "") {
         timeTaken = parseInt(getCookie('timeTaken'));
-        startTimer(timeTaken);
+        timer = startTimer(timeTaken);
         if(getCookie("rowNum") != "") {
             rowNum = parseInt(getCookie("rowNum"));
             loadPreviousWords();
             updateScore(getCookie("score"));
-        }
-        else if(rowNum = 7) {
-            //modal
+            if(rowNum > 6) {
+                finishedGame();
+            }
         }
     }
 } 
 
+// Creates the table to for the submitted words
 function createSubmitTable() {
     for(let i=0; i < 6; i++) {
         let submittedRow = document.createElement("tr");
@@ -110,6 +115,7 @@ function createSubmitTable() {
     }
 }
 
+// Get letters for the day and creates 
 function createWordAndGuessTable() {
     for(let k = 0; k < 7; k++) {
         let letter = document.createElement("td");
@@ -126,6 +132,8 @@ function createWordAndGuessTable() {
         guessBox.setAttribute("id", "G" + k);
         $("#guess").append(guessBox);
     } 
+    document.getElementById("submit").addEventListener("click", submitWord);
+    document.getElementById("reset").addEventListener("click", resetWord);
 }
 
 function updateScore(scoreUpdated) {
@@ -134,6 +142,9 @@ function updateScore(scoreUpdated) {
     scoreDisplay.innerHTML = "<b>" + score + "</b>";
 }
 
+
+// Game functionality functions
+// Selects the letter 
 function clickedLetter(letter) {
     if(colNum < 7) {
         let guessBoxID = "G" + colNum;
@@ -143,9 +154,6 @@ function clickedLetter(letter) {
             letter.className="clickedLetter";
             colNum++;
         }
-    }
-    else {
-       //alert
     }
 }
 
@@ -198,6 +206,7 @@ function submitWord() {
     }
 }
 
+
 function loadPreviousWords() {
     words = getCookie("words").split(",");
     for(let i = 0; i < words.length; i++) {
@@ -208,6 +217,18 @@ function loadPreviousWords() {
             let letter = word.charAt(k);
             submittedBox.innerText = letter;
         }
+    }
+}
+
+function finishedGame() {
+    // $("#finishedGameModal").modal();
+
+    document.getElementById("submit").removeEventListener("click", submitWord);
+    document.getElementById("reset").removeEventListener("click", resetWord);
+    for(let i=0; i < 7; i++) {
+        let letter = document.getElementById("L" + i);
+        letter.removeEventListener("click", clickedLetter);
+        letter.className = "clickedLetter";
     }
 }
 
@@ -250,11 +271,11 @@ function startTimer(timeTaken) {
             return valString;
         }
     }
-    var minutesLabel = document.getElementById("minutes");
-    var secondsLabel = document.getElementById("seconds");
+    let minutesLabel = document.getElementById("minutes");
+    let secondsLabel = document.getElementById("seconds");
     secondsLabel.innerHTML = pad(timeTaken % 60);
     minutesLabel.innerHTML = parseInt(timeTaken / 60);
-    setInterval(setTime, 1000);
+    let timer = setInterval(setTime, 1000);
     
     function setTime() {
       ++timeTaken;
@@ -262,4 +283,5 @@ function startTimer(timeTaken) {
       secondsLabel.innerHTML = pad(timeTaken % 60);
       minutesLabel.innerHTML = parseInt(timeTaken / 60);
     }
+    return timer;
 } 
