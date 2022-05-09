@@ -85,7 +85,7 @@ function init() {
     rowNum = 0;
     colNum = 0;
     words = [];
-    score = 0;
+    score = 500;
     timeTaken = 0;
     if(getCookie("timeTaken") != "") {
         timeTaken = parseInt(getCookie('timeTaken'));
@@ -221,8 +221,6 @@ function loadPreviousWords() {
 }
 
 function finishedGame() {
-    // $("#finishedGameModal").modal();
-
     document.getElementById("submit").removeEventListener("click", submitWord);
     document.getElementById("reset").removeEventListener("click", resetWord);
     for(let i=0; i < 7; i++) {
@@ -230,6 +228,17 @@ function finishedGame() {
         letter.removeEventListener("click", clickedLetter);
         letter.className = "clickedLetter";
     }
+    clearInterval(timer);
+
+    document.getElementById("finishedScore").innerText= score;
+    let time = document.getElementById("minutes").innerText + ":" + document.getElementById("seconds").innerText;
+    document.getElementById("finishedTime").innerText = time;
+
+    var finishedGameModal = new bootstrap.Modal(
+        document.getElementById("finishedGameModal"),
+        {}
+      );
+      finishedGameModal.toggle();
 }
 
 function createCookie(name, value) {

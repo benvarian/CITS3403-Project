@@ -33,11 +33,11 @@
           <div class="container-fluid row gx-0">
               <div class="col-3"></div>
               <div class="col-2">
-                  <button class='btn btn-dark buttonMargins' onclick="submitWord()">Submit</button>
+                  <button class='btn btn-dark buttonMargins' id="submit">Submit</button>
               </div>
               <div class="col-2"></div>
               <div class="col-2">
-                  <button class='btn btn-dark buttonMargins' onclick="resetWord()">Reset</button>
+                  <button class='btn btn-dark buttonMargins' id="reset">Reset</button>
               </div>
               <div class="col-3"></div>
           </div>
@@ -57,6 +57,33 @@
           </table>
       </div>
       <div class="col-lg-4"></div>
+  </div>
+</div>
+
+<div class="modal" id="finishedGameModal" tabindex="-1" role="dialog">
+  <div
+    class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Congraulations! You have completed your daily Scrambled game</h5>
+        <button class="btn" data-bs-dismiss="modal">
+          <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
+        </button>
+      </div>
+      <div class="modal-body row">
+        <h6 class="title">Your Score:</h6> 
+        <h4 class="title" id="finishedScore"></h4>
+        <br>
+        <h6 class="title">Time Taken:</h6>
+        <h4 class='title' id="finishedTime"></h4>
+        <br>
+        <a class="title">
+          Login to compare with friends!
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 
