@@ -1,8 +1,6 @@
 /* TODO FOR MAX MARKS ACCORDING TO SCEHEM
 1. add evident mobile views */
 
-
-
 nav {
   margin-bottom: 1vw;
 }
@@ -115,6 +113,8 @@ body {
 .high-contrast {
   --background: rgb(222, 30, 30);
 }
+
+
 .gear-light {
   color: black;
 }
