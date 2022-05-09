@@ -93,12 +93,12 @@ function init() {
             rowNum = parseInt(getCookie("rowNum"));
             loadPreviousWords();
             updateScore(getCookie("score"));
-            if(rowNum > 6) {
-                finishedGame();
-            }
         }
     }
     timer = startTimer(timeTaken);
+    if(rowNum == 6) {
+        finishedGame();
+    }
 } 
 
 // Creates the table to for the submitted words
@@ -193,6 +193,9 @@ function submitWord() {
             }
             words[rowNum] = wordGuess;
             rowNum++;
+            if(rowNum == 6) {
+                finishedGame();
+            }
 
             createCookie("words", words);
             createCookie("score", score);

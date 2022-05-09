@@ -110,31 +110,33 @@
     </div>
 
     <!--Rules Modal-->
-    <div class="modal row" id="rulesModal" tabindex="-1" role="dialog">
+    <div class="modal row gx-0" id="rulesModal" tabindex="-1" role="dialog">
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
         role="document"
       >
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Rules of Scrambled</h5>
+            <h5 class="modal-title">Welcome to Scrambled!</h5>
             <button class="btn" data-bs-dismiss="modal">
               <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
             </button>
           </div>
           <div class="modal-body">
-            <h6>Aim of Scrambled</h6>
+            <p class="title"><b>The aim of Scrambled is simple - create the 6 highest scoring words from 7 random letters!</b></p>
             <ul>
-              <li>Each day there is a new random set of 7 letters</li>
-              <li>With these letters, you will make 7 different words</li>
-              <li>The words can be of any length up to 7 letters</li>
-              <li>Letters can only be used once</li>
-              <li>Each letter has a different value</li>
-              <li>The aim is to get the highest score possible</li>
+              <li>Each day a new set of 7 random letters will be generated</li>
+              <li>Only using each letter once per word, you create a 6 words</li>
+              <li>The words can be 3 to 7 letters</li>
+              <li>Your score for the day will be the sum of the scores from the 6 words submitted</li>
             </ul>
+            <hr> 
+            <p><b>Login to compares with friends!</b></p>
+            <p><b>New Scrambled every day!</b></p>
+            
           </div>
         </div>
-      </div>
+      </div> 
     </div>
 
     {% block content %}
