@@ -80,7 +80,7 @@ var timer;
 //Uses cookies to reload previous game state (words, score, time, etc) if played within the day 
 function init() {
     createSubmitTable();
-    createWordAndGuessTable();
+    getLettersAndScores();
     updateScore(0);
     rowNum = 0;
     colNum = 0;
@@ -116,10 +116,10 @@ function createSubmitTable() {
 }
 
 // Get letters for the day and creates 
-function createWordAndGuessTable() {
+function createWordAndGuessTable(letters) {
     for(let k = 0; k < 7; k++) {
         let letter = document.createElement("td");
-        letter.innerHTML = "A<sub>1</sub>";
+        letter.innerHTML = letters[k][0] + "<sub>" + letters[k][1] + "</sub>";
         letter.className = "letter";
         letter.setAttribute("id",  "L" + k);
         letter.addEventListener("click", function() {
@@ -134,6 +134,18 @@ function createWordAndGuessTable() {
     } 
     document.getElementById("submit").addEventListener("click", submitWord);
     document.getElementById("reset").addEventListener("click", resetWord);
+}
+
+function getLettersAndScores() {
+    xhhtp = new XMLHttpRequest();
+    xhhtp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            let result = JSON.parse(this.responseText);
+            createWordAndGuessTable(result.letters);
+        }
+    }
+    xhhtp.open("GET", "http://127.0.0.1:5000/letters");
+    xhhtp.send();
 }
 
 function updateScore(scoreUpdated) {
@@ -183,7 +195,8 @@ function submitWord() {
             wordGuess += guessLetter.charAt(0);
             wordScore += parseInt(guessLetter.charAt(1));
         }
-        if(true) {
+        let outcome = checkWord(wordGuess);
+        if(outcome) {
             for(let k = 0; k < colNum; k++) {
                 let guessBoxID =  "G" + k;
                 let guessLetter = document.getElementById(guessBoxID);
@@ -196,19 +209,35 @@ function submitWord() {
             if(rowNum == 6) {
                 finishedGame();
             }
-
+        
             createCookie("words", words);
             createCookie("score", score);
             createCookie("rowNum", rowNum);
             resetWord();
         }
         else {
-            //alert about incorrect word
+            //modal
             resetWord();
         }
     }
 }
 
+function checkWord(word) {
+    xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            let outcome = JSON.parse(this.responseText).outcome;
+            if(outcome = "True") {
+                
+            }
+            
+        }
+    }
+    xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
+    xhttp.send();
+}
+
+function correctWord()
 
 function loadPreviousWords() {
     words = getCookie("words").split(",");
