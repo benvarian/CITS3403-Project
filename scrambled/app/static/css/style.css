@@ -1,8 +1,6 @@
 /* TODO FOR MAX MARKS ACCORDING TO SCEHEM
 1. add evident mobile views */
-
-
-
+ 
 nav {
   margin-bottom: 1vw;
 }
@@ -88,7 +86,7 @@ span {
 .border-right {
   border-right: 1px solid grey;
 }
-hr { 
+hr {
   /* change this to a adaptive measurement */
   margin-bottom: 8px;
 }
