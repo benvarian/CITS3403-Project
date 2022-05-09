@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -6,31 +6,14 @@ from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
+from app.game import letterstoUse, checkWordExists
+
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    # form = PostForm()
-    # if form.validate_on_submit():
-    #     post = Post(body=form.post.data, author=current_user)
-    #     db.session.add(post)
-    #     db.session.commit()
-    #     flash('Your post is now live!')
-    #     return redirect(url_for('index'))
-    # page = request.args.get('page', 1, type=int)
-    # posts = current_user.followed_posts().paginate(
-    #     page, app.config['POSTS_PER_PAGE'], False)
-    # next_url = url_for('index', page=posts.next_num) \
-    #     if posts.has_next else None
-    # prev_url = url_for('index', page=posts.prev_num) \
-    #     if posts.has_prev else None
     return render_template('index.html', title='Home')
     
-    # , form=form,
-    #                        posts=posts.items, next_url=next_url,
-    #                        prev_url=prev_url)
-
-
 @app.route('/user', methods=['GET', 'POST'])
 def login():
     # if current_user.is_authenticated:
@@ -184,6 +167,20 @@ def reset_password(token):
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)       
 
-@app.route('/game', methods=['GET','POST'])
-def game():
-    return render_template('game.html')
+@app.route('/checkword', methods=["GET", "POST"]) 
+def checkWord():
+    word = request.args['word']
+    outcome = False
+    if checkWordExists(word) == 0:
+        outcome = True
+    response = jsonify({"outcome":outcome})
+    return response 
+
+@app.route('/letters')
+def letters():
+    letters = letterstoUse()
+    lettersResponse = jsonify({'letters':letters})
+    return lettersResponse
+
+
+
