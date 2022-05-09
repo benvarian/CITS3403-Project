@@ -85,11 +85,10 @@ function init() {
     rowNum = 0;
     colNum = 0;
     words = [];
-    score = 500;
+    score = 0;
     timeTaken = 0;
     if(getCookie("timeTaken") != "") {
         timeTaken = parseInt(getCookie('timeTaken'));
-        timer = startTimer(timeTaken);
         if(getCookie("rowNum") != "") {
             rowNum = parseInt(getCookie("rowNum"));
             loadPreviousWords();
@@ -99,6 +98,7 @@ function init() {
             }
         }
     }
+    timer = startTimer(timeTaken);
 } 
 
 // Creates the table to for the submitted words
@@ -212,10 +212,17 @@ function loadPreviousWords() {
     for(let i = 0; i < words.length; i++) {
         let word = words[i];
         for(let k = 0; k < word.length; k++) {
-            let submittedID = String(i) + String(k);
-            let submittedBox = document.getElementById(submittedID);
-            let letter = word.charAt(k);
-            submittedBox.innerText = letter;
+            let submittedBox = document.getElementById(String(i) + String(k));
+            let letterFound = false;
+            let j = 0; 
+            while(!letterFound) {
+                let letter = document.getElementById("L" + String(j));
+                j++;
+                if(letter.innerText.charAt(0) == word.charAt(k)) {
+                    submittedBox.innerHTML = letter.innerHTML;
+                    letterFound = true;
+                }
+            }
         }
     }
 }

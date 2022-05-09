@@ -80,7 +80,7 @@ class Post(db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
-class Statistics(db.model):
+class Statistics(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     score = db.Column(db.Integer)
     time = db.Column(db.Integer)
