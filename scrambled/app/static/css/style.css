@@ -1,55 +1,73 @@
 /* TODO FOR MAX MARKS ACCORDING TO SCEHEM
 1. add evident mobile views */
- 
-nav {
-  margin-bottom: 1vw;
-}
-.letterTable {
-  border-collapse: separate;
-  border-spacing: 0.5vw;
-  width: 80%;
-  height: 8vh;
-  margin: auto;
-  table-layout: fixed;
-}
-.guessTable {
-  border-collapse: separate;
-  border-spacing: 0.5vw;
-  height: 54vh;
-  width: 80%;
-  margin: auto;
-  table-layout: fixed;
-}
-.guessBox {
-  background-color: white;
-  text-align: center;
-}
-.guessBox {
-  border: solid black 2px;
-  background-color: white;
-  text-align: center;
-}
-.guessLetter {
-  border: solid black 2px;
-  background-color: black;
-  text-align: center;
-  color: white;
-}
-.guessLetter:hover {
-  background-color: whitesmoke;
-  color: black;
-}
-/* .clickedLetter {
-  border: solid black 2px;
-  background-color:whitesmoke;
+
+.title {
   text-align:center;
 }
-.checkedLetter {
-  border: solid black 2px;
+
+nav {
+  margin-bottom:1vw;
+}
+
+.border-right {
+  border-right: 1px solid grey;
+}
+.game-header {
+  height: 10vh;
+}
+
+.letterTable {
+  border-collapse: separate;
+  border-spacing:0.5vw;
+  width:80%;
+  height:7vh;
+  margin:auto;
+  table-layout:fixed;
+}
+
+.submittedTable {
+  border-collapse: separate;
+  border-spacing:0.5vw;
+  height:42vh;
+  width:80%;
+  margin:auto;
+  table-layout:fixed;
+}
+
+.submittedBox {
+  height:7vh;
+  text-align:center;
+}
+
+.guessBox {
+  height: 7vh;
   text-align: center;
-  color:white;
+  border-bottom: solid 2px black;
+}
+
+.letter {
+  border: solid 2px black;
+  text-align:center;
+  height: 7vh;
+}
+
+
+.clickedLetter {
+  border: solid 2px black;
   background-color: black;
-} */
+  color:white;
+  text-align:center;
+  height: 7vh;
+}
+
+p i {
+  float:right;
+  position:relative;
+}
+
+.buttonMargins {
+  margin-top: 1vh;
+}
 
 .title {
   text-align: center;
@@ -86,7 +104,7 @@ span {
 .border-right {
   border-right: 1px solid grey;
 }
-hr {
+hr { 
   /* change this to a adaptive measurement */
   margin-bottom: 8px;
 }

@@ -1,7 +1,54 @@
 {% extends "base.html" %} 
 
 {% block content %} 
-<table>
+
+<div class="container-fluid">
+    <div class="row gx-0">
+        <div class=col-4></div>
+        <div class="col-4">
+            {% if current_user.is_anonymous %}
+                <h6 class="title">Sign In</h6>
+                <article class="row">
+                    <div>
+                    
+                    <form action="" method="post" novalidate>
+                      {{ form.hidden_tag() }}
+                      <p>
+                        {{ form.username.label }}<br />
+                        {{ form.username(size=32) }}<br />
+                        {% for error in form.username.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                      </p>
+                      <p>
+                        {{ form.password.label }}<br />
+                        {{ form.password(size=32) }}<br />
+                        {% for error in form.password.errors %}
+                        <span style="color: red">[{{ error }}]</span>
+                        {% endfor %}
+                      </p>
+                      <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                      <p>{{ form.submit() }}</p>
+                    </form>
+                    <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+                    <p>
+                      Forgot Your Password?
+                      <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+                    </p>
+                  </div>
+                    </article>
+                <a href="/register">New User</a>
+            {% else %}
+                <h6>Welcome</h6>
+            {% endif %}
+    </div>
+    <div class=col-4></div>
+</div>
+</div>
+
+{% endblock %}
+
+<!-- <table>
   <tr valign="top">
     <td><img src="{{ user.avatar(128) }}" /></td>
     <td>
@@ -37,5 +84,4 @@
     {% endif %}
     {% if next_url %}
     <a href="{{ next_url }}">Older posts</a>
-    {% endif %}
-... {% endblock %}
+    {% endif %} -->

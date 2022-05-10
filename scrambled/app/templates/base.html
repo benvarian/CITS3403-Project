@@ -36,7 +36,6 @@
     <script src="static/app.js"></script>
   </head>
 
-  {% block navbar %}
   <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top" id="navBar">
@@ -56,20 +55,12 @@
           <span class="bi bi-question-circle question-light" id="questionMode"></span>
         </button>
         <h1 class="col-8 title" onclick="location.href='/index'">Scrambled</h1>
-        <button
-          class="col-1 btn"
-          data-bs-toggle="modal"
-          data-bs-target="#leaderboardModal"
-        >
-          <span class="bi bi-graph-up graph-light" id="graphMode"></span>
-        </button>
-        <button
-          class="col-1 btn"
-          data-bs-toggle="modal"
-          data-bs-target="#userModal"
+        <a
+          class="col-2 btn"
+          href = "./user.html"
         >
           <span class="bi bi-person-circle id-light" id="idMode"></span>
-        </button>
+        </a>
       </div>
     </nav>
 
@@ -119,91 +110,36 @@
     </div>
 
     <!--Rules Modal-->
-    <div class="modal row" id="rulesModal" tabindex="-1" role="dialog">
+    <div class="modal row gx-0" id="rulesModal" tabindex="-1" role="dialog">
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
         role="document"
       >
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Rules of Scrambled</h5>
+            <h5 class="modal-title">Welcome to Scrambled!</h5>
             <button class="btn" data-bs-dismiss="modal">
               <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
             </button>
           </div>
           <div class="modal-body">
-            <h6>Aim of Scrambled</h6>
+            <p class="title"><b>The aim of Scrambled is simple - create the 6 highest scoring words from 7 random letters!</b></p>
             <ul>
-              <li>Each day there is a new random set of 7 letters</li>
-              <li>With these letters, you will make 7 different words</li>
-              <li>The words can be of any length up to 7 letters</li>
-              <li>Letters can only be used once</li>
-              <li>Each letter has a different value</li>
-              <li>The aim is to get the highest score possible</li>
+              <li>Each day a new set of 7 random letters will be generated</li>
+              <li>Only using each letter once per word, you create a 6 words</li>
+              <li>The words can be 3 to 7 letters</li>
+              <li>Your score for the day will be the sum of the scores from the 6 words submitted</li>
             </ul>
+            <hr> 
+            <p><b>Login to compares with friends!</b></p>
+            <p><b>New Scrambled every day!</b></p>
+            
           </div>
         </div>
-      </div>
+      </div> 
     </div>
 
-    <!--Statistics Modal-->
-    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
-      <div
-        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-        role="document"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Statistics</h5>
-            <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor3"></span>
-            </button>
-          </div>
-          <div class="modal-body row">
-            <div></div>
-            <hr />
-            <div class="col-6 border-right">
-              <h6>Time Until Next Puzzle</h6>
-            </div>
-            <div class="col-6">
-              <h6>Share</h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--User Modal-->
-    <div
-      class="modal row modal-fade"
-      id="userModal"
-      tabindex="-1"
-      role="dialog"
-    >
-      <div
-        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-        role="document"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Login</h5>
-            <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor4"></span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            {% if current_user.is_anonymous %}
-            <h2>ur not logged in</h2>
-            {% else %}
-            <h1>Hi, {{ current_user.username }}!</h1>
-            <a href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {% endblock %} {% block content %}
+    {% block content %}
 
     <div class="container">
       {% with messages = get_flashed_messages() %} {% if messages %} {% for
@@ -212,6 +148,6 @@
       {% endfor %} {% endif %} {% endwith %} {# application content needs to be
       provided in the app_content block #} {% block app_content %}{% endblock %}
     </div>
+    {% endblock %}
   </body>
-  {% endblock %}
 </html>
