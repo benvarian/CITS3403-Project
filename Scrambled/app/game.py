@@ -26,6 +26,7 @@ def checkTime():
         f_read = open("./app/game/last_update.txt" , 'r')
         last_date_string = f_read.read()
         last_date = datetime.strptime(last_date_string, "%d-%m-%Y")
+        last_date = datetime.date(last_date)
         f_read.close()
         if date.today() > last_date:
             f_write =  open("./app/game/last_update.txt" , 'w')
@@ -33,7 +34,7 @@ def checkTime():
             new_date_string = new_date.strftime("%d-%m-%Y")
             f_write.write(new_date_string)
             f_write.close()
-            return False
+            return True
         return False
     except: 
         f = open('./app/game/last_update.txt', 'w')
