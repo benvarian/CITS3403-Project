@@ -1,40 +1,46 @@
 from random import randint
 from datetime import date
 from datetime import datetime
+import json
 
 def scrambledLetters():
-    if(checkTime()):
+    if checkTime():
+        f = open("./app/game/letters.txt", "w")
         letters = letterstoUse()
-        f = open("./game/letters.txt", "w")
-        f.write(letters)
+        for letter in letters:
+            f.write(letter[0] + " " + str(letter[1])+"\n")
         f.close()
         return letters
     else:
-         f = open("./game/letters.txt", "r")
-         letters = f.read()
-         f.close()
-         return letters
-
+        f = open("./app/game/letters.txt", "r")
+        lines = f.readlines()
+        letters = []
+        for line in lines:
+            line = line.strip('\n')
+            letters.append((line.split(" ")))
+        f.close()
+        return letters
+         
 def checkTime():
     try:
-        f_read = open("./game/last_update.txt" , 'r')
-        last_time_string = f.read()
+        f_read = open("./app/game/last_update.txt" , 'r')
+        last_date_string = f_read.read()
+        last_date = datetime.strptime(last_date_string, "%d-%m-%Y")
         f_read.close()
-        last_time = datetime.strptime(last_time_string, "%d-%m-%Y")
-        if date.today() > last_time:
-            f_write =  open("./game/last_update.txt" , 'w')
-            day = date.today()
-            day_string = day.strftime("%d-$m-%Y")
-            f_write.write(day_string)
+        if date.today() > last_date:
+            f_write =  open("./app/game/last_update.txt" , 'w')
+            new_date = date.today()
+            new_date_string = new_date.strftime("%d-%m-%Y")
+            f_write.write(new_date_string)
             f_write.close()
-            return True
+            return False
         return False
     except: 
-        f = open('./game/last_update.txt', 'w')
-        day = date.today()
-        day_string = day.strftime("%d-$m-%Y")
-        f.write(day_string)
-        f.close
+        f = open('./app/game/last_update.txt', 'w')
+        new_date = date.today()
+        new_date_string = new_date.strftime("%d-%m-%Y")
+        f.write(new_date_string)
+        f.close()
         return True
 
 def letterstoUse():

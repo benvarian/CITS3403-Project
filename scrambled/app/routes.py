@@ -6,7 +6,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-from app.game import letterstoUse, checkWordExists
+from app.game import scrambledLetters
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -178,7 +178,7 @@ def checkWord():
 
 @app.route('/letters')
 def letters():
-    letters = letterstoUse()
+    letters = scrambledLetters()
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
 
