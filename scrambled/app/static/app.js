@@ -227,17 +227,11 @@ function checkWord(word) {
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
             let outcome = JSON.parse(this.responseText).outcome;
-            if(outcome = "True") {
-                
-            }
-            
         }
     }
     xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
     xhttp.send();
 }
-
-function correctWord()
 
 function loadPreviousWords() {
     words = getCookie("words").split(",");

@@ -1,13 +1,46 @@
 from random import randint
-from string import ascii_lowercase
-import json
-from nltk.corpus import words
+from datetime import date
+from datetime import datetime
+
+def scrambledLetters():
+    if(checkTime()):
+        letters = letterstoUse()
+        f = open("./game/letters.txt", "w")
+        f.write(letters)
+        f.close()
+        return letters
+    else:
+         f = open("./game/letters.txt", "r")
+         letters = f.read()
+         f.close()
+         return letters
+
+def checkTime():
+    try:
+        f_read = open("./game/last_update.txt" , 'r')
+        last_time_string = f.read()
+        f_read.close()
+        last_time = datetime.strptime(last_time_string, "%d-%m-%Y")
+        if date.today() > last_time:
+            f_write =  open("./game/last_update.txt" , 'w')
+            day = date.today()
+            day_string = day.strftime("%d-$m-%Y")
+            f_write.write(day_string)
+            f_write.close()
+            return True
+        return False
+    except: 
+        f = open('./game/last_update.txt', 'w')
+        day = date.today()
+        day_string = day.strftime("%d-$m-%Y")
+        f.write(day_string)
+        f.close
+        return True
 
 def letterstoUse():
     vowels = {"A":1, "E":1, "I":1, "O":1, "U":1}
-    consonants = {"B":3, "C":3, "D":2, "F":4, "G":2, "J":8, "H":4, "K":5, "L":1,
-                 "M":3, "N":1, "P":3, "Q":10, "R":1, "S":1, "T":1, "V":4, 
-                 "Y":4, "W":4, "X":8, "Z":10}    
+    rare_consonants = {"F":4, "J":8, "K":5, "Q":10, "V":4, "X":8, "Z":10}
+    common_consonants = {"B":3, "C":3, "D":2, "G":2,"L":1, "H":4, "M":3, "N":1, "P":3, "R":1, "S":1, "T":1, "Y":4, "W":4}
     
     vowelList = []
     vowelCheckList = []
@@ -21,20 +54,19 @@ def letterstoUse():
             
     consonantList = []
     consonantCheckList = []
-    while len(consonantList) < 5:
-        randomNum = randint(0,20)
-        ckeysList = list(consonants.keys())
+    while len(consonantList) < 4:
+        randomNum = randint(0,13)
+        ckeysList = list(common_consonants.keys())
         letter = ckeysList[randomNum]
         if letter not in consonantCheckList:
-            consonantList.append([letter, consonants[letter]])
-            consonantCheckList.append(letter)        
-    
+            consonantList.append([letter, common_consonants[letter]])
+            consonantCheckList.append(letter)   
+        
+    randomNum = randint(0,6)
+    keyList = list(rare_consonants.keys())
+    rareLetter = keyList[randomNum]
+    consonantList.append([rareLetter, rare_consonants[rareLetter]])
+
     letters = vowelList + consonantList
     return letters
-
-def checkWordExists(word):
-    if word in words.words():
-        return 0
-    else:
-        return 1
 
