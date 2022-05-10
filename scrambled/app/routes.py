@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -7,12 +7,20 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 
+from app.game import scrambledLetters
+
 
 @app.route('/index', methods=['GET', 'POST'])
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def index():
     return render_template('index.html')
+
+@login_required
+@app.route('/statistics')
+def stats():
+    
+    return render_template('statistics.html')
 
 @app.route('/game',methods=['GET','POST'])
 def game():
@@ -190,4 +198,17 @@ def reset_password(token):
     return render_template('reset_password.html', form=form)       
 
 
+# @app.route('/checkword', methods=["GET", "POST"]) 
+# def checkWord():
+#     word = request.args['word']
+#     outcome = False
+#     if checkWordExists(word) == 0:
+#         outcome = True
+#     response = jsonify({"outcome":outcome})
+#     return response 
 
+@app.route('/letters')
+def letters():
+    letters = scrambledLetters()
+    lettersResponse = jsonify({'letters':letters})
+    return lettersResponse
