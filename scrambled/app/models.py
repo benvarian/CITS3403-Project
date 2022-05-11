@@ -16,10 +16,10 @@ followers = db.Table('followers',
 
 
 class Statistics(db.Model):
-    id = db.Column(db.Integer,db.ForeignKey('User.id'), primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
     score = db.Column(db.Integer,index=True)
     timeTaken = db.Column(db.String(140),index=True)
-    # userID= db.Column(db.Integer, db.ForeignKey('User.id'))
+    
 
     def __repr__(self):
         return '<Statistics {}>'.format(self.score)
