@@ -1,1 +1,18 @@
-<h1>Hello lmao this wont work</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Score</th>
+      <th>Time Taken</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for statistic in Statistics %}
+    <tr>
+      <td>{{ statistic.id }}</td>
+      <td>{{ statistic.score }}</td>
+      <td>{{ statistic.timeTaken }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

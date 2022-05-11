@@ -5,8 +5,24 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4" style="text-align: center">
       <h1>Hi, {{ current_user.username }}</h1>
-       {% for post in user %} {% include '_score.html' %} {% endfor
-      %}
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Score</th>
+            <th>Time Taken</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for statistic in stats %}
+          <tr>
+            <td>{{ statistic.id }}</td>
+            <td>{{ statistic.score }}</td>
+            <td>{{ statistic.timeTaken }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
     <div class="col-sm-4"></div>
   </div>

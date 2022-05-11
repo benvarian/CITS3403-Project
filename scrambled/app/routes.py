@@ -1,4 +1,7 @@
+
 from flask import render_template, flash, redirect, url_for, request, jsonify
+from app.models import Statistics
+
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -20,7 +23,9 @@ def index():
 @app.route('/statistics')
 def stats():
     
-    return render_template('statistics.html')
+    stats = Statistics.query.filter_by(id='1').order_by(Statistics.id).all()
+
+    return render_template('statistics.html', stats=stats)
 
 @app.route('/game',methods=['GET','POST'])
 def game():
