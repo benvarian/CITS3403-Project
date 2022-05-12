@@ -5,10 +5,10 @@
     <div class="col-sm-4"></div>
     <div class="col-sm-4" style="text-align: center">
       <h1>Hi, {{ current_user.username }}</h1>
-      <table class="table table-hover">
+      <table class="table">
         <thead>
           <tr>
-            <th>ID</th>
+            
             <th>Score</th>
             <th>Time Taken</th>
           </tr>
@@ -16,13 +16,14 @@
         <tbody>
           {% for statistic in stats %}
           <tr>
-            <td>{{ statistic.id }}</td>
             <td>{{ statistic.score }}</td>
             <td>{{ statistic.timeTaken }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+      <p>Average Game Score: {{ averagegameScore }} </p>
+      <p>{{ username }}</p>
     </div>
     <div class="col-sm-4"></div>
   </div>

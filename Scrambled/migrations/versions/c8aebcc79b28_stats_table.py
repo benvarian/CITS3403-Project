@@ -1,8 +1,8 @@
-"""empty message
+"""stats table
 
-Revision ID: b48811b00f44
+Revision ID: c8aebcc79b28
 Revises: 0cd957191a64
-Create Date: 2022-05-11 12:32:10.565582
+Create Date: 2022-05-12 12:21:08.592652
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b48811b00f44'
+revision = 'c8aebcc79b28'
 down_revision = '0cd957191a64'
 branch_labels = None
 depends_on = None
@@ -22,7 +22,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('score', sa.Integer(), nullable=True),
     sa.Column('timeTaken', sa.String(length=140), nullable=True),
-    sa.ForeignKeyConstraint(['id'], ['user.id'], ),
+    sa.Column('game_completed', sa.DateTime(), nullable=True),
+    sa.Column('userId', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['userId'], ['user.username'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_statistics_score'), 'statistics', ['score'], unique=False)

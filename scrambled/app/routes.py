@@ -1,7 +1,7 @@
 
 from flask import render_template, flash, redirect, url_for, request, jsonify
 from app.models import Statistics
-
+from sqlalchemy.sql import func
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -20,12 +20,11 @@ def index():
     return render_template('index.html')
 
 @login_required
-@app.route('/statistics')
-def stats():
-    
-    stats = Statistics.query.filter_by(id='1').order_by(Statistics.id).all()
-
-    return render_template('statistics.html', stats=stats)
+@app.route('/statistics/<username>')
+def stats(username):
+    stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
+    averagegameScore = db.session.query(db.func.avg(Statistics.score).label('average')).outerjoin(User,User.username==Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId==username).all()
+    return render_template('statistics.html', stats=stats,averagegameScore=averagegameScore)
 
 @app.route('/game',methods=['GET','POST'])
 def game():

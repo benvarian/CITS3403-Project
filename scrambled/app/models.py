@@ -19,6 +19,8 @@ class Statistics(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     score = db.Column(db.Integer,index=True)
     timeTaken = db.Column(db.String(140),index=True)
+    game_completed = db.Column(db.DateTime, default=db.func.now())
+    userId = db.Column(db.Integer,db.ForeignKey('user.username'))
     
 
     def __repr__(self):
