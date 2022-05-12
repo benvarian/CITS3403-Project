@@ -9,7 +9,7 @@ from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-
+import json
 from app.game import scrambledLetters
 
 
@@ -23,16 +23,20 @@ def index():
 @login_required
 @app.route('/statistics/<username>')
 def stats(username):
-
     stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
     averagegameScore = db.session.query(db.func.avg(Statistics.score).label('average')).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
-
-   
-
-    return render_template('statistics.html', stats=stats, averagegameScore=averagegameScore)
-
-
-
+    scoreforUser = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
+    datesofSubmissions = db.session.query(Statistics.game_completed,Statistics.score).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
+    
+    scores = []
+    for amounts, _ in scoreforUser:
+        scores.append(amounts)
+    dates = []
+    for amounts2, _ in datesofSubmissions:
+        dates.append(amounts2)
+    return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=4,sort_keys=True,default=str),datesScore=json.dumps(scores),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),)
+    
+    
 
 
 @app.route('/game', methods=['GET', 'POST'])

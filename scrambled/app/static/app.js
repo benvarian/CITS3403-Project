@@ -68,6 +68,8 @@ $(window).on('load', () => {
         
     })
 
+    
+
     var rowNum;
     var colNum;
     var words;

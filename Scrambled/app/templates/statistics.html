@@ -1,16 +1,18 @@
 {% extends "base.html" %} {% block content %}
-
+<head>
+  <title>Statistics - {{ current_user.username }}</title>
+</head>
 <div class="container-fluid">
   <div class="row gx-0">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4" style="text-align: center">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8" style="text-align: center">
       <h1>Hi, {{ current_user.username }}</h1>
       <table class="table">
         <thead>
           <tr>
-            
             <th>Score</th>
             <th>Time Taken</th>
+            <th>Date done</th>
           </tr>
         </thead>
         <tbody>
@@ -18,18 +20,49 @@
           <tr>
             <td>{{ statistic.score }}</td>
             <td>{{ statistic.timeTaken }}</td>
+            <td>{{ statistic.game_completed }}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-      <p>Average Game Score: {{ averagegameScore }} </p>
       
-      <p>{{ username }}</p>
-      <h3>Chart:</h3>
-      
+      <h1>Chart Attempt</h1>
+      <canvas id="myChart" width="100" height="100"></canvas>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="col-sm-2"></div>
   </div>
 </div>
-
+<script>
+  let scoreofGame = JSON.parse({{ datesScore | tojson }})
+  let dates = JSON.parse({{ datesofSubmissions | tojson }})
+  let average = JSON.parse({{ averagegameScore | tojson }})
+  const ctx = document.getElementById("myChart").getContext("2d");
+  const myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: dates,
+      datasets: [
+        {
+          label: "Score",
+          data: scoreofGame,
+          backgroundColor: [
+          "rgb(75, 192, 192)"
+            
+          ],
+          borderColor: [
+            "rgb(75, 192, 192)"],
+          borderWidth: 1,
+          tension: 0.5,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+</script>
 {% endblock %}

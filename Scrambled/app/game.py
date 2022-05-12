@@ -75,3 +75,5 @@ def letterstoUse():
 
     letters = vowelList + consonantList
     return letters
+
+ 
