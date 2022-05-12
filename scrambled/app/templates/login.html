@@ -1,28 +1,31 @@
 {% extends "base.html" %} {% block content %}
-
-<div class="container" style="border: 3px solid green ;">
-  <div class="row">
-    <div class="col-sm-4" style="border: 1px solid red;"></div>
-    <div class="col-sm-4" style="border: 1px solid blue;">
+<head>
+  <title>Login</title>
+</head>
+<div class="container">
+  <div class="row gx-0">
+    <div class="col-sm-2" ></div>
+    <div class="col-sm-8">
+      <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please Sign In</h1>
       <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         
         <p>
           {{ form.username.label }}<br />
-          {{ form.username(class_="form-control") }}
+          {{ form.username(class_="form-control rounded-4") }}
           {% for error in form.username.errors %}
           <span style="color: red">[{{ error }}]</span>
           {% endfor %}
         </p>
         <p>
           {{ form.password.label }}<br />
-          {{ form.password(class_="form-control") }}
+          {{ form.password(class_="form-control rounded-4") }}
           {% for error in form.password.errors %}
           <span style="color: red">[{{ error }}]</span>
           {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit(class_="btn btn-primary") }}</p>
+        <p>{{ form.submit(class_="w-100 mb-2 btn btn-lg rounded-4 btn-primary") }}</p>
       </form>
       <p>
         New User? <a href="{{ url_for('register') }}">Click to Register!</a>
@@ -32,7 +35,7 @@
         <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
       </p>
     </div>
-    <div class="col-sm-4" style="border: 1px solid black;"></div>
+    <div class="col-sm-2" ></div>
   </div>
 </div>
 

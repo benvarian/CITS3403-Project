@@ -80,54 +80,45 @@
     </nav>
 
     <!-- Settings Modal FIX THE BUTTONS TO BE CENTRED EVEN WHEN IN MOBILE VIEW -->
-    <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
-      <div
-        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-        role="document"
-      >
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Settings</h4>
-            <button class="btn" data-bs-dismiss="modal">
-              <span
-                class="bi bi-x-square squareColor-light"
-                id="squareColor1"
-              ></span>
-            </button>
+    <div class="modal" id="settingsModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h2 class="fw-bold mb-0">Settings</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
           </div>
-          <div class="modal-body row">
-            <div class="col-lg-4">
-              <h5>Dark Mode</h5>
-            </div>
-            <div
-              class="col-lg-4 toggleWrapper"
-              style="display: grid; place-items: center"
-            >
-              <input
-                type="checkbox"
-                name="toggle1"
-                class="mobileToggle"
-                id="dark-mode"
-              />
-              <label for="dark-mode"></label>
-            </div>
-            <hr />
-            <div class="col-lg-4">
-              <h5>High Constrast Mode</h5>
-            </div>
-            <div
-              class="col-lg-4 toggleWrapper"
-              style="display: grid; place-items: center"
-            >
-              <input
-                type="checkbox"
-                name="toggle1"
-                class="mobileToggle"
-                id="HCM-mode"
-              />
-              <label for="HCM-mode"></label>
-            </div>
-            <hr />
+          <div class="modal-body p-5 pt-0">
+            <form class="">
+              <div class="form-floating mb-sm-3">
+                <h5>Dark Mode</h5>
+                <div class="col-lg-4 toggleWrapper" style="display: grid; place-items: center">
+                  <input type="checkbox" name="toggle1" class="mobileToggle" id="dark-mode"/>
+                  <label for="dark-mode"></label>
+                </div>
+              </div>
+              <hr />
+              <div class="form-floating mb-sm-3">
+                <h5>High Constrast Mode</h5>
+              </div>
+              <div
+                class="col-lg-4 toggleWrapper"
+                style="display: grid; place-items: center"
+              >
+                <input
+                  type="checkbox"
+                  name="toggle1"
+                  class="mobileToggle"
+                  id="HCM-mode"
+                />
+                <label for="HCM-mode"></label>
+              </div>
+
+              <hr />
+            </form>
           </div>
         </div>
       </div>

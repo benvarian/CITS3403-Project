@@ -25,9 +25,7 @@
           {% endfor %}
         </tbody>
       </table>
-      
-      <h1>Chart Attempt</h1>
-      <canvas id="myChart" width="100" height="100"></canvas>
+      <canvas id="myChart" width="200" height="200"></canvas>
     </div>
     <div class="col-sm-2"></div>
   </div>
@@ -51,22 +49,24 @@
           ],
           borderColor: [
             "rgb(75, 192, 192)"],
-          borderWidth: 1,
-          tension: 0.5,
+          borderWidth: 2,
+          tension: 0.3,
+          
         },
         {label: 'Dataset 2',
           data: average,
           backgroundColor: ["rbg(236,16,16"],
           borderColor: ["rbg(236,16,16"],
-          borderWidth: 1,
-          tension: 0.5,
+          borderWidth: 4,
+          tension: 0,
+          pointBackgroundColor: '#007bff'
         },
       ],
     },
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          suggestedMin: 250
         },
       },
     },

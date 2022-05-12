@@ -121,18 +121,22 @@ body {
   align-items: center;
 }
 .modal-content {
-  background-color: var(--primary-color);
+  background-color: var(--modal-content);
 }
 
 /* DARK THEME STUFF */
 :root {
-  --primary-color: #edf2fc;
+  --primary-color: #FFFFFF;
   --secondary-color: #212121;
   --background: #2ecc71;
+  --modal-content: #edf2fc;
+  transition: 150ms ease-in;
 }
 .dark-theme {
-  --primary-color: #303030;
+  --primary-color: 	rgb(24, 24, 24);
   --secondary-color: rgb(250, 250, 250);
+  --modal-content: #282828;
+  transition: 150ms ease-in;
 }
 .high-contrast {
   --background: rgb(222, 30, 30);
