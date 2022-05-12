@@ -98,6 +98,12 @@ li {
 p {
   color: var(--secondary-color);
 }
+td {
+  color: var(--secondary-color);
+}
+tr {
+  color: var(--secondary-color);
+}
 span {
   color: var(--secondary-color);
 }

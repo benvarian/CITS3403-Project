@@ -76,4 +76,10 @@ def letterstoUse():
     letters = vowelList + consonantList
     return letters
 
- 
+def listToString(s): 
+    
+    # initialize an empty string
+    str1 = "" 
+    
+    # return string  
+    return (str1.join(s))

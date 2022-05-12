@@ -1,7 +1,6 @@
-
 from flask import render_template, flash, redirect, url_for, request, jsonify, Markup
+from sqlalchemy import Numeric
 from app.models import Statistics
-from sqlalchemy.sql import func
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -10,7 +9,9 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 import json
-from app.game import scrambledLetters
+from sqlalchemy.sql.expression import cast, select
+from app.game import scrambledLetters, listToString
+
 
 
 @app.route('/index', methods=['GET', 'POST'])
@@ -19,12 +20,16 @@ from app.game import scrambledLetters
 def index():
     return render_template('index.html')
 
+@app.route('/leaderboard',methods=['GET'])
+def leaderboard():
+    top10 = Statistics.query.order_by(Statistics.score.desc()).limit(10).all()
+    return render_template('leaderboard.html',stats=top10)
 
 @login_required
 @app.route('/statistics/<username>')
 def stats(username):
     stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
-    averagegameScore = db.session.query(db.func.avg(Statistics.score).label('average')).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
+    averagegameScore = db.session.query(db.func.avg(Statistics.score)).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
     scoreforUser = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
     datesofSubmissions = db.session.query(Statistics.game_completed,Statistics.score).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
     
@@ -34,7 +39,7 @@ def stats(username):
     dates = []
     for amounts2, _ in datesofSubmissions:
         dates.append(amounts2)
-    return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=4,sort_keys=True,default=str),datesScore=json.dumps(scores),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),)
+    return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=0,sort_keys=True,default=str),datesScore=json.dumps(scores),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),)
     
     
 
