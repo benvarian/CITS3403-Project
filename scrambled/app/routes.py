@@ -1,5 +1,5 @@
 
-from flask import render_template, flash, redirect, url_for, request, jsonify
+from flask import render_template, flash, redirect, url_for, request, jsonify, Markup
 from app.models import Statistics
 from sqlalchemy.sql import func
 from app import app, db
@@ -19,14 +19,23 @@ from app.game import scrambledLetters
 def index():
     return render_template('index.html')
 
+
 @login_required
 @app.route('/statistics/<username>')
 def stats(username):
-    stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
-    averagegameScore = db.session.query(db.func.avg(Statistics.score).label('average')).outerjoin(User,User.username==Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId==username).all()
-    return render_template('statistics.html', stats=stats,averagegameScore=averagegameScore)
 
-@app.route('/game',methods=['GET','POST'])
+    stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
+    averagegameScore = db.session.query(db.func.avg(Statistics.score).label('average')).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
+
+   
+
+    return render_template('statistics.html', stats=stats, averagegameScore=averagegameScore)
+
+
+
+
+
+@app.route('/game', methods=['GET', 'POST'])
 def game():
     form = PostForm()
     if form.validate_on_submit():
@@ -47,7 +56,6 @@ def game():
                            prev_url=prev_url)
 
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -65,10 +73,12 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -84,6 +94,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -98,12 +109,14 @@ def user(username):
     form = EmptyForm()
     return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url, form=form)
-    
+
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
+
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -120,6 +133,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
 
 @app.route('/follow/<username>', methods=['POST'])
 @login_required
@@ -140,6 +154,7 @@ def follow(username):
     else:
         return redirect(url_for('index'))
 
+
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
 def unfollow(username):
@@ -159,6 +174,7 @@ def unfollow(username):
     else:
         return redirect(url_for('index'))
 
+
 @app.route('/explore')
 @login_required
 def explore():
@@ -170,7 +186,8 @@ def explore():
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
     return render_template("game.html", title='Explore', posts=posts.items,
-                          next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url)
+
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
@@ -186,6 +203,7 @@ def reset_password_request():
     return render_template('reset_password_request.html',
                            title='Reset Password', form=form)
 
+
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
@@ -199,20 +217,20 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('login'))
-    return render_template('reset_password.html', form=form)       
+    return render_template('reset_password.html', form=form)
 
 
-# @app.route('/checkword', methods=["GET", "POST"]) 
+# @app.route('/checkword', methods=["GET", "POST"])
 # def checkWord():
 #     word = request.args['word']
 #     outcome = False
 #     if checkWordExists(word) == 0:
 #         outcome = True
 #     response = jsonify({"outcome":outcome})
-#     return response 
+#     return response
 
 @app.route('/letters')
 def letters():
     letters = scrambledLetters()
-    lettersResponse = jsonify({'letters':letters})
+    lettersResponse = jsonify({'letters': letters})
     return lettersResponse

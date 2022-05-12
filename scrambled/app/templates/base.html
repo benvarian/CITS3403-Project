@@ -28,6 +28,9 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+
     <!--Link to CSS and JS-->
     <link
       rel="stylesheet"
@@ -96,7 +99,10 @@
             <div class="col-lg-4">
               <h5>Dark Mode</h5>
             </div>
-            <div class="col-lg-4 toggleWrapper" style="display: grid; place-items: center;">
+            <div
+              class="col-lg-4 toggleWrapper"
+              style="display: grid; place-items: center"
+            >
               <input
                 type="checkbox"
                 name="toggle1"
@@ -106,10 +112,13 @@
               <label for="dark-mode"></label>
             </div>
             <hr />
-            <div class="col-lg-4" >
+            <div class="col-lg-4">
               <h5>High Constrast Mode</h5>
             </div>
-            <div class="col-lg-4 toggleWrapper" style="display: grid; place-items: center;">
+            <div
+              class="col-lg-4 toggleWrapper"
+              style="display: grid; place-items: center"
+            >
               <input
                 type="checkbox"
                 name="toggle1"
@@ -156,7 +165,7 @@
     </div>
 
     <!--Statistics Modal-->
-    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog" >
+    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
         role="document"
@@ -174,13 +183,15 @@
           <div class="modal-body">
             <div class="col-6" style="text-align: center">
               <h6>Next Puzzle:</h6>
-              <p >test</p>
+              <p>test</p>
             </div>
             <hr />
             <div class="col-6" style="text-align: center">
               <h6>Share</h6>
 
-              <a style="text-align: inline" href="{{ url_for('explore') }}">Click</a>
+              <a style="text-align: inline" href="{{ url_for('explore') }}"
+                >Click</a
+              >
             </div>
           </div>
         </div>
