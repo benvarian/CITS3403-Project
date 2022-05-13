@@ -7,6 +7,7 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.game import scrambledLetters
+import pandas
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -182,5 +183,19 @@ def letters():
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
 
+
+@app.route('/other', methods=['GET', 'POST'])
+def weather_dashboard():
+    word = "hello"
+    filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
+    data = pandas.read_csv(filename, header=0)
+    myData = list(data.values)
+    answer= ["", "", "", "", "", "",]
+    if word in myData:
+        for i in range(len(answer)):
+            if answer[i] == "":
+                answer[i] = (word)
+                break
+    return render_template('other.html', answer=answer)
 
 
