@@ -15,14 +15,14 @@ class UserModelCase(unittest.TestCase):
         db.drop_all()
 
     def test_password_hashing(self):
-        test_susan = User(username='susan')
-        test_susan.set_password('cat')
+        test_susan = User(username='ben')
+        test_susan.set_password('shayan')
         test_admin = User(username='admin')
         test_admin.set_password('admin')
         self.assertFalse(test_admin.check_password('test'))
         self.assertTrue(test_admin.check_password('admin'))
         self.assertFalse(test_susan.check_password('dog'))
-        self.assertTrue(test_susan.check_password('cat'))
+        self.assertTrue(test_susan.check_password('shayan'))
 
     def test_avatar(self):
         test_john = User(username='john', email='john@example.com')
@@ -51,79 +51,79 @@ class UserModelCase(unittest.TestCase):
                                                 '?d=identicon&s=128'))
 
     def test_follow(self):
-        u1 = User(username='john', email='john@scrambled.com')
-        u2 = User(username='susan', email='susan@scrambled.com')
-        u3 = User(username='admin', email='admin@scrambled.com')
-        u4 = User(username='shayan', email='shayan@scrambled.com')
-        db.session.add(u1)
-        db.session.add(u2)
-        db.session.add(u3)
-        db.session.add(u4)
+        user_ben = User(username='ben', email='ben@scrambled.com')
+        user_sameer = User(username='sameer', email='sameer@scrambled.com')
+        user_admin = User(username='admin', email='admin@scrambled.com')
+        user_shayan = User(username='shayan', email='shayan@scrambled.com')
+        db.session.add(user_ben)
+        db.session.add(user_sameer)
+        db.session.add(user_admin)
+        db.session.add(user_shayan)
         db.session.commit()
-        self.assertEqual(u1.followed.all(), [])
-        self.assertEqual(u1.followers.all(), [])
+        self.assertEqual(user_ben.followed.all(), [])
+        self.assertEqual(user_ben.followers.all(), [])
 
-        u1.follow(u2)
+        user_ben.follow(user_sameer)
         db.session.commit()
-        self.assertTrue(u1.is_following(u2))
-        self.assertEqual(u1.followed.count(), 1)
-        self.assertEqual(u1.followed.first().username, 'susan')
-        self.assertEqual(u2.followers.count(), 1)
-        self.assertEqual(u2.followers.first().username, 'john')
+        self.assertTrue(user_ben.is_following(user_sameer))
+        self.assertEqual(user_ben.followed.count(), 1)
+        self.assertEqual(user_ben.followed.first().username, 'sameer')
+        self.assertEqual(user_sameer.followers.count(), 1)
+        self.assertEqual(user_sameer.followers.first().username, 'ben')
 
-        u1.unfollow(u2)
+        user_ben.unfollow(user_sameer)
         db.session.commit()
-        self.assertFalse(u1.is_following(u2))
-        self.assertEqual(u1.followed.count(), 0)
-        self.assertEqual(u2.followers.count(), 0)
+        self.assertFalse(user_ben.is_following(user_sameer))
+        self.assertEqual(user_ben.followed.count(), 0)
+        self.assertEqual(user_sameer.followers.count(), 0)
 
-        u2.follow(u3)
+        user_sameer.follow(user_admin)
         db.session.commit()
-        self.assertTrue(u2.is_following(u3))
-        self.assertEqual(u3.followers.first().username,'susan')
+        self.assertTrue(user_sameer.is_following(user_admin))
+        self.assertEqual(user_admin.followers.first().username,'sameer')
 
-        u4.follow(u3)
+        user_shayan.follow(user_admin)
         db.session.commit()
-        self.assertTrue(u4.is_following(u3))
-        self.assertEqual(u3.followers.count(),2)
+        self.assertTrue(user_shayan.is_following(user_admin))
+        self.assertEqual(user_admin.followers.count(),2)
 
     def test_follow_posts(self):
         # create four users
-        u1 = User(username='john', email='john@example.com')
-        u2 = User(username='susan', email='susan@example.com')
-        u3 = User(username='mary', email='mary@example.com')
-        u4 = User(username='david', email='david@example.com')
-        db.session.add_all([u1, u2, u3, u4])
+        user_admin = User(username='admin', email='admin@scrambled.com')
+        user_ben = User(username='ben', email='ben@scrambled.com')
+        user_shayan = User(username='shayan', email='shayan@scrambled.com')
+        user_sameer = User(username='sameer', email='sameer@scrambled.com')
+        db.session.add_all([user_admin, user_ben, user_shayan, user_sameer])
 
         # create four posts
         now = datetime.utcnow()
-        p1 = Post(body="post from john", author=u1,
-                  timestamp=now + timedelta(seconds=1))
-        p2 = Post(body="post from susan", author=u2,
-                  timestamp=now + timedelta(seconds=4))
-        p3 = Post(body="post from mary", author=u3,
-                  timestamp=now + timedelta(seconds=3))
-        p4 = Post(body="post from david", author=u4,
-                  timestamp=now + timedelta(seconds=2))
-        db.session.add_all([p1, p2, p3, p4])
+        post_admin = Post(body="post from admin", author=user_admin,
+                  timestamp=now + timedelta(minutes=1))
+        post_ben = Post(body="post from ben", author=user_ben,
+                  timestamp=now + timedelta(minutes=20))
+        post_shayan = Post(body="post form shayan", author=user_shayan,
+                  timestamp=now + timedelta(hours=3))
+        post_sameer = Post(body="post from sameer", author=user_sameer,
+                  timestamp=now + timedelta(hours=2))
+        db.session.add_all([post_admin, post_ben, post_shayan, post_sameer])
         db.session.commit()
 
         # setup the followers
-        u1.follow(u2)  # john follows susan
-        u1.follow(u4)  # john follows david
-        u2.follow(u3)  # susan follows mary
-        u3.follow(u4)  # mary follows david
+        user_admin.follow(user_ben)  
+        user_admin.follow(user_sameer) 
+        user_ben.follow(user_shayan) 
+        user_shayan.follow(user_sameer)  
         db.session.commit()
 
         # check the followed posts of each user
-        f1 = u1.followed_posts().all()
-        f2 = u2.followed_posts().all()
-        f3 = u3.followed_posts().all()
-        f4 = u4.followed_posts().all()
-        self.assertEqual(f1, [p2, p4, p1])
-        self.assertEqual(f2, [p2, p3])
-        self.assertEqual(f3, [p3, p4])
-        self.assertEqual(f4, [p4])
+        check_1 = user_admin.followed_posts().all()
+        check_2 = user_ben.followed_posts().all()
+        check_3 = user_shayan.followed_posts().all()
+        check_4 = user_sameer.followed_posts().all()
+        self.assertEqual(check_1, [post_sameer, post_ben,post_admin])
+        self.assertEqual(check_2, [post_shayan,post_ben ])
+        self.assertEqual(check_3, [post_shayan, post_sameer])
+        self.assertEqual(check_4, [post_sameer])
 
     def test_Statistics_ForeignKey(self):
         
