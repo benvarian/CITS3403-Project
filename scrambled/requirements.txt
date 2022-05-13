@@ -10,7 +10,6 @@ Flask-Email==1.4.4
 Flask-Login==0.6.0
 Flask-Mail==0.9.1
 Flask-Migrate==3.1.0
-Flask-Modals==0.4.1
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==1.0.1
 greenlet==1.1.2
