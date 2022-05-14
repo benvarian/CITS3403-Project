@@ -11,6 +11,7 @@ from datetime import datetime
 import json
 from sqlalchemy.sql.expression import cast, select
 from app.game import scrambledLetters
+import re
 
 
 
@@ -18,13 +19,13 @@ from app.game import scrambledLetters
 def welcome():
     return render_template('welcome.html',title='Welcome')
 
-@app.route('/speed', methods=['GET','POST'])
-def speed():
-    return render_template('speed.html',title='Scrambled Speed')
-
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    return render_template("index.html",title='Normal Scrambled')
+
+@app.route('/speed', methods=['GET','POST'])
+def speed():
+    return render_template("speed.html",title='Speed Scrambled')
 
 @app.route('/leaderboard',methods=['GET'])
 def leaderboard():
@@ -72,7 +73,10 @@ def game():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        user = str(current_user)
+        user = re.sub('[User<>]','',user)
+        user = user.strip()
+        return stats(user)
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -231,16 +235,6 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
-
-
-# @app.route('/checkword', methods=["GET", "POST"])
-# def checkWord():
-#     word = request.args['word']
-#     outcome = False
-#     if checkWordExists(word) == 0:
-#         outcome = True
-#     response = jsonify({"outcome":outcome})
-#     return response
 
 @app.route('/letters/normal')
 def lettersNormal():

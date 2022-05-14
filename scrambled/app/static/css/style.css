@@ -56,7 +56,7 @@ nav {
 }
 
 .clickedLetter {
-  border: solid 2px black;
+  border: solid 2px var(--secondary-color);
   background-color: black;
   color: white;
   text-align: center;

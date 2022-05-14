@@ -297,11 +297,12 @@ function getWord(columns) {
         let guessBoxID =  "G" + i;
         let guessLetter = document.getElementById(guessBoxID).innerText;
         word += guessLetter.charAt(0);
-        return word;
     }
+    return word;
 }
 
 function checkWord(word) {
+    console.log(word)
     xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {

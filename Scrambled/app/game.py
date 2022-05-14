@@ -1,19 +1,26 @@
+from asyncore import read
 from random import randint
 from datetime import date
 from datetime import datetime
-import json
+import csv
+import pandas
 
 def scrambledLetters(mode):
     try:
         if checkTime():
             if mode == "speed":
                 f = open("./app/game/sletters.txt", "w")
+                if f.closed:
+                    print ('file is closed')
             else:
                 f = open("./app/game/nletters.txt", "w")
+                if f.closed:
+                    print ('file is closed')
             letters = letterstoUse()
             for letter in letters:
                 f.write(letter[0] + " " + str(letter[1])+"\n")
             f.close()
+            
             return letters
         else:
             if mode == "speed":
@@ -26,6 +33,7 @@ def scrambledLetters(mode):
                 line = line.strip('\n')
                 letters.append((line.split(" ")))
             f.close()
+            
             return letters
     except:
         if mode == "speed":
@@ -36,8 +44,9 @@ def scrambledLetters(mode):
         for letter in letters:
             f.write(letter[0] + " " + str(letter[1])+"\n")
         f.close()
+       
         return letters
-         
+
 def checkTime():
     try:
         f_read = open("./app/game/last_update.txt" , 'r')
@@ -52,6 +61,7 @@ def checkTime():
             f_write.write(new_date_string)
             f_write.close()
             return True
+
         return False
     except: 
         f = open('./app/game/last_update.txt', 'w')
@@ -59,6 +69,7 @@ def checkTime():
         new_date_string = new_date.strftime("%d-%m-%Y")
         f.write(new_date_string)
         f.close()
+
         return True
 
 def letterstoUse():
@@ -93,3 +104,23 @@ def letterstoUse():
 
     letters = vowelList + consonantList
     return letters
+
+def checkWordExists(word):
+    filename = '../Scrambled/words_file.csv'
+    # test = open("../Scrambled/words_file.csv")
+    # csvreader = csv.reader(test)
+    # rows = []
+    # for row in csvreader:
+    #     rows.append(row)
+    # print(rows)
+    # test.close()
+    wordLower = word.lower()
+    data = pandas.read_csv(filename, header=0)
+    myData = list(data.values)
+    answer= ["", "", "", "", "", "",]
+    if wordLower in myData:
+        for i in range(len(answer)):
+            if answer[i] == "":
+                answer[i] = (word)
+                break
+    return answer
