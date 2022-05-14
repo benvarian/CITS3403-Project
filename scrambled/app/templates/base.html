@@ -54,11 +54,8 @@
         >
           <span class="bi bi-question-circle question-light" id="questionMode"></span>
         </button>
-        <h1 class="col-8 title" onclick="location.href='/index'">Scrambled</h1>
-        <a
-          class="col-1 btn"
-          href="./speed"
-        >
+        <h1 class="col-8 title" onclick="location.href='/'">Scrambled</h1>
+        <a class="col-1 btn" id="gameMode">
           <span class="bi bi-signpost-split"></span>
         </a>
         <a
@@ -123,23 +120,17 @@
       >
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Welcome to Scrambled!</h5>
+            <h5 class="modal-title">Scrambled Gameplay</h5>
             <button class="btn" data-bs-dismiss="modal">
               <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
             </button>
           </div>
           <div class="modal-body">
-            <p class="title"><b>The aim of Scrambled is simple - create the 6 highest scoring words from 7 random letters!</b></p>
             <ul>
-              <li>Each day a new set of 7 random letters will be generated</li>
-              <li>Only using each letter once per word, you create a 6 words</li>
-              <li>The words can be 3 to 7 letters</li>
-              <li>Your score for the day will be the sum of the scores from the 6 words submitted</li>
+              <li>Click a letter to add it to the word</li>
+              <li>If you are happy with the word, click submit</li>
+              
             </ul>
-            <hr> 
-            <a href="./login"><b>Login to compares with friends!</b></a>
-            <p><b>New Scrambled every day!</b></p>
-            
           </div>
         </div>
       </div> 

@@ -181,13 +181,13 @@ def checkWord():
 
 @app.route('/letters/normal')
 def lettersNormal():
-    letters = scrambledLetters()
+    letters = scrambledLetters("normal")
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
 
 @app.route("/letters/speed")
 def lettersSpeed():
-    letters = scrambledLetters()
+    letters = scrambledLetters("speed")
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
 

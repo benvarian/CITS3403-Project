@@ -87,8 +87,10 @@ var speedTimer;
 //Uses cookies to reload previous game state (words, score, time, etc) if played within the day 
 function initNormal() {
     mode = "normal";
+    document.getElementById("gameMode").setAttribute("href", "/speed");
     createSubmitTable();
     getLettersAndScores();
+    score = 0
     updateScore(0);
     rowNum = 0;
     colNum = 0;
@@ -99,7 +101,9 @@ function initNormal() {
         if(getCookie("rowNum") != "") {
             rowNum = parseInt(getCookie("rowNum"));
             loadPreviousWords();
-            updateScore(getCookie("score"));
+            if(getCookie("score") != "") {
+                updateScore(getCookie("score"));
+            }
         }
     }
     timer = startTimer(timeTaken);
@@ -111,23 +115,27 @@ function initNormal() {
 // Initialises speed mode
 function initSpeed() {
     mode = "speed";
+    document.getElementById("gameMode").setAttribute("href", "/index");
     createSubmitTable();
     getLettersAndScores();
+    speedScore = 0;
     updateScore(0);
     speedRowNum = 0;
     speedColNum = 0;
     speedWords = [];
     speedTimeLeft = 120;
     if(getCookie("speedTimeLeft") != "") {
-        speedTimeLeft = parseInt(getCookie("speedTimeLeft"))
-        if(getCookie("rowNum") != "") {
-            rowNum = parseInt(getCookie("speedRowNum"));
+        speedTimeLeft = getCookie("speedTimeLeft");
+        if(getCookie("speedRowNum") != "") {
+            speedRowNum = getCookie("speedRowNum");
             loadPreviousWords();
-            updateScore(getCookie("speedScore"), "speed");
+            if(getCookie("speedScore") != "") {
+                updateScore(getCookie("speedScore"));
+            }
         }
     }
     speedTimer = startTimer(speedTimeLeft); 
-    if(rowNum == 6 || speedTimeLeft == 0) {
+    if(rowNum == 6 || speedTimeLeft <= 0) {
         finishedGame();
     }
 }
@@ -243,6 +251,9 @@ function submitWord() {
         columns = colNum;
         rows = rowNum;
     }
+    if(columns < 3) {
+
+    }
     let word = getWord(columns);
     let outcome = checkWord(word);
     if(outcome) {
@@ -257,18 +268,20 @@ function submitWord() {
         if(mode == "speed") {
             speedWords[speedRowNum] = word;
             speedRowNum++;
-            createCookie("speedWords", words);
-            createCookie("speedRowNum", rowNum);
+            createCookie("speedWords", speedWords);
+            createCookie("speedRowNum", speedRowNum);
+            createCookie("speedScore", speedScore);
         }
         else {
             words[rowNum] = wordGuess;
             rowNum++;
             createCookie("words", words);
             createCookie("rowNum", rowNum);
+            createCookie("score", score);
         }
         resetWord()
         if(rowNum == 6) {
-                finishedGame();
+            finishedGame();
         }
     }
     else {
@@ -279,13 +292,11 @@ function submitWord() {
 
 // Gets the word from attempt + warning if words less than 3 letters
 function getWord(columns) {
-    if(columns < 3) {
-        //ALERT LESS THAN 3 Letter word
-    }
+    let word = "";
     for(let i = 0; i < columns; i++) {
         let guessBoxID =  "G" + i;
         let guessLetter = document.getElementById(guessBoxID).innerText;
-        wordGuess += guessLetter.charAt(0);
+        word += guessLetter.charAt(0);
         return word;
     }
 }
@@ -339,11 +350,17 @@ function finishedGame() {
         letter.removeEventListener("click", clickedLetter);
         letter.className = "clickedLetter";
     }
-    clearInterval(timer);
+
+    if(mode == "speed") {
+        clearInterval(speedTimer);
+    }
+    else {
+        clearInterval(timer);
+        let time = document.getElementById("minutes").innerText + ":" + document.getElementById("seconds").innerText;
+        document.getElementById("finishedTime").innerText = time;
+    }
 
     document.getElementById("finishedScore").innerText= score;
-    let time = document.getElementById("minutes").innerText + ":" + document.getElementById("seconds").innerText;
-    document.getElementById("finishedTime").innerText = time;
 
     var finishedGameModal = new bootstrap.Modal(
         document.getElementById("finishedGameModal"),
@@ -395,17 +412,17 @@ function startTimer(time) {
 } 
 
 // Updates score during game
-function updateScore(scoreUpdated) {
+function updateScore(update) {
     if(mode == "speed") {
-        speedScore = scoreUpdated;
-        createCookie("speedScore", speedScore);
+        speedScore += update;
+        let scoreDisplay = document.getElementById("score")
+        scoreDisplay.innerHTML = "<b>" + speedScore + "</b>";
     }
     else {
-        score = scoreUpdated;
-        createCookie("score", score);
+        score += update;
+        let scoreDisplay = document.getElementById("score")
+        scoreDisplay.innerHTML = "<b>" + score + "</b>";
     }
-    let scoreDisplay = document.getElementById("score")
-    scoreDisplay.innerHTML = "<b>" + score + "</b>";
 }
 
 // Cookie functions to create and get cookies 
