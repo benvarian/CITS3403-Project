@@ -67,26 +67,28 @@
   >
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Congraulations! You have completed your daily Scrambled game</h5>
+        <h5 class="modal-title">Congraulations!</h5>
         <button class="btn" data-bs-dismiss="modal">
           <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
         </button>
       </div>
       <div class="modal-body row">
+        <h4 class="title">You have completed your daily Normal Scrambled Game!</h4>
         <h6 class="title">Your Score:</h6> 
         <h4 class="title" id="finishedScore"></h4>
         <br>
         <h6 class="title">Time Taken:</h6>
         <h4 class='title' id="finishedTime"></h4>
         <br>
+        <a href="/login">Login to see statistics and compete with friends!</a>
         <hr>
         <div class="col-6 border-right">
           <h6 class="title">Time Until Next Scrambled!</h6>
           <h4 class="title">Time</h4>
         </div>
         <div class="col-6">
-          <h6 class="title">Login to share with friends!</h6>
-          <button class="title btn">Login!</button>
+          <h6 class="title">Have you tried Speed Scrambled?</h6>
+          <button class="title btn">Let's Play!</button>
         </div>
       </div>
     </div>
@@ -94,7 +96,7 @@
 </div>
 
 <script>
-  init();
+  initNormal();
 </script>
 
 {% endblock %}
