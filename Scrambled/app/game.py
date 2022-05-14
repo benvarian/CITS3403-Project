@@ -98,11 +98,18 @@ def letterstoUse():
 
 def checkWordExists(word):
     # filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
-    # test = 'Scrambled/words_file.csv'
-    # with open(test, newline=',') as csvfile:
-    #     spamreader = csv.reader(csvfile,delimiter=' ', quotechar='|')
-    #     for row in spamreader:
-    #         print(', '.join(row))
+    
+    test = 'Scrambled/words_file.csv'
+    file = open(test)
+    csvreader = csv.reader(file)
+    header = next(csvreader)
+    print(header)
+    rows = []
+    for row in csvreader:
+        rows.append(row)
+    print(rows)
+    file.close()
+    
     # data = pandas.read_csv(filename, header=0)
     # myData = list(data.values)
     # answer= ["", "", "", "", "", "",]
