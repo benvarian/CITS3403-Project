@@ -2,6 +2,8 @@ from random import randint
 from datetime import date
 from datetime import datetime
 import json
+import csv
+from urllib.parse import quote_from_bytes
 
 def scrambledLetters(mode):
     try:
@@ -94,3 +96,19 @@ def letterstoUse():
     letters = vowelList + consonantList
     return letters
 
+def checkWordExists(word):
+    # filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
+    # test = 'Scrambled/words_file.csv'
+    # with open(test, newline=',') as csvfile:
+    #     spamreader = csv.reader(csvfile,delimiter=' ', quotechar='|')
+    #     for row in spamreader:
+    #         print(', '.join(row))
+    # data = pandas.read_csv(filename, header=0)
+    # myData = list(data.values)
+    # answer= ["", "", "", "", "", "",]
+    # if word in myData:
+    #     for i in range(len(answer)):
+    #         if answer[i] == "":
+    #             answer[i] = (word)
+    #             break
+    print(word)
