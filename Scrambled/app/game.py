@@ -3,24 +3,41 @@ from datetime import date
 from datetime import datetime
 import json
 
-def scrambledLetters():
-    if checkTime():
-        f = open("./app/game/letters.txt", "w")
+def scrambledLetters(mode):
+    try:
+        if checkTime():
+            if mode == "speed":
+                f = open("./app/game/sletters.txt", "w")
+            else:
+                f = open("./app/game/nletters.txt", "w")
+            letters = letterstoUse()
+            for letter in letters:
+                f.write(letter[0] + " " + str(letter[1])+"\n")
+            f.close()
+            return letters
+        else:
+            if mode == "speed":
+                f = open("./app/game/sletters.txt", "r")
+            else:
+                f = open("./app/game/nletters.txt", "r")
+            lines = f.readlines()
+            letters = []
+            for line in lines:
+                line = line.strip('\n')
+                letters.append((line.split(" ")))
+            f.close()
+            return letters
+    except:
+        if mode == "speed":
+            f = open("./app/game/sletters.txt", "w")
+        else:
+            f = open("./app/game/nletters.txt", "w")
         letters = letterstoUse()
         for letter in letters:
             f.write(letter[0] + " " + str(letter[1])+"\n")
         f.close()
         return letters
-    else:
-        f = open("./app/game/letters.txt", "r")
-        lines = f.readlines()
-        letters = []
-        for line in lines:
-            line = line.strip('\n')
-            letters.append((line.split(" ")))
-        f.close()
-        return letters
-         
+
 def checkTime():
     try:
         f_read = open("./app/game/last_update.txt" , 'r')
