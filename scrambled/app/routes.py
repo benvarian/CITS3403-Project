@@ -10,13 +10,19 @@ from werkzeug.urls import url_parse
 from datetime import datetime
 import json
 from sqlalchemy.sql.expression import cast, select
-from app.game import scrambledLetters, listToString
+from app.game import scrambledLetters
 
 
+
+@app.route('/welcome', methods=['GET', 'POST'])
+def welcome():
+    return render_template('welcome.html',title='Welcome')
+
+@app.route('/speed', methods=['GET','POST'])
+def speed():
+    return render_template('speed.html',title='Scrambled Speed')
 
 @app.route('/index', methods=['GET', 'POST'])
-@app.route('/', methods=['GET', 'POST'])
-@login_required
 def index():
     return render_template('index.html')
 
@@ -236,8 +242,15 @@ def reset_password(token):
 #     response = jsonify({"outcome":outcome})
 #     return response
 
-@app.route('/letters')
-def letters():
-    letters = scrambledLetters()
-    lettersResponse = jsonify({'letters': letters})
+@app.route('/letters/normal')
+def lettersNormal():
+    letters = scrambledLetters("normal")
+    lettersResponse = jsonify({'letters':letters})
     return lettersResponse
+
+@app.route("/letters/speed")
+def lettersSpeed():
+    letters = scrambledLetters("speed")
+    lettersResponse = jsonify({'letters':letters})
+    return lettersResponse
+
