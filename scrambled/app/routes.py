@@ -14,9 +14,9 @@ import pandas
 def rules():
     return render_template('rules.html', title='Rules')
 
-@app.route('/index', methods=['GET', 'POST'])
-def normalMode():
-    return render_template("index.html", title="Normal Scrambled")
+# @app.route('/index', methods=['GET', 'POST'])
+# def normalMode():
+#     return render_template("index.html", title="Normal Scrambled")
 
 @app.route('/speed', methods=['GET', 'POST'])
 def speedMode():
@@ -174,11 +174,7 @@ def reset_password(token):
 @app.route('/checkword', methods=["GET", "POST"]) 
 def checkWord():
     word = request.args['word']
-    outcome = False
-    if checkWordExists(word) == 0:
-        outcome = True
-    response = jsonify({"outcome":outcome})
-    return response 
+    return render
 
 @app.route('/letters/normal')
 def lettersNormal():
@@ -193,23 +189,17 @@ def lettersSpeed():
     return lettersResponse
 
 
-# @app.route('/other')
-# def weather_dashboard():
-#     word = "hello"
-#     filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
-#     data = pandas.read_csv(filename, header=0)
-#     myData = list(data.values)
-#     answer= ["", "", "", "", "", "",]
-#     if word in myData:
-#         for i in range(len(answer)):
-#             if answer[i] == "":
-#                 answer[i] = (word)
-#                 break
-#     return render_template('other.html', answer=answer)
-
-@app.route('/other', methods=["GET","POST"])
-def my_form_post():
-    if request.method == "POST":
-        answer = request.form['text']
-    return render_template('other.html', answer=answer)
+@app.route('/index')
+def word_checker():
+    word = lettersNormal()
+    filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
+    data = pandas.read_csv(filename, header=0)
+    myData = list(data.values)
+    answer= ["", "", "", "", "", "",]
+    if word in myData:
+        for i in range(len(answer)):
+            if answer[i] == "":
+                answer[i] = (word)
+                break
+    return render_template('index.html', answer=answer, title="Normal Scrambled")
 
