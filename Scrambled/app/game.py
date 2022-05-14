@@ -1,9 +1,9 @@
+from asyncore import read
 from random import randint
 from datetime import date
 from datetime import datetime
-import json
 import csv
-from urllib.parse import quote_from_bytes
+import pandas
 
 def scrambledLetters(mode):
     try:
@@ -97,25 +97,21 @@ def letterstoUse():
     return letters
 
 def checkWordExists(word):
-    # filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
-    
-    test = 'Scrambled/words_file.csv'
-    file = open(test)
-    csvreader = csv.reader(file)
-    header = next(csvreader)
-    print(header)
-    rows = []
-    for row in csvreader:
-        rows.append(row)
-    print(rows)
-    file.close()
-    
-    # data = pandas.read_csv(filename, header=0)
-    # myData = list(data.values)
-    # answer= ["", "", "", "", "", "",]
-    # if word in myData:
-    #     for i in range(len(answer)):
-    #         if answer[i] == "":
-    #             answer[i] = (word)
-    #             break
-    print(word)
+    filename = '../Scrambled/words_file.csv'
+    # test = open("../Scrambled/words_file.csv")
+    # csvreader = csv.reader(test)
+    # rows = []
+    # for row in csvreader:
+    #     rows.append(row)
+    # print(rows)
+    # test.close()
+    wordLower = word.lower()
+    data = pandas.read_csv(filename, header=0)
+    myData = list(data.values)
+    answer= ["", "", "", "", "", "",]
+    if wordLower in myData:
+        for i in range(len(answer)):
+            if answer[i] == "":
+                answer[i] = (word)
+                break
+    print(answer)
