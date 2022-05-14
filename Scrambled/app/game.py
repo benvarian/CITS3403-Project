@@ -114,4 +114,4 @@ def checkWordExists(word):
             if answer[i] == "":
                 answer[i] = (word)
                 break
-    print(answer)
+    return answer

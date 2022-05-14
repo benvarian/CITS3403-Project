@@ -20,6 +20,17 @@
   </div>
 </div>
 
+<table>
+  <tbody>
+    {% for statistic in answers %}
+      <tr>1) {{ statistic.1 }}</td>
+      <tr>2) {{ statistic.2 }}</td>
+      <tr>3) {{ statistic.3 }}</td>
+    {% endfor %}
+  </tbody>
+</table>
+
+
 <div class="container-fluid">
   <div class="row gx-0">
       <div class="col-lg-4"></div> 

@@ -173,12 +173,9 @@ def reset_password(token):
 @app.route('/checkword', methods=["GET", "POST"]) 
 def checkWord():
     word = request.args['word']
-    outcome = False
-    if checkWordExists(word) == 0:
-        outcome = True
-    response = jsonify({"outcome":outcome})
-    print(response)
-    return response 
+    answers = checkWordExists(word)
+    print(answers)
+    return render_template('index.html', answers=answers) 
 
 @app.route('/letters/normal')
 def lettersNormal():
@@ -191,25 +188,3 @@ def lettersSpeed():
     letters = scrambledLetters("speed")
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
-
-
-# @app.route('/other')
-# def weather_dashboard():
-#     word = "hello"
-#     filename = '/Users/shayansaebi/Documents/GitHub/CITS3403Project/Scrambled/words_file.csv'
-#     data = pandas.read_csv(filename, header=0)
-#     myData = list(data.values)
-#     answer= ["", "", "", "", "", "",]
-#     if word in myData:
-#         for i in range(len(answer)):
-#             if answer[i] == "":
-#                 answer[i] = (word)
-#                 break
-#     return render_template('other.html', answer=answer)
-
-@app.route('/other', methods=["GET","POST"])
-def my_form_post():
-    if request.method == "POST":
-        answer = request.form['text']
-    return render_template('other.html', answer=answer)
-
