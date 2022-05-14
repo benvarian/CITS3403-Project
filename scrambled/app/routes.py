@@ -32,7 +32,6 @@ def stats(username):
     averagegameScore = db.session.query(db.func.avg(Statistics.score)).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
     scoreforUser = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
     datesofSubmissions = db.session.query(Statistics.game_completed,Statistics.score).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
-    
     scores = []
     for amounts, _ in scoreforUser:
         scores.append(amounts)
@@ -42,7 +41,6 @@ def stats(username):
     return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=0,sort_keys=True,default=str),datesScore=json.dumps(scores),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),)
     
     
-
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():

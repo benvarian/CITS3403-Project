@@ -1,5 +1,10 @@
 /* TODO FOR MAX MARKS ACCORDING TO SCEHEM
-1. add evident mobile views */
+1. add evident mobile views 
+2. make title look better
+3. make buttons centered 
+4. add fonts
+5. on hover of letters to guess, change to J clicker */
+
 
 .title {
   text-align:center;
@@ -42,11 +47,11 @@ nav {
 .guessBox {
   height: 7vh;
   text-align: center;
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px var(--secondary-color);
 }
 
 .letter {
-  border: solid 2px black;
+  border: solid 2px var(--secondary-color);
   text-align:center;
   height: 7vh;
 }
@@ -113,6 +118,7 @@ span {
 hr { 
   /* change this to a adaptive measurement */
   margin-bottom: 8px;
+  color: var(--secondary-color)
 }
 body {
   background-color: var(--primary-color);
