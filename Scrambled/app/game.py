@@ -108,10 +108,6 @@ def checkWordExists(word):
     wordLower = word.lower()
     data = pandas.read_csv(filename, header=0)
     myData = list(data.values)
-    answer= ["", "", "", "", "", "",]
     if wordLower in myData:
-        for i in range(len(answer)):
-            if answer[i] == "":
-                answer[i] = (word)
-                break
-    return answer
+        return True
+    return False

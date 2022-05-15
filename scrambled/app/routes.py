@@ -173,9 +173,8 @@ def reset_password(token):
 @app.route('/checkword', methods=["GET", "POST"]) 
 def checkWord():
     word = request.args['word']
-    answers = checkWordExists(word)
-    print(answers)
-    return render_template('index.html', answers=answers) 
+    checkResponse = jsonify({'outcome':checkWordExists(word)})
+    return checkResponse
 
 @app.route('/letters/normal')
 def lettersNormal():
