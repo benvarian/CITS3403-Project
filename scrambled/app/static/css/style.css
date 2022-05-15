@@ -70,6 +70,11 @@ nav {
   text-align:center;
   height: 7vh;
 }
+.letter:hover{
+  background-color: black;
+  opacity: 0.5;
+  color: white;
+}
 
 
 .clickedLetter {
