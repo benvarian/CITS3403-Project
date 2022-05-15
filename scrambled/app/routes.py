@@ -7,7 +7,7 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 from app.game import scrambledLetters
-import pandas
+# import pandas
 
 
 @app.route('/', methods=['GET', 'POST'])
