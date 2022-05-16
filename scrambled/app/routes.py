@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-from flask import render_template, flash, redirect, url_for, request, jsonify
-=======
 from flask import render_template, flash, redirect, url_for, request, jsonify, Markup
 from sqlalchemy import Numeric
 from app.models import Statistics
->>>>>>> moving-files-around
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -12,14 +8,6 @@ from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-<<<<<<< HEAD
-from app.game import scrambledLetters, checkWordExists
-
-
-@app.route('/', methods=['GET', 'POST'])
-def rules():
-    return render_template('rules.html', title='Rules')
-=======
 import json
 from sqlalchemy.sql.expression import cast, select
 from app.game import scrambledLetters, checkWordExists
@@ -83,7 +71,6 @@ def game():
     return render_template('game.html', title='Home', form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
->>>>>>> moving-files-around
 
 @app.route('/index', methods=['GET', 'POST'])
 def normalMode():
@@ -95,16 +82,11 @@ def speedMode():
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-<<<<<<< HEAD
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('user'))
-=======
     if current_user.is_authenticated:
             user = str(current_user)
             user = re.sub('[User<>]','',user)
             username = user.strip()
             return redirect(url_for('stats',username=username))
->>>>>>> moving-files-around
     form = LoginForm()
     # if form.validate_on_submit():
     #     user = User.query.filter_by(username=form.username.data).first()
@@ -278,23 +260,3 @@ def lettersSpeed():
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
 
-<<<<<<< HEAD
-@app.route('/checkword', methods=["GET", "POST"]) 
-def checkWord():
-    word = request.args['word']
-    checkResponse = jsonify({'outcome':checkWordExists(word)})
-    return checkResponse
-
-@app.route('/letters/normal')
-def lettersNormal():
-    letters = scrambledLetters("normal")
-    lettersResponse = jsonify({'letters':letters})
-    return lettersResponse
-
-@app.route("/letters/speed")
-def lettersSpeed():
-    letters = scrambledLetters("speed")
-    lettersResponse = jsonify({'letters':letters})
-    return lettersResponse
-=======
->>>>>>> moving-files-around

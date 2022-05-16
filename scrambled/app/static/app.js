@@ -447,8 +447,4 @@ function getCookie(name) {
         }
     }
     return "";
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> moving-files-around
