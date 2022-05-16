@@ -172,7 +172,7 @@ function createWordAndGuessTable(letters) {
         guessBox.setAttribute("id", "G" + k);
         $("#guess").append(guessBox);
     } 
-    document.getElementById("submit").addEventListener("click", submitWord);
+    document.getElementById("submit").addEventListener("click", checkWord);
     document.getElementById("reset").addEventListener("click", resetWord);
 }
 
@@ -210,12 +210,12 @@ function clickedLetter(letter) {
         if(letter.className != "clickedLetter") {
             guessBox.innerHTML = letter.innerHTML;
             letter.className="clickedLetter";
-        }
-        if(mode == "speed") {
-            speedColNum++;
-        }
-        else {
-            colNum++;
+            if(mode == "speed") {
+                speedColNum++;
+            }
+            else {
+                colNum++;
+            }
         }
     }
 }
@@ -239,8 +239,18 @@ function resetWord(mode) {
     }
 }
 
-// Submits word
-function submitWord() {
+// Gets the word from attempt + warning if words less than 3 letters
+function getWord(columns) {
+    let word = "";
+    for(let i = 0; i < columns; i++) {
+        let guessBoxID =  "G" + i;
+        let guessLetter = document.getElementById(guessBoxID).innerText;
+        word += guessLetter.charAt(0);
+    }
+    return word;
+}
+
+function checkWord() {
     let columns;
     let rows; 
     if(mode == "speed") {
@@ -255,7 +265,18 @@ function submitWord() {
 
     }
     let word = getWord(columns);
-    let outcome = checkWord(word);
+    xhttp = new XMLHttpRequest()
+    xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            outcome = (JSON.parse(this.responseText)).outcome;
+            checkedWordResponse(outcome, columns, rows, word)
+        }
+    }
+    xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
+    xhttp.send();
+}
+
+function checkedWordResponse(outcome, columns, rows, word) {
     if(outcome) {
         for(let k = 0; k < columns; k++) {
             let guessBoxID =  "G" + k;
@@ -273,7 +294,7 @@ function submitWord() {
             createCookie("speedScore", speedScore);
         }
         else {
-            words[rowNum] = wordGuess;
+            words[rowNum] = word;
             rowNum++;
             createCookie("words", words);
             createCookie("rowNum", rowNum);
@@ -288,29 +309,6 @@ function submitWord() {
         //modal
         resetWord();
     }
-}
-
-// Gets the word from attempt + warning if words less than 3 letters
-function getWord(columns) {
-    let word = "";
-    for(let i = 0; i < columns; i++) {
-        let guessBoxID =  "G" + i;
-        let guessLetter = document.getElementById(guessBoxID).innerText;
-        word += guessLetter.charAt(0);
-    }
-    return word;
-}
-
-function checkWord(word) {
-    console.log(word)
-    xhttp = new XMLHttpRequest()
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            let outcome = JSON.parse(this.responseText).outcome;
-        }
-    }
-    xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
-    xhttp.send();
 }
 
 // Loads previous words

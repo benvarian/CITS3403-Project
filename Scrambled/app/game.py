@@ -10,17 +10,12 @@ def scrambledLetters(mode):
         if checkTime():
             if mode == "speed":
                 f = open("./app/game/sletters.txt", "w")
-                if f.closed:
-                    print ('file is closed')
             else:
                 f = open("./app/game/nletters.txt", "w")
-                if f.closed:
-                    print ('file is closed')
             letters = letterstoUse()
             for letter in letters:
                 f.write(letter[0] + " " + str(letter[1])+"\n")
             f.close()
-            
             return letters
         else:
             if mode == "speed":
@@ -33,7 +28,6 @@ def scrambledLetters(mode):
                 line = line.strip('\n')
                 letters.append((line.split(" ")))
             f.close()
-            
             return letters
     except:
         if mode == "speed":
@@ -44,7 +38,6 @@ def scrambledLetters(mode):
         for letter in letters:
             f.write(letter[0] + " " + str(letter[1])+"\n")
         f.close()
-       
         return letters
 
 def checkTime():
@@ -61,7 +54,6 @@ def checkTime():
             f_write.write(new_date_string)
             f_write.close()
             return True
-
         return False
     except: 
         f = open('./app/game/last_update.txt', 'w')
@@ -69,7 +61,6 @@ def checkTime():
         new_date_string = new_date.strftime("%d-%m-%Y")
         f.write(new_date_string)
         f.close()
-
         return True
 
 def letterstoUse():
@@ -117,10 +108,6 @@ def checkWordExists(word):
     wordLower = word.lower()
     data = pandas.read_csv(filename, header=0)
     myData = list(data.values)
-    answer= ["", "", "", "", "", "",]
     if wordLower in myData:
-        for i in range(len(answer)):
-            if answer[i] == "":
-                answer[i] = (word)
-                break
-    return answer
+        return True
+    return False

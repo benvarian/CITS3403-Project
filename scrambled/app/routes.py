@@ -10,30 +10,33 @@ from werkzeug.urls import url_parse
 from datetime import datetime
 import json
 from sqlalchemy.sql.expression import cast, select
-from app.game import scrambledLetters
+from app.game import scrambledLetters, checkWordExists
 import re
 
-
-
+@app.route('/',methods=['POST'])
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
-    return render_template('welcome.html',title='Welcome')
+    return render_template('welcome.html', title='Welcome')
+
 
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    return render_template("index.html",title='Normal Scrambled')
+    return render_template("index.html", title='Normal Scrambled')
 
-@app.route('/speed', methods=['GET','POST'])
+
+@app.route('/speed', methods=['GET', 'POST'])
 def speed():
-    return render_template("speed.html",title='Speed Scrambled')
+    return render_template("speed.html", title='Speed Scrambled')
 
-@app.route('/leaderboard',methods=['GET'])
+
+@app.route('/leaderboard', methods=['GET'])
 def leaderboard():
     top10 = Statistics.query.order_by(Statistics.score.desc()).limit(10).all()
-    return render_template('leaderboard.html',stats=top10)
+    return render_template('leaderboard.html', stats=top10)
+
 
 @login_required
-@app.route('/statistics/<username>')
+@app.route('/statistics/<username>',methods=['GET','POST'])
 def stats(username):
     stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
     averagegameScore = db.session.query(db.func.avg(Statistics.score)).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
@@ -73,10 +76,10 @@ def game():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        user = str(current_user)
-        user = re.sub('[User<>]','',user)
-        user = user.strip()
-        return stats(user)
+            user = str(current_user)
+            user = re.sub('[User<>]','',user)
+            username = user.strip()
+            return redirect(url_for('stats',username=username))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -235,6 +238,12 @@ def reset_password(token):
         flash('Your password has been reset.')
         return redirect(url_for('login'))
     return render_template('reset_password.html', form=form)
+
+@app.route('/checkword', methods=["GET", "POST"]) 
+def checkWord():
+    word = request.args['word']
+    checkResponse = jsonify({'outcome':checkWordExists(word)})
+    return checkResponse
 
 @app.route('/letters/normal')
 def lettersNormal():
