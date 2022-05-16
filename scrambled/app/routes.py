@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-from flask import render_template, flash, redirect, url_for, request, jsonify
-=======
 from flask import render_template, flash, redirect, url_for, request, jsonify, Markup
 from sqlalchemy import Numeric
 from app.models import Statistics
->>>>>>> moving-files-around
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.email import send_password_reset_email
@@ -12,20 +8,12 @@ from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
-<<<<<<< HEAD
-from app.game import scrambledLetters, checkWordExists
-
-
-@app.route('/', methods=['GET', 'POST'])
-def rules():
-    return render_template('rules.html', title='Rules')
-=======
 import json
 from sqlalchemy.sql.expression import cast, select
 from app.game import scrambledLetters, checkWordExists
 import re
 
-@app.route('/',methods=['POST'])
+@app.route('/',methods=['GET','POST'])
 @app.route('/welcome', methods=['GET', 'POST'])
 def welcome():
     return render_template('welcome.html', title='Welcome')
@@ -62,49 +50,41 @@ def stats(username):
         dates.append(amounts2)
     return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=0,sort_keys=True,default=str),datesScore=json.dumps(scores),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),)
     
-    
+# @app.route('/game', methods=['GET', 'POST'])
+# def game():
+#     form = PostForm()
+#     if form.validate_on_submit():
+#         post = Post(body=form.post.data, author=current_user)
+#         db.session.add(post)
+#         db.session.commit()
+#         flash('Your post is now live!')
+#         return redirect(url_for('index'))
+#     page = request.args.get('page', 1, type=int)
+#     posts = current_user.followed_posts().paginate(
+#         page, app.config['POSTS_PER_PAGE'], False)
+#     next_url = url_for('index', page=posts.next_num) \
+#         if posts.has_next else None
+#     prev_url = url_for('index', page=posts.prev_num) \
+#         if posts.has_prev else None
+#     return render_template('game.html', title='Home', form=form,
+#                            posts=posts.items, next_url=next_url,
+#                            prev_url=prev_url)
 
-@app.route('/game', methods=['GET', 'POST'])
-def game():
-    form = PostForm()
-    if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for('index'))
-    page = request.args.get('page', 1, type=int)
-    posts = current_user.followed_posts().paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('index', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('index', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template('game.html', title='Home', form=form,
-                           posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
->>>>>>> moving-files-around
+# @app.route('/index', methods=['GET', 'POST'])
+# def normalMode():
+#     return render_template("index.html", title="Normal Scrambled")
 
-@app.route('/index', methods=['GET', 'POST'])
-def normalMode():
-    return render_template("index.html", title="Normal Scrambled")
-
-@app.route('/speed', methods=['GET', 'POST'])
-def speedMode():
-    return render_template("speed.html", title="Speed Scrambled")
+# @app.route('/speed', methods=['GET', 'POST'])
+# def speedMode():
+#     return render_template("speed.html", title="Speed Scrambled")
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-<<<<<<< HEAD
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('user'))
-=======
     if current_user.is_authenticated:
             user = str(current_user)
             user = re.sub('[User<>]','',user)
             username = user.strip()
             return redirect(url_for('stats',username=username))
->>>>>>> moving-files-around
     form = LoginForm()
     # if form.validate_on_submit():
     #     user = User.query.filter_by(username=form.username.data).first()
@@ -277,24 +257,3 @@ def lettersSpeed():
     letters = scrambledLetters("speed")
     lettersResponse = jsonify({'letters':letters})
     return lettersResponse
-
-<<<<<<< HEAD
-@app.route('/checkword', methods=["GET", "POST"]) 
-def checkWord():
-    word = request.args['word']
-    checkResponse = jsonify({'outcome':checkWordExists(word)})
-    return checkResponse
-
-@app.route('/letters/normal')
-def lettersNormal():
-    letters = scrambledLetters("normal")
-    lettersResponse = jsonify({'letters':letters})
-    return lettersResponse
-
-@app.route("/letters/speed")
-def lettersSpeed():
-    letters = scrambledLetters("speed")
-    lettersResponse = jsonify({'letters':letters})
-    return lettersResponse
-=======
->>>>>>> moving-files-around

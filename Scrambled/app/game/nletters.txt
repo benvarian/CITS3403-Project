@@ -1,19 +1,8 @@
-<<<<<<< HEAD
-U 1
-I 1
-O 1
-G 2
-D 2
-W 4
-L 1
-X 8
-=======
-O 1
-I 1
+A 1
 E 1
-Y 4
-C 3
-R 1
+U 1
+D 2
+G 2
 N 1
-J 8
->>>>>>> moving-files-around
+Y 4
+K 5

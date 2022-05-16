@@ -1,6 +1,11 @@
 /* TODO FOR MAX MARKS ACCORDING TO SCEHEM
-<<<<<<< HEAD
 1. add evident mobile views */
+/*1. add evident mobile views 
+2. make title look better
+3. make buttons centered 
+4. add fonts
+5. on hover of letters to guess, change to J clicker */
+
 
 .title {
   text-align:center;
@@ -24,16 +29,10 @@
 
 p>b {
   margin-bottom:1.5vh;
-=======
-1. add evident mobile views 
-2. make title look better
-3. make buttons centered 
-4. add fonts
-5. on hover of letters to guess, change to J clicker */
+}
 
 .title {
   text-align: center;
->>>>>>> moving-files-around
 }
 
 nav {
@@ -47,15 +46,6 @@ nav {
   height: 10vh;
 }
 
-<<<<<<< HEAD
-.letterTable {
-  border-collapse: separate;
-  border-spacing:0.5vw;
-  width:80%;
-  height:7vh;
-  margin:auto;
-  table-layout:fixed;
-=======
 .border-right {
   border-right: 1px solid grey;
 }
@@ -70,12 +60,10 @@ nav {
   height: 7vh;
   margin: auto;
   table-layout: fixed;
->>>>>>> moving-files-around
 }
 
 .submittedTable {
   border-collapse: separate;
-<<<<<<< HEAD
   border-spacing:0.5vw;
   height:42vh;
   width:80%;
@@ -86,34 +74,11 @@ nav {
 .submittedBox {
   height:7vh;
   text-align:center;
-=======
-  border-spacing: 0.5vw;
-  height: 42vh;
-  width: 80%;
-  margin: auto;
-  table-layout: fixed;
-}
-
-.submittedBox {
-  height: 7vh;
-  text-align: center;
->>>>>>> moving-files-around
 }
 
 .guessBox {
   height: 7vh;
   text-align: center;
-<<<<<<< HEAD
-  border-bottom: solid 2px black;
-}
-
-.letter {
-  border: solid 2px black;
-  text-align:center;
-  height: 7vh;
-}
-
-=======
   border-bottom: solid 2px var(--secondary-color);
 }
 
@@ -280,18 +245,12 @@ nav {
   text-align: center;
   height: 7vh;
 }
->>>>>>> moving-files-around
 
 .clickedLetter {
   border: solid 2px black;
   background-color: black;
-<<<<<<< HEAD
-  color:white;
-  text-align:center;
-=======
   color: white;
   text-align: center;
->>>>>>> moving-files-around
   height: 7vh;
 }
 
