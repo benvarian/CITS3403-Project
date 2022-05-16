@@ -1,7 +1,11 @@
 from app import app, db
-from app.models import User, Post
+from app.models import User, Post, Statistics
 
 
 @app.shell_context_processor
 def make_shell_context():
+<<<<<<< HEAD
     return {'db': db, 'User': User, 'Post': Post}
+=======
+    return {'db': db, 'User': User, 'Post': Post, 'Statistics':Statistics}
+>>>>>>> moving-files-around

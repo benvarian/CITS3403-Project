@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 U 1
 I 1
 O 1
@@ -6,3 +7,13 @@ D 2
 W 4
 L 1
 X 8
+=======
+O 1
+I 1
+E 1
+Y 4
+C 3
+R 1
+N 1
+J 8
+>>>>>>> moving-files-around

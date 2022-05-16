@@ -28,15 +28,20 @@
       crossorigin="anonymous"
     ></script>
 
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
     <!--Link to CSS and JS-->
     <link
       rel="stylesheet"
       href="{{  url_for('static', filename='css/style.css')  }}"
     />
-    <script src="static/app.js"></script>
+    <script src="{{  url_for('static', filename='app.js')  }}"></script>
+    <title>Scrambled</title>
   </head>
 
   <body>
+    <!--Navbar-->
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top" id="navBar">
       <div class="container-fluid row gx-0">
@@ -54,7 +59,11 @@
         >
           <span class="bi bi-question-circle question-light" id="questionMode"></span>
         </button>
+<<<<<<< HEAD
         <h1 class="col-8 title" onclick="location.href='/'">Scrambled</h1>
+=======
+        <h1 class="col-8 title" onclick="location.href='/index'">Scrambled</h1>
+>>>>>>> moving-files-around
         <a class="col-1 btn" id="gameMode">
           <span class="bi bi-signpost-split"></span>
         </a>
@@ -112,6 +121,7 @@
       </div>
     </div>
 
+
     <!--Rules Modal-->
     <div class="modal row gx-0" id="rulesModal" tabindex="-1" role="dialog">
       <div
@@ -122,7 +132,10 @@
           <div class="modal-header">
             <h5 class="modal-title">Scrambled Gameplay</h5>
             <button class="btn" data-bs-dismiss="modal">
-              <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor2"
+              ></span>
             </button>
           </div>
           <div class="modal-body">
@@ -134,7 +147,78 @@
             </ul>
           </div>
         </div>
+<<<<<<< HEAD
       </div> 
+=======
+      </div>
+    </div>
+
+    <!--Statistics Modal-->
+    <div class="modal row" id="leaderboardModal" tabindex="-1" role="dialog">
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Statistics</h5>
+            <button class="btn" data-bs-dismiss="modal">
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor3"
+              ></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-6" style="text-align: center">
+              <h6>Next Puzzle:</h6>
+              <p>test</p>
+            </div>
+            <hr />
+            <div class="col-6" style="text-align: center">
+              <h6>Share</h6>
+
+              <a style="text-align: inline" href="{{ url_for('explore') }}"
+                >Click</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--User Modal-->
+    <div
+      class="modal row modal-fade"
+      id="userModal"
+      tabindex="-1"
+      role="dialog"
+    >
+      <div
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        role="document"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Login</h5>
+            <button class="btn" data-bs-dismiss="modal">
+              <span
+                class="bi bi-x-square squareColor-light"
+                id="squareColor4"
+              ></span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            {% if current_user.is_anonymous %}
+            <h2>ur not logged in</h2>
+            {% else %}
+            <h1>Hi, {{ current_user.username }}!</h1>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+>>>>>>> moving-files-around
     </div>
 
     {% block content %}
