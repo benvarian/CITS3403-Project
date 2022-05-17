@@ -20,17 +20,6 @@
   </div>
 </div>
 
-<table>
-  <tbody>
-    {% for statistic in answers %}
-      <tr>1) {{ statistic.1 }}</td>
-      <tr>2) {{ statistic.2 }}</td>
-      <tr>3) {{ statistic.3 }}</td>
-    {% endfor %}
-  </tbody>
-</table>
-
-
 <div class="container-fluid">
   <div class="row gx-0">
       <div class="col-lg-4"></div> 
@@ -40,7 +29,6 @@
           <table class="letterTable">
             <tr id="guess"></tr>
           </table>
-
           <div class="container-fluid row gx-0">
               <div class="col-3"></div>
               <div class="col-2">
@@ -90,15 +78,15 @@
         <h6 class="title">Time Taken:</h6>
         <h4 class='title' id="finishedTime"></h4>
         <br>
-        <a href="/login">Login to see statistics and compete with friends!</a>
         <hr>
         <div class="col-6 border-right">
-          <h6 class="title">Time Until Next Scrambled!</h6>
-          <h4 class="title">Time</h4>
+          <h6 class="title">Login to see statistics!</h6>
+
+          <button class="btn btn-dark" onclick="location.href='/speed'">Login!</button>
         </div>
         <div class="col-6">
           <h6 class="title">Have you tried Speed Scrambled?</h6>
-          <button class="title btn">Let's Play!</button>
+          <button class="btn  btn-dark">Let's Play!</button>
         </div>
       </div>
     </div>

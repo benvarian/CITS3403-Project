@@ -2,12 +2,11 @@ from asyncore import read
 from random import randint
 from datetime import date
 from datetime import datetime
-import csv
 import pandas
 
 def scrambledLetters(mode):
     try:
-        if checkTime():
+        if checkTime(mode):
             if mode == "speed":
                 f = open("./app/game/sletters.txt", "w")
             else:
@@ -40,15 +39,20 @@ def scrambledLetters(mode):
         f.close()
         return letters
 
-def checkTime():
+def checkTime(mode):
+    pathname = "./app/game/last_update"
+    if mode == "speed":
+        pathname += "s.txt"
+    else:
+        pathname += "n.txt"
     try:
-        f_read = open("./app/game/last_update.txt" , 'r')
+        f_read = open(pathname , 'r')
         last_date_string = f_read.read()
         last_date = datetime.strptime(last_date_string, "%d-%m-%Y")
         last_date = datetime.date(last_date)
         f_read.close()
         if date.today() > last_date:
-            f_write =  open("./app/game/last_update.txt" , 'w')
+            f_write =  open(pathname , 'w')
             new_date = date.today()
             new_date_string = new_date.strftime("%d-%m-%Y")
             f_write.write(new_date_string)
@@ -56,7 +60,7 @@ def checkTime():
             return True
         return False
     except: 
-        f = open('./app/game/last_update.txt', 'w')
+        f = open(pathname, 'w')
         new_date = date.today()
         new_date_string = new_date.strftime("%d-%m-%Y")
         f.write(new_date_string)
@@ -98,13 +102,6 @@ def letterstoUse():
 
 def checkWordExists(word):
     filename = '../Scrambled/words_file.csv'
-    # test = open("../Scrambled/words_file.csv")
-    # csvreader = csv.reader(test)
-    # rows = []
-    # for row in csvreader:
-    #     rows.append(row)
-    # print(rows)
-    # test.close()
     wordLower = word.lower()
     data = pandas.read_csv(filename, header=0)
     myData = list(data.values)

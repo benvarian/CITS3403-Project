@@ -1,12 +1,13 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% block app_content %}
 <head>
   <title>Login</title>
 </head>
 <div class="container">
   <div class="row gx-0">
-    <div class="col-sm-2" ></div>
-    <div class="col-sm-8">
-      <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Please Sign In</h1>
+    <div class="col-lg-4" ></div>
+    <div class="col-lg-4">
+      <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Login to Scrambled!</h1>
+      <p class="centered">Login to see your statistics and compete with friends!</p>
       <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         
@@ -35,7 +36,7 @@
         <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
       </p>
     </div>
-    <div class="col-sm-2" ></div>
+    <div class="col-lg-4" ></div>
   </div>
 </div>
 

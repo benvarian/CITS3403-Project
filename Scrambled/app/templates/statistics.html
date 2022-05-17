@@ -1,13 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<head>
-  <title>Statistics - {{ current_user.username }}</title>
-</head>
-<div class="container-fluid">
+  <div class="container-fluid row gx-0">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <h4 class="title">Your Statistics for Scrambled!</h4>
+      <p class="centered"><b>Normal Scrambled</b></p>
+      <p class="centered">Games Played:</p>
+      <p class="centered">Number of game</p>
+      <p class="centered">Average Score:</p>
+      <p class="centered">Score</p>
+      <p class="centered">Average Time Taken</p>
+      <p class="centered">Time Taken</p>
+      <p class="centered"><b>Speed Scrambled</b></p>
+      <p class="centered">Games Played:</p>
+      <p class="centered">Number of game</p>
+      <p class="centered">Average Score</p>
+      <p class="centered">Score</p>
+      <hr>
+      <p>Share with Friends</p>
+
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+
+<!-- 
   <div class="row gx-0">
     <div class="col-sm-2"></div>
     <div class="col-sm-8" style="text-align: center">
-      <h1>Hi, {{ current_user.username }}</h1>
+      <h4 class=""></h4>
       <table class="table">
         <thead>
           <tr>
@@ -30,8 +50,9 @@
     </div>
     <div class="col-sm-2"></div>
   </div>
-</div>
-<script>
+</div> -->
+<!-- <canvas id="myChart" width="200" height="200"></canvas>
+<script> 
   let scoreofGame = JSON.parse({{ datesScore | tojson }});
   let dates = JSON.parse({{ datesofSubmissions | tojson }})
   let average = JSON.parse({{ averagegameScore | tojson }})
@@ -72,5 +93,5 @@
       },
     },
   });
-</script>
+</script> -->
 {% endblock %}

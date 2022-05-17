@@ -1,67 +1,55 @@
-$(window).on('load', () => {
 
-    const darkModebtn = document.getElementById("dark-mode")
-    const hcmModebtn = document.getElementById("HCM-mode")
-    const navBarColor = document.getElementById("navBar")
-    const gearColor = document.getElementById("gearMode")
-    const questionColor = document.getElementById("questionMode")
-    const graphColor = document.getElementById("graphMode")
-    const idcolorMode = document.getElementById("idMode")
-    const xColor1 = document.getElementById("squareColor1")
-    const xColor2 = document.getElementById("squareColor2")
-    const xColor3 = document.getElementById("squareColor3")
-    const xColor4 = document.getElementById("squareColor4")
+// function darkMode(theme) {
+//     const navBarColor = document.getElementById("navBar");
+//     const gearColor = document.getElementById("gearMode");
+//     const questionColor = document.getElementById("questionMode");
+//     const idcolorMode = document.getElementById("idMode");
+//     const xColor1 = document.getElementById("squareColor1");
+//     const xColor2 = document.getElementById("squareColor2");
+//     const xColor3 = document.getElementById("squareColor3");
+//     const xColor4 = document.getElementById("squareColor4");
 
-    darkModebtn.addEventListener('click', function(){
-        document.body.classList.toggle("dark-theme")
-       
-       
-        if (navBarColor.classList.contains("bg-dark")) 
-        {
-            navBarColor.classList.remove("bg-dark")
-            navBarColor.classList.add("bg-light")
-            gearColor.classList.remove("gear-dark")
-            gearColor.classList.add("gear-light")
-            questionColor.classList.remove("question-dark")
-            questionColor.classList.add("question-light")
-            graphColor.classList.remove("graph-dark")
-            graphColor.classList.add("graph-light")
-            idcolorMode.classList.remove("id-dark")
-            idcolorMode.classList.add("id-light")
-            xColor1.classList.remove("squareColor-dark")
-            xColor1.classList.add("squareColor-light") 
-            xColor2.classList.remove("squareColor-dark")
-            xColor2.classList.add("squareColor-light") 
-            xColor3.classList.remove("squareColor-dark")
-            xColor3.classList.add("squareColor-light") 
-            xColor4.classList.remove("squareColor-dark")
-            xColor4.classList.add("squareColor-light")
-
-        } else if (navBarColor.classList.contains("bg-light")) 
-        {
-            navBarColor.classList.remove("bg-light")
-            navBarColor.classList.add("bg-dark")
-            gearColor.classList.remove("gear-light")
-            gearColor.classList.add("gear-dark")
-            questionColor.classList.remove("question-light")
-            questionColor.classList.add("question-dark")
-            graphColor.classList.remove("graph-light")
-            graphColor.classList.add("graph-dark")
-            idcolorMode.classList.remove("id-light")
-            idcolorMode.classList.add("id-dark")
-            xColor1.classList.remove("squareColor-light")
-            xColor1.classList.add("squareColor-dark")
-            xColor2.classList.remove("squareColor-light")
-            xColor2.classList.add("squareColor-dark")
-            xColor3.classList.remove("squareColor-light")
-            xColor3.classList.add("squareColor-dark")
-            xColor4.classList.remove("squareColor-light")
-            xColor4.classList.add("squareColor-dark")
-        }
-        
-       
-    })
-    })
+//     console.log(theme);
+//     if (theme == "light") {
+//         document.body.classList.toggle("dark-theme");
+//         navBarColor.classList.remove("bg-dark");
+//         navBarColor.classList.add("bg-light");
+//         gearColor.classList.remove("gear-dark");
+//         gearColor.classList.add("gear-light");
+//         questionColor.classList.remove("question-dark");
+//         questionColor.classList.add("question-light");
+//         idcolorMode.classList.remove("id-dark");
+//         idcolorMode.classList.add("id-light");
+//         xColor1.classList.remove("squareColor-dark");
+//         xColor2.classList.remove("squareColor-dark");
+//         xColor2.classList.add("squareColor-light");
+//         // xColor3.classList.remove("squareColor-dark");
+//         // xColor3.classList.add("squareColor-light");
+//         xColor4.classList.remove("squareColor-dark");
+//         xColor4.classList.add("squareColor-light");
+//         localStorage.setItem("theme", "light");
+//         console.log(localStorage.getItem("theme"));
+//     } 
+//     else if(theme == "dark") {
+//         navBarColor.classList.remove("bg-light");
+//         navBarColor.classList.add("bg-dark");
+//         gearColor.classList.remove("gear-light");
+//         gearColor.classList.add("gear-dark");
+//         questionColor.classList.remove("question-light");
+//         questionColor.classList.add("question-dark");
+//         idcolorMode.classList.remove("id-light");
+//         idcolorMode.classList.add("id-dark");
+//         xColor1.classList.remove("squareColor-light");
+//         xColor1.classList.add("squareColor-dark");
+//         xColor2.classList.remove("squareColor-light");
+//         xColor2.classList.add("squareColor-dark");
+//         xColor3.classList.remove("squareColor-light");
+//         xColor3.classList.add("squareColor-dark");
+//         xColor4.classList.remove("squareColor-light");
+//         xColor4.classList.add("squareColor-dark");
+//         localStorage.setItem("theme", "dark");
+//     }
+// }
 
 // Normal Scrambled Functionality 
 var rowNum;
@@ -96,19 +84,10 @@ function initNormal() {
     colNum = 0;
     words = [];
     timeTaken = 0;
-    if(getCookie("timeTaken") != "") {
-        timeTaken = parseInt(getCookie('timeTaken'));
-        if(getCookie("rowNum") != "") {
-            rowNum = parseInt(getCookie("rowNum"));
-            loadPreviousWords();
-            if(getCookie("score") != "") {
-                updateScore(getCookie("score"));
-            }
-        }
-    }
+    reloadPreviousGameState();
     timer = startTimer(timeTaken);
     if(rowNum == 6) {
-        finishedGame();
+        finishedGame();   
     }
 } 
 
@@ -124,22 +103,64 @@ function initSpeed() {
     speedColNum = 0;
     speedWords = [];
     speedTimeLeft = 120;
-    if(getCookie("speedTimeLeft") != "") {
-        speedTimeLeft = getCookie("speedTimeLeft");
-        if(getCookie("speedRowNum") != "") {
-            speedRowNum = getCookie("speedRowNum");
-            loadPreviousWords();
-            if(getCookie("speedScore") != "") {
-                updateScore(getCookie("speedScore"));
-            }
-        }
-    }
-    speedTimer = startTimer(speedTimeLeft); 
-    if(rowNum == 6 || speedTimeLeft <= 0) {
+    reloadPreviousGameState();
+    speedTimer = startTimer(speedTimeLeft);
+    if(speedRowNum == 6 || speedTimeLeft <= 0) {
         finishedGame();
     }
 }
 
+// Function to reload previous game state (if user has played within the day)
+// Global variables are reloaded from cookies 
+// Previous words are loaded into game template
+function reloadPreviousGameState() {
+    if(mode == "speed") {
+        if(getCookie("speedTimeLeft") != "") {
+            speedTimeLeft = getCookie("speedTimeLeft");
+            if(getCookie("speedRowNum") != "") {
+                speedRowNum = getCookie("speedRowNum");
+                loadPreviousWords();
+                if(getCookie("speedScore") != "") {
+                    updateScore(getCookie("speedScore"));
+                }
+            }
+        }
+    }
+    else {
+        if(getCookie("timeTaken") != "") {
+            timeTaken = parseInt(getCookie('timeTaken'));
+            if(getCookie("rowNum") != "") {
+                rowNum = parseInt(getCookie("rowNum"));
+                loadPreviousWords();
+                if(getCookie("score") != "") {
+                    updateScore(getCookie("score"));
+                }
+            }
+        }
+    }
+}
+
+// Helper function to load previous words from cookies
+// Cookie words are stored as innerHTML of letters
+function loadPreviousWords() {
+    let prevWords;
+    if(mode == "speed") {
+        speedWords = getCookie("speedWords").split(",");
+        prevWords = speedWords;
+    }
+    else {
+        words = getCookie("words").split(",");
+        prevWords = words;
+    }
+    for(let i = 0; i < prevWords.length; i++) {
+        let prevWord = prevWords[i];
+        let cookieWordLetters = prevWord.trim().split(" ");
+        for(let k = 0; k < cookieWordLetters.length; k++) {
+            let submittedBox = document.getElementById(String(i) + String(k));
+            submittedBox.innerHTML = cookieWordLetters[k];
+        }
+    }
+}
 
 // Creates the table to for the submitted words
 function createSubmitTable() {
@@ -221,7 +242,7 @@ function clickedLetter(letter) {
 }
 
 // Reset word attempt
-function resetWord(mode) {
+function resetWord() {
     for(let i = 0; i < 7; i++) {
         let guessBoxID = "G" + i;
         document.getElementById(guessBoxID).innerHTML = "";
@@ -242,12 +263,17 @@ function resetWord(mode) {
 // Gets the word from attempt + warning if words less than 3 letters
 function getWord(columns) {
     let word = "";
+    let scoreIncrease = 0; 
+    let cookieWord = ""
     for(let i = 0; i < columns; i++) {
         let guessBoxID =  "G" + i;
-        let guessLetter = document.getElementById(guessBoxID).innerText;
-        word += guessLetter.charAt(0);
+        let guessLetter = document.getElementById(guessBoxID);
+        word += guessLetter.innerText.charAt(0);
+        scoreIncrease += parseInt(guessLetter.innerText.charAt(1)); 
+        cookieWord += guessLetter.innerHTML + " ";
+
     }
-    return word;
+    return [word, scoreIncrease, cookieWord];
 }
 
 function checkWord() {
@@ -264,19 +290,21 @@ function checkWord() {
     if(columns < 3) {
 
     }
-    let word = getWord(columns);
+    let word = getWord(columns)[0];
+    let scoreIncrease = getWord(columns)[1];
+    let cookieWord = getWord(columns)[2];
     xhttp = new XMLHttpRequest()
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
             outcome = (JSON.parse(this.responseText)).outcome;
-            checkedWordResponse(outcome, columns, rows, word)
+            checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord);
         }
     }
     xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
     xhttp.send();
 }
 
-function checkedWordResponse(outcome, columns, rows, word) {
+function checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord) {
     if(outcome) {
         for(let k = 0; k < columns; k++) {
             let guessBoxID =  "G" + k;
@@ -287,23 +315,28 @@ function checkedWordResponse(outcome, columns, rows, word) {
         }
 
         if(mode == "speed") {
-            speedWords[speedRowNum] = word;
+            speedWords[speedRowNum] = cookieWord;
+            updateScore(scoreIncrease);
             speedRowNum++;
             createCookie("speedWords", speedWords);
             createCookie("speedRowNum", speedRowNum);
             createCookie("speedScore", speedScore);
+            if(speedRowNum == 6) {
+                finishedGame();
+            }
         }
         else {
-            words[rowNum] = word;
+            words[rowNum] = cookieWord;
+            updateScore(scoreIncrease);
             rowNum++;
             createCookie("words", words);
             createCookie("rowNum", rowNum);
             createCookie("score", score);
+            if(rowNum == 6) {
+                finishedGame();
+            }
         }
         resetWord()
-        if(rowNum == 6) {
-            finishedGame();
-        }
     }
     else {
         //modal
@@ -311,61 +344,49 @@ function checkedWordResponse(outcome, columns, rows, word) {
     }
 }
 
-// Loads previous words
-function loadPreviousWords() {
-    let prevWords;
-    if(mode == "speed") {
-        speedWords = getCookie("speedWords").split(",");
-        prevWords = speedWords;
-    }
-    else {
-        words = getCookie("words").split(",");
-        prevWords = words;
-    }
-    for(let i = 0; i < prevWords.length; i++) {
-        let prevWord = prevWords[i];
-        for(let k = 0; k < prevWord.length; k++) {
-            let submittedBox = document.getElementById(String(i) + String(k));
-            let letterFound = false;
-            let j = 0; 
-            while(!letterFound) {
-                let letter = document.getElementById("L" + String(j));
-                j++;
-                if(letter.innerText.charAt(0) == word.charAt(k)) {
-                    submittedBox.innerHTML = letter.innerHTML;
-                    letterFound = true;
-                }
-            }
-        }
-    }
-}
-
 // Finished game functionality for Normal Scrambled 
 function finishedGame() {
-    document.getElementById("submit").removeEventListener("click", submitWord);
-    document.getElementById("reset").removeEventListener("click", resetWord);
-    for(let i=0; i < 7; i++) {
-        let letter = document.getElementById("L" + i);
-        letter.removeEventListener("click", clickedLetter);
-        letter.className = "clickedLetter";
-    }
-
     if(mode == "speed") {
+        speedGameFinished = true;
         clearInterval(speedTimer);
+        document.getElementById("finishedScore").innerText= speedScore;
+        document.getElementById("submit").removeEventListener("click", checkWord);
+        if(getCookie('speedGameFinished') == "") {
+            submitScore();
+            createCookie('speedGameFinished', true);
+        }
     }
-    else {
+    else if(mode == "normal") {
         clearInterval(timer);
         let time = document.getElementById("minutes").innerText + ":" + document.getElementById("seconds").innerText;
         document.getElementById("finishedTime").innerText = time;
+        document.getElementById("finishedScore").innerText= score;
+        document.getElementById("submit").removeEventListener("click", checkWord);
+        if(getCookie('gameFinished') == "") {
+            submitScore();
+            createCookie('gameFinished', true);
+        }
     }
-
-    document.getElementById("finishedScore").innerText= score;
 
     var finishedGameModal = new bootstrap.Modal(
         document.getElementById("finishedGameModal"),
         {}
       );
       finishedGameModal.toggle();
+}
+
+function submitScore() {
+    let xhttp = new XMLHttpRequest();
+    let obj;
+    if(mode == "speed") {
+        obj = {'speedScore': speedScore};
+    }
+    else {
+        obj = {'score':score, 'timeTaken':timeTaken};
+    }
+    submission = JSON.stringify(obj)
+    xhttp.open("POST", "http://127.0.0.1:5000/submitscore/" + mode)
+    xhttp.send(submission);
 }
 
 // Starts timer for Normal and Speed Scrambled 
@@ -413,12 +434,12 @@ function startTimer(time) {
 // Updates score during game
 function updateScore(update) {
     if(mode == "speed") {
-        speedScore += update;
+        speedScore += parseInt(update);
         let scoreDisplay = document.getElementById("score")
         scoreDisplay.innerHTML = "<b>" + speedScore + "</b>";
     }
     else {
-        score += update;
+        score += parseInt(update);
         let scoreDisplay = document.getElementById("score")
         scoreDisplay.innerHTML = "<b>" + score + "</b>";
     }

@@ -41,7 +41,11 @@
   </head>
 
   <body>
-    <!--Navbar-->
+    <!--Dark Mode support-->
+    <script>
+      const theme = localStorage.getItem('theme') || 'light';
+      document.body.className = theme; 
+    </script>
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top" id="navBar">
       <div class="container-fluid row gx-0">
@@ -73,7 +77,7 @@
     </nav>
 
     <!--Settings Modal-->
-    <div class="modal row" id="settingsModal" tabindex="-1" role="dialog">
+    <div class="modal row gx-0" id="settingsModal" tabindex="-1" role="dialog">
       <div
         class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
         role="document"
@@ -86,32 +90,14 @@
             </button>
           </div>
           <div class="modal-body row">
-            <div class="col-lg-8">
+            <div class="col-8">
               <h5>Dark Mode</h5>
             </div>
-            <div class="col-lg-4 toggleWrapper">
-              <input
-                type="checkbox"
-                name="toggle1"
-                class="mobileToggle"
-                id="dark-mode"
-              />
+            <div class="col-4 toggleWrapper">
+              <button onclick="darkMode(theme)">Change Mode</button>
               <label for="dark-mode"></label>
             </div>
-            <hr />
-            <div class="col-lg-8">
-              <h5>High Constrast Mode</h5>
-            </div>
-            <div class="col-lg-4 toggleWrapper">
-              <input
-                type="checkbox"
-                name="toggle1"
-                class="mobileToggle"
-                id="HCM-mode"
-              />
-              <label for="HCM-mode"></label>
-            </div>
-            <hr />
+            <hr>
           </div>
         </div>
       </div>
