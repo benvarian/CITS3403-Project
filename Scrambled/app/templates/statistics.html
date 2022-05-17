@@ -23,37 +23,20 @@
     <div class="col-lg-4"></div>
   </div>
 
-<!-- 
+
   <div class="row gx-0">
     <div class="col-sm-2"></div>
     <div class="col-sm-8" style="text-align: center">
       <h4 class=""></h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Score</th>
-            <th>Time Taken</th>
-            <th>Date done</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for statistic in stats %}
-          <tr>
-            <td>{{ statistic.score }}</td>
-            <td>{{ statistic.timeTaken }}</td>
-            <td>{{ statistic.game_completed }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
       <canvas id="myChart" width="200" height="200"></canvas>
     </div>
     <div class="col-sm-2"></div>
   </div>
-</div> -->
-<!-- <canvas id="myChart" width="200" height="200"></canvas>
+
+
 <script> 
-  let scoreofGame = JSON.parse({{ datesScore | tojson }});
+  let scoreofgameNormal = JSON.parse({{ datesScore | tojson }});
+  let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }})
   let dates = JSON.parse({{ datesofSubmissions | tojson }})
   let average = JSON.parse({{ averagegameScore | tojson }})
   const ctx = document.getElementById("myChart").getContext("2d");
@@ -63,8 +46,8 @@
       labels: dates,
       datasets: [
         {
-          label: "Score",
-          data: scoreofGame,
+          label: "Normal Mode",
+          data: scoreofgameNormal,
           backgroundColor: [
           "rgb(75, 192, 192)"
             
@@ -72,14 +55,14 @@
           borderColor: [
             "rgb(75, 192, 192)"],
           borderWidth: 2,
-          tension: 0.3,
+          tension: 0,
           
         },
-        {label: 'Dataset 2',
-          data: average,
+        {label: 'Speed Mode',
+          data: scoreofgameSpeed,
           backgroundColor: ["rbg(236,16,16"],
           borderColor: ["rbg(236,16,16"],
-          borderWidth: 4,
+          borderWidth: 2,
           tension: 0,
           pointBackgroundColor: '#007bff'
         },
@@ -87,11 +70,14 @@
     },
     options: {
       scales: {
+        x: {
+          beginAtZero: true
+        },
         y: {
           suggestedMin: 250
         },
       },
     },
   });
-</script> -->
+</script>
 {% endblock %}

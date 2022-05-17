@@ -9,7 +9,7 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 from datetime import datetime
 import json
-from sqlalchemy.sql.expression import cast, select
+from sqlalchemy.sql.expression import func
 from app.game import scrambledLetters, checkWordExists
 import re
 
@@ -40,15 +40,21 @@ def leaderboard():
 def stats(username):
     stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
     averagegameScore = db.session.query(db.func.avg(Statistics.score)).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).all()
-    scoreforUser = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
-    datesofSubmissions = db.session.query(Statistics.game_completed,Statistics.score).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).all()
-    scores = []
-    for amounts, _ in scoreforUser:
-        scores.append(amounts)
+    scoresforNormalData = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode=="normal").all()
+    scoresforSpeedData = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode=="speed").all()
+    datesofSubmissions = db.session.query(Statistics.game_completed,Statistics.score).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).order_by(Statistics.game_completed.asc()).limit(10).all()
+  
+    scoresforNormal = []
+   
+    for amounts, _ in scoresforNormalData:
+        scoresforNormal.append(amounts)
+    scoresforSpeed = []
+    for amounts, _ in scoresforSpeedData:
+        scoresforSpeed.append(amounts) 
     dates = []
     for amounts2, _ in datesofSubmissions:
         dates.append(amounts2)
-    return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=0,sort_keys=True,default=str),datesScore=json.dumps(scores),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),)
+    return render_template('statistics.html', stats=stats, averagegameScore=json.dumps(averagegameScore,indent=0,sort_keys=True,default=str),datesScore=json.dumps(scoresforNormal),datesofSubmissions=json.dumps(dates,indent=4,sort_keys=True,default=str),speedScores=json.dumps(scoresforSpeed,indent=4,sort_keys=True,default=str),)
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():

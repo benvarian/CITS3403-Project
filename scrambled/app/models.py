@@ -6,6 +6,8 @@ from hashlib import md5
 from time import time
 import jwt
 from app import app
+from sqlalchemy.sql import expression
+from datetime import date
 
 followers = db.Table('followers',
                      db.Column('follower_id', db.Integer,
@@ -18,9 +20,11 @@ followers = db.Table('followers',
 class Statistics(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     score = db.Column(db.Integer,index=True)
+    gameMode = db.Column(db.String(10))
     timeTaken = db.Column(db.String(140),index=True)
-    game_completed = db.Column(db.DateTime, default=db.func.now())
+    game_completed = db.Column(db.Date, default=date.today())
     userId = db.Column(db.Integer,db.ForeignKey('user.username'))
+    isAdmin = db.Column(db.Boolean,default=False,nullable=False)
     
 
     def __repr__(self):
