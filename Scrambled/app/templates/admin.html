@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid row gx-0">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4 row">
+        <h4>Admin game privileges</h4>
+        <h6>Click the letters you want for the day and click submit when ready</h6>
+        <div class="col-3"></div>
+        <table id="lettersAdmin">
+
+        </table>
+        <hr>
+        <div class="col-3"></div>
+        <div class="col-3">
+            <button class="btn btn-dark">Submit</button>
+        </div>
+        <div>
+            <button class="btn btn-dark">Submit</button>
+        </div>
+    </div>
+    <div class="col-lg-4"></div>
+
+</div>
+
+<script>
+    adminGameCreation();
+</script>
+{% endblock %}
