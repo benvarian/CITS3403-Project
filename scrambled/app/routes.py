@@ -60,7 +60,11 @@ def stats(username):
 def login():
     if current_user.is_authenticated:
         user = str(current_user)
-        user = re.sub('[User<>]','',user)
+        print(user)
+        user = re.sub('User','',user)
+        user = re.sub('<','',user)
+        user = re.sub('>','',user)
+        print(user)
         username = user.strip()
         return redirect(url_for('stats',username=username))
     form = LoginForm()
