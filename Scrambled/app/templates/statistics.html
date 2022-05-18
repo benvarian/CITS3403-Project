@@ -1,40 +1,48 @@
-{% extends "base.html" %}
-{% block content %}
-  <div class="container-fluid row gx-0">
-    <div class="col-lg-4"></div>
-    <div class="col-lg-4">
-      <h4 class="title">Your Statistics for Scrambled!</h4>
-      <p class="centered"><b>Normal Scrambled</b></p>
-      <p class="centered">Games Played:</p>
-      <p class="centered">Number of game</p>
-      <p class="centered">Average Score:</p>
-      <p class="centered">Score</p>
-      <p class="centered">Average Time Taken</p>
-      <p class="centered">Time Taken</p>
-      <p class="centered"><b>Speed Scrambled</b></p>
-      <p class="centered">Games Played:</p>
-      <p class="centered">Number of game</p>
-      <p class="centered">Average Score</p>
-      <p class="centered">Score</p>
-      <hr>
+{% extends "base.html" %} {% block content %}
+<div id="fb-root"></div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0"
+  nonce="COi510i3"
+></script>
+<div class="container-fluid row gx-0">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <h4 class="title">Your Statistics for Scrambled!</h4>
+    <p class="centered"><b>Normal Scrambled</b></p>
+    <p class="centered">Games Played:</p>
+    <p class="centered">Number of game</p>
+    <p class="centered">Average Score:</p>
+    <p class="centered">Score</p>
+    <p class="centered">Average Time Taken</p>
+    <p class="centered">Time Taken</p>
+    <p class="centered"><b>Speed Scrambled</b></p>
+    <p class="centered">Games Played:</p>
+    <p class="centered">Number of game</p>
+    <p class="centered">Average Score</p>
+    <p class="centered">Score</p>
+    <hr />
+    <div class="share">
       <p>Share with Friends</p>
-
+      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+      <div style="display: inline-flex;"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
     </div>
-    <div class="col-lg-4"></div>
   </div>
+  <div class="col-lg-4"></div>
+</div>
 
-
-  <div class="row gx-0">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8" style="text-align: center">
-      <h4 class=""></h4>
-      <canvas id="myChart" width="200" height="200"></canvas>
-    </div>
-    <div class="col-sm-2"></div>
+<div class="row gx-0">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8" style="text-align: center">
+    <h4 class=""></h4>
+    <canvas id="myChart" width="200" height="200"></canvas>
   </div>
+  <div class="col-sm-2"></div>
+</div>
 
-
-<script> 
+<script>
   let scoreofgameNormal = JSON.parse({{ datesScore | tojson }});
   let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }})
   let dates = JSON.parse({{ datesofSubmissions | tojson }})
@@ -48,23 +56,18 @@
         {
           label: "Normal Mode",
           data: scoreofgameNormal,
-          backgroundColor: [
-          "rgb(75, 192, 192)"
-            
-          ],
-          borderColor: [
-            "rgb(75, 192, 192)"],
+          backgroundColor: '#3380ff',
+          borderColor:'#3380ff',
           borderWidth: 2,
           tension: 0,
-          
+
         },
         {label: 'Speed Mode',
           data: scoreofgameSpeed,
-          backgroundColor: ["rbg(236,16,16"],
-          borderColor: ["rbg(236,16,16"],
+          backgroundColor: '#da0037',
+          borderColor: '#da0037',
           borderWidth: 2,
-          tension: 0,
-          pointBackgroundColor: '#007bff'
+          tension: 0
         },
       ],
     },

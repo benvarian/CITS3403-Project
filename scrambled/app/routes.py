@@ -43,7 +43,12 @@ def stats(username):
     scoresforNormalData = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode=="normal").all()
     scoresforSpeedData = db.session.query(Statistics.score,Statistics.game_completed).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode=="speed").all()
     datesofSubmissions = db.session.query(Statistics.game_completed,Statistics.score).outerjoin(User, User.username==Statistics.userId).filter(Statistics.userId == username).order_by(Statistics.game_completed.asc()).limit(10).all()
-  
+
+    averagegameScore =  re.sub(',','',str(averagegameScore))
+    test = float(averagegameScore)
+    # averagegameScore = round(averagegameScore)
+    print(test)
+
     scoresforNormal = []
    
     for amounts, _ in scoresforNormalData:
