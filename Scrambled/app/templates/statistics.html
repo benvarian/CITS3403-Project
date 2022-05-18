@@ -1,13 +1,13 @@
 {% extends "base.html" %} {% block content %}
-<div id="fb-root"></div>
-<script
+<!-- <div id="fb-root"></div>
+ <script
   async
   defer
   crossorigin="anonymous"
   src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0"
   nonce="COi510i3"
-></script>
-<div class="container-fluid row gx-0">
+></script> -->
+<!-- <div class="container-fluid row gx-0">
   <div class="col-lg-4"></div>
   <div class="col-lg-4">
     <h4 class="title">Your Statistics for Scrambled!</h4>
@@ -26,17 +26,47 @@
     <hr />
     <div class="share">
       <p>Share with Friends</p>
-      <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-      <div style="display: inline-flex;"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+       <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+      <div style="display: inline-flex;"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div> 
     </div>
   </div>
   <div class="col-lg-4"></div>
-</div>
+</div> -->
 
 <div class="row gx-0">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" style="text-align: center">
-    <h4 class=""></h4>
+    <table class="table">
+      <tr>
+        <td>
+          <h1>Hi {{ user.username }}!</h1>
+          {% if user.about_me %}<p>About you: {{ user.about_me }}</p>{% endif %}
+          <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+          {% if user == current_user %}
+          <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+          {% elif not current_user.is_following(user) %}
+          <p>
+              <form action="{{ url_for('follow', username=user.username) }}" method="post">
+                  {{ form.hidden_tag() }}
+                  {{ form.submit(value='Follow') }}
+              </form>
+          </p>
+          {% else %}
+          <p>
+              <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                  {{ form.hidden_tag() }}
+                  {{ form.submit(value='Unfollow') }}
+              </form>
+          </p>
+          {% endif %}
+      </td>
+    </tr>
+    </table>
+    <h6>WILL DELTE RIGHT BEN: {{ averagegameScore }}</h6>
+    <h6>Games of Normal Scrambled Played: {{ gamesPlayedNormal }} </h6>
+    <h6>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </h6>
+    <h6>Average Score for Normal Mode: {{ avgNormalScore }} </h6>
+    <h6>Average Score for Speed Mode: {{ avgSpeedScore }} </h6>
     <canvas id="myChart" width="200" height="200"></canvas>
   </div>
   <div class="col-sm-2"></div>

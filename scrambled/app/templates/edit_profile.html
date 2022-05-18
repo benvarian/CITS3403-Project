@@ -1,23 +1,28 @@
-{% extends "base.html" %}
-
-{% block content %}
-    <h1>Edit Profile</h1>
-    <form action="" method="post">
+{% extends "base.html" %} {% block content %}
+<div class="row gx-0">
+  <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h1>Edit Profile</h1>
+      <form action="" method="post">
         {{ form.hidden_tag() }}
         <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
+          {{ form.username.label }}<br />
+          {{ form.username(class_="form-control rounded-4") }}
+          {% for error in form.username.errors %}
+          <span style="color: red">[{{ error }}]</span>
+          {% endfor %}
         </p>
         <p>
-            {{ form.about_me.label }}<br>
-            {{ form.about_me(cols=50, rows=4) }}<br>
-            {% for error in form.about_me.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
+          {{ form.about_me.label }}<br />
+          {{ form.about_me(class_="form-control") }}<br />
+          {% for error in form.about_me.errors %}
+          <span style="color: red">[{{ error }}]</span>
+          {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+        <p>{{ form.submit(class_="w-100 mb-2 btn btn-lg rounded-4 btn-primary") }}</p>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
 {% endblock %}
