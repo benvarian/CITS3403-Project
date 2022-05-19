@@ -43,6 +43,7 @@ function initNormal() {
     }
 } 
 
+
 // Initialises speed mode
 function initSpeed() {
     mode = "speed";
@@ -245,9 +246,6 @@ function checkWord() {
         columns = colNum;
         rows = rowNum;
     }
-    if(columns < 3) {
-
-    }
     let word = getWord(columns)[0];
     let scoreIncrease = getWord(columns)[1];
     let cookieWord = getWord(columns)[2];
@@ -297,8 +295,11 @@ function checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookie
         resetWord()
     }
     else {
-        //modal
-        resetWord();
+        var wrongWord = new bootstrap.Modal(
+            document.getElementById("wrongWord"),
+            {}
+          );
+        wrongWord.toggle();
     }
 }
 
@@ -332,6 +333,7 @@ function finishedGame() {
       );
       finishedGameModal.toggle();
 }
+
 
 function submitScore() {
     let xhttp = new XMLHttpRequest();
