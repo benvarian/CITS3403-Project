@@ -8,7 +8,6 @@ from app.email import send_password_reset_email
 from flask_login import current_user, login_required, login_user, logout_user
 from app.models import User, Post
 from werkzeug.urls import url_parse
-from datetime import datetime
 import json
 from sqlalchemy.sql.expression import func
 from app.game import scrambledLetters, checkWordExists
@@ -51,20 +50,28 @@ def stats(username):
         User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "speed").all()
     datesofSubmissions = db.session.query(Statistics.game_completed, Statistics.score).outerjoin(
         User, User.username == Statistics.userId).filter(Statistics.userId == username).order_by(Statistics.game_completed.asc()).limit(10).all()
-    # gamesPlayed = db.session.query(func.count(Statistics.score)).filter(Statistics.userId==username).all()
+
     gamesPlayedNormal = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='normal').count()
     gamesPlayedSpeed = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='speed').count()
     avgNormalScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'normal').first()
     avgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'speed').first()
     
     user = User.query.filter_by(username=username).first_or_404()
-    # averagegameScore =  re.sub(',','',str(averagegameScore))
-    # test = float(averagegameScore)
-    # # averagegameScore = round(averagegameScore)
-    # print(test)
-    next_url = redirect(url_for('stats', username=username))
+   
+    next_url = redirect(url_for('index'))
+   
+    if avgSpeedScore[0] == None:
+        avgSpeedScore = list(filter(None, avgSpeedScore))
+        speedModeAverage = 0
+    else:
+        speedModeAverage = int(avgSpeedScore[0])
+    if avgNormalScore[0] == None:
+        avgNormalScore = list(filter(None,avgNormalScore))
+        avgNormalScore = 0
+    else:
+        avgNormalScore = int(avgNormalScore[0])
+    
     scoresforNormal = []
-
     for amounts, _ in scoresforNormalData:
         scoresforNormal.append(amounts)
     scoresforSpeed = []
@@ -75,28 +82,28 @@ def stats(username):
         dates.append(amounts2)
     form = EmptyForm()
     return render_template('statistics.html', next_url=next_url, stats=stats, averagegameScore=json.dumps(averagegameScore, indent=0, sort_keys=True, default=str), datesScore=json.dumps(scoresforNormal), datesofSubmissions=json.dumps(dates, indent=4, sort_keys=True, default=str), speedScores=json.dumps(scoresforSpeed, indent=4, sort_keys=True, default=str), user=user, 
-    form=form,gamesPlayedNormal=gamesPlayedNormal,gamesPlayedSpeed=gamesPlayedSpeed,avgSpeedScore=avgSpeedScore,avgNormalScore=avgNormalScore)
+    form=form,gamesPlayedNormal=gamesPlayedNormal,gamesPlayedSpeed=gamesPlayedSpeed,speedModeAverage=speedModeAverage,avgNormalScore=avgNormalScore)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         user = str(current_user)
-
         user = re.sub('User', '', user)
         user = re.sub('<', '', user)
         user = re.sub('>', '', user)
-
         username = user.strip()
+
         return redirect(url_for('stats', username=username))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('login'))
+            
+            return redirect(url_for('index'))
         login_user(user, remember=form.remember_me.data)
-        print(current_user.is_authenticated)
+
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
 
