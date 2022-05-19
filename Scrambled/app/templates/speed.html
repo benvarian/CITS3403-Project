@@ -14,8 +14,6 @@
                 <h4 class="title"><b id="minutes"></b><b>:</b><b id="seconds"></b></h4>
             </div>
             <hr>
-            <h6 class="centered">Speed Scrambled</h6>
-            <p class="centered"><b>The clock is ticking...</b></p>
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -78,22 +76,41 @@
           <h6 class="title">Your Score:</h6> 
           <h4 class="title" id="finishedScore"></h4>
           <br>
-          <a href="/login">Login to see statistics and compete with friends!</a>
           <hr>
           <div class="col-6 border-right">
-            <h6 class="title">Time Until Next Scrambled!</h6>
-            <h4 class="title">Time</h4>
+            <h6 class="title">Login to see statistics!</h6>
+            <h4 class="btn btn-dark" onclick="location.href='/'">Login!</h4>
           </div>
           <div class="col-6">
             <h6 class="title">Have you played Normal Scrambled?</h6>
-            <button class="title btn">Let's Play!</button>
+            <button class="btn btn-dark">Let's Play!</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  
+  <div class="modal" id="wrongWord" tabindex="-1" role="dialog">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">OOPS!</h5>
+          <button class="btn" data-bs-dismiss="modal">
+            <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <h4 class="title">The word you have submitted does not exist!</h4>
+          <h4 class="title" id="finishedScore"></h4>
+          <br>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     initSpeed(); 
