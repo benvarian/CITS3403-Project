@@ -39,6 +39,9 @@
     <table class="table">
       <tr>
         <td>
+
+          <p> Certified {{ highestScoreToday }} </p>
+          <p><a href="/logout">logout</a></p>
           {% if user == current_user %}
           <h1>Hi {{ user.username }}!</h1>
           {% else %}
