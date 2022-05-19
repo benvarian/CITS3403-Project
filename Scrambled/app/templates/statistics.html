@@ -1,12 +1,10 @@
 {% extends "base.html" %} {% block content %}
-{% if isAdmin %}
 <div class="row gx-0">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" style="text-align: center">
     <table class="table">
       <tr>
         <td>
-
           <p> Certified {{ highestScoreToday }} </p>
           <p><a href="/logout">logout</a></p>
           {% if user == current_user %}
@@ -89,57 +87,6 @@
     },
   });
 </script>
-{% else %}
-  <div class="container-fluid row gx-0">
-    <div class="col-lg-4 gx-0"></div>
-    <div class="col-lg-4 gx-0 row">
-      <h4 class="title">Admin game privileges</h4>
-      <h6 class="title">Click the letters you want for the day</h6>
-      <h6 class="title">Click the relevant submit button to change letters for the day</h6>
-      <table id="lettersAdmin">
-      </table>
-      <hr>
-      <h4 class="title">Letters</h4>
-      <table class="chosenLettersAdmin">
-        <tr id="chosenLettersAdmin"></tr>
-      </table>
-      <div class="col-4">
-        <button class="btn btn-dark buttonMargins" id="adminSpeedSubmit">Speed</button>
-      </div>
-      <div class="col-4">
-        <button class="btn btn-dark buttonMargins" id="adminReset">Reset</button>
-      </div>
-      <div class="col-4">
-          <button class="btn btn-dark buttonMargins" id="adminNormalSubmit">Normal</button>
-      </div>
-    </div>
-    <div class="col-lg-4"></div>
-  </div>
 
-
-  <div class="modal" id="changedLettersModal" tabindex="-1" role="dialog">
-    <div
-      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Changed Letters!</h5>
-          <button class="btn" data-bs-dismiss="modal">
-            <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
-          </button>
-        </div>
-        <div class="modal-body row">
-          <p class="centered">You have sucessfully changed the letters for the day for <b id="modeGame"></b> Scrambled!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    adminGameOverwrite();
-  </script>
-
-{% endif %}
 {% endblock %}
 

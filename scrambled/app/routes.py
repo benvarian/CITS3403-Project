@@ -57,9 +57,9 @@ def stats(username):
     avgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'speed').first()
     
     user = User.query.filter_by(username=username).first_or_404()
-
+   
     next_url = redirect(url_for('index'))
-
+   
     if avgSpeedScore[0] == None:
         avgSpeedScore = list(filter(None, avgSpeedScore))
         speedModeAverage = 0
@@ -83,7 +83,6 @@ def stats(username):
     form = EmptyForm()
     return render_template('statistics.html', next_url=next_url, stats=stats, averagegameScore=json.dumps(averagegameScore, indent=0, sort_keys=True, default=str), datesScore=json.dumps(scoresforNormal), datesofSubmissions=json.dumps(dates, indent=4, sort_keys=True, default=str), speedScores=json.dumps(scoresforSpeed, indent=4, sort_keys=True, default=str), user=user, 
     form=form,gamesPlayedNormal=gamesPlayedNormal,gamesPlayedSpeed=gamesPlayedSpeed,speedModeAverage=speedModeAverage,avgNormalScore=avgNormalScore)
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -279,17 +278,35 @@ def lettersSpeed():
     return lettersResponse
 
 
-@app.route("/submitscore/normal", methods=["GET"])
+@app.route("/submitscore/normal", methods=["POST"])
 def submitNormalScore():
     if current_user.is_authenticated:
         gameStat = json.loads(request.data)
+        user = str(current_user)
+        user = re.sub('User', '', user)
+        user = re.sub('<', '', user)
+        user = re.sub('>', '', user)
+        username = user.strip()
+        stats = Statistics(score=gameStat['score'], gameMode="normal", timeTaken=gameStat['timeTaken'], userId=username)
+        print(stats)
+        db.session.add(stats)
+        db.session.commit()
     return make_response('True', 200)
 
 
-@app.route("/submitscore/speed", methods=["POST"])
+@app.route("/submitscore/speed", methods=["POST", "GET"])
 def submitSpeedScore():
     if current_user.is_authenticated:
         gameStat = json.loads(request.data)
+        print(gameStat["speedScore"])
+        user = str(current_user)
+        user = re.sub('User', '', user)
+        user = re.sub('<', '', user)
+        user = re.sub('>', '', user)
+        username = user.strip()
+        stats = Statistics(score=gameStat['speedScore'], gameMode="speed", timeTaken="2:00", userId=username)
+        db.session.add(stats)
+        db.session.commit()
     return make_response('True', 200)
 
 
@@ -307,6 +324,6 @@ def changeLettersSpeed():
     response = make_response('True', 200)
     return response
 
-@app.route("/admin/<username>",methods=["GET","POST"])
-def admin(username):
-    return render_template('admin.html')
+@app.route("/admin", methods=["GET", "POST"])
+def admin():
+    return render_template("admin.html")

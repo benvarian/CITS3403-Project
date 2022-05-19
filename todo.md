@@ -7,6 +7,11 @@
 5. sameer - 2. make title look better, 3. make buttons centered, 4. add fonts, 5. on hover of letters to guess, change to J clicker, check validator against each of the websites
 6. RIGHT OUT RULES THAT ADMIN CAN FOLLOW
 
+fix the resest password 
+change route to gamechange 
+make sure only admin can access the admin page 
+
+
 TEST USERS WITh DATA
 username: shayan 
 password: shayan
