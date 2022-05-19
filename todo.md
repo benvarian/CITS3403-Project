@@ -8,6 +8,7 @@
 6. RIGHT OUT RULES THAT ADMIN CAN FOLLOW
 
 fix the resest password 
+
 change route to gamechange 
 make sure only admin can access the admin page 
 

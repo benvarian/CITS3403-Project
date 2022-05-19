@@ -324,6 +324,16 @@ def changeLettersSpeed():
     response = make_response('True', 200)
     return response
 
-@app.route("/admin", methods=["GET", "POST"])
+@app.route("/alter", methods=["GET", "POST"])
+@login_required
 def admin():
-    return render_template("admin.html")
+    if current_user.is_authenticated:
+        user = str(current_user)
+        user = re.sub('User', '', user)
+        user = re.sub('<', '', user)
+        user = re.sub('>', '', user)
+        username = user.strip()
+        if username == 'admin':
+            return render_template("admin.html")
+        else:
+            return redirect(url_for('index'))
