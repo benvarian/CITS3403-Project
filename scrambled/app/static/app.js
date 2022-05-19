@@ -1,56 +1,3 @@
-
-// function darkMode(theme) {
-//     const navBarColor = document.getElementById("navBar");
-//     const gearColor = document.getElementById("gearMode");
-//     const questionColor = document.getElementById("questionMode");
-//     const idcolorMode = document.getElementById("idMode");
-//     const xColor1 = document.getElementById("squareColor1");
-//     const xColor2 = document.getElementById("squareColor2");
-//     const xColor3 = document.getElementById("squareColor3");
-//     const xColor4 = document.getElementById("squareColor4");
-
-//     console.log(theme);
-//     if (theme == "light") {
-//         document.body.classList.toggle("dark-theme");
-//         navBarColor.classList.remove("bg-dark");
-//         navBarColor.classList.add("bg-light");
-//         gearColor.classList.remove("gear-dark");
-//         gearColor.classList.add("gear-light");
-//         questionColor.classList.remove("question-dark");
-//         questionColor.classList.add("question-light");
-//         idcolorMode.classList.remove("id-dark");
-//         idcolorMode.classList.add("id-light");
-//         xColor1.classList.remove("squareColor-dark");
-//         xColor2.classList.remove("squareColor-dark");
-//         xColor2.classList.add("squareColor-light");
-//         // xColor3.classList.remove("squareColor-dark");
-//         // xColor3.classList.add("squareColor-light");
-//         xColor4.classList.remove("squareColor-dark");
-//         xColor4.classList.add("squareColor-light");
-//         localStorage.setItem("theme", "light");
-//         console.log(localStorage.getItem("theme"));
-//     } 
-//     else if(theme == "dark") {
-//         navBarColor.classList.remove("bg-light");
-//         navBarColor.classList.add("bg-dark");
-//         gearColor.classList.remove("gear-light");
-//         gearColor.classList.add("gear-dark");
-//         questionColor.classList.remove("question-light");
-//         questionColor.classList.add("question-dark");
-//         idcolorMode.classList.remove("id-light");
-//         idcolorMode.classList.add("id-dark");
-//         xColor1.classList.remove("squareColor-light");
-//         xColor1.classList.add("squareColor-dark");
-//         xColor2.classList.remove("squareColor-light");
-//         xColor2.classList.add("squareColor-dark");
-//         xColor3.classList.remove("squareColor-light");
-//         xColor3.classList.add("squareColor-dark");
-//         xColor4.classList.remove("squareColor-light");
-//         xColor4.classList.add("squareColor-dark");
-//         localStorage.setItem("theme", "dark");
-//     }
-// }
-
 // Normal Scrambled Functionality 
 var rowNum;
 var colNum;
@@ -470,3 +417,147 @@ function getCookie(name) {
     return "";
 }
 
+// Dark Mode Support 
+function darkModeButton() {
+    var theme = localStorage.getItem("theme");
+    console.log(theme);
+    if(theme == "light") {
+        theme = "dark";
+        localStorage.setItem("theme", "dark");
+    }
+    else {
+        theme = "light";
+        localStorage.setItem("theme", "light");
+    }
+    darkMode(theme);
+}
+
+function darkMode(theme) {
+    const navBarColor = document.getElementById("navBar");
+    const gearColor = document.getElementById("gearMode");
+    const questionColor = document.getElementById("questionMode");
+    const idcolorMode = document.getElementById("idMode");
+    const xColor1 = document.getElementById("squareColor1");
+    const xColor2 = document.getElementById("squareColor2");
+
+    if (theme == "light") {
+        document.body.classList.toggle("dark-theme");
+        navBarColor.classList.remove("bg-dark");
+        navBarColor.classList.add("bg-light");
+        gearColor.classList.remove("gear-dark");
+        gearColor.classList.add("gear-light");
+        questionColor.classList.remove("question-dark");
+        questionColor.classList.add("question-light");
+        idcolorMode.classList.remove("id-dark");
+        idcolorMode.classList.add("id-light");
+        xColor1.classList.remove("squareColor-dark");
+        xColor2.classList.remove("squareColor-dark");
+        xColor2.classList.add("squareColor-light");
+    } 
+    else if(theme == "dark") {
+        document.body.classList.toggle("dark-theme");
+        navBarColor.classList.remove("bg-light");
+        navBarColor.classList.add("bg-dark");
+        gearColor.classList.remove("gear-light");
+        gearColor.classList.add("gear-dark");
+        questionColor.classList.remove("question-light");
+        questionColor.classList.add("question-dark");
+        idcolorMode.classList.remove("id-light");
+        idcolorMode.classList.add("id-dark");
+        xColor1.classList.remove("squareColor-light");
+        xColor1.classList.add("squareColor-dark");
+        xColor2.classList.remove("squareColor-light");
+        xColor2.classList.add("squareColor-dark");
+    }
+}
+
+// Admin Priveledges
+var adminCol;
+function adminGameOverwrite() {
+    alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
+                "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U",
+                "V", "W", "X", "Y", "Z"]
+    let alphabetCount = 0;
+    for(let i = 0; i < 6; i++) {
+        let row = document.createElement("tr");
+        for(let k = 0; k < 4; k++) {
+            let letter = document.createElement("td");
+            letter.innerText = alphabet[alphabetCount];
+            letter.addEventListener("click", function() {
+                adminClickLetter(letter);
+            })
+            letter.className = "letterAdmin";
+            row.appendChild(letter);
+            alphabetCount++;
+        }
+        document.getElementById("lettersAdmin").appendChild(row);
+    }
+    adminCol = 0;
+
+    let chosenLetterRow = document.getElementById("chosenLettersAdmin");
+    for(let j = 0; j < 7; j++) {
+        let chosenLetter = document.createElement("td");
+        chosenLetter.setAttribute("id", "A" + String(j));
+        chosenLetter.className = "choseLetterAdmin";
+        chosenLetterRow.append(chosenLetter);
+    }
+    document.getElementById("adminReset").addEventListener("click", adminResetLetters);
+    document.getElementById("adminNormalSubmit").addEventListener("click", function() {
+        adminSubmitLetters("normal");
+    });
+    document.getElementById("adminSpeedSubmit").addEventListener("click", function() {
+        adminSubmitLetters("speed");
+    });
+}
+
+function adminClickLetter(letter) {
+    if(adminCol <= 6) {
+        let chosenLetter = document.getElementById("A" + String(adminCol));
+        chosenLetter.innerText = letter.innerText;
+    }
+    adminCol++;
+}
+
+function adminResetLetters() {
+    for(let i = 0; i < adminCol; i++) {
+        let chosenLetter = document.getElementById("A" + String(i));
+        chosenLetter.innerText = "";
+    }
+    adminCol = 0;
+}
+
+function adminSubmitLetters(adminMode) {
+    let letters = [] 
+    for(let i=0; i < 7; i++) {
+        letters[i] = document.getElementById("A" + String(i)).innerText
+    }
+    let xhttp = new XMLHttpRequest();
+    let speedCookies = ["speedScore", "speedRowNum", "speedWords", "speedScore", "speedTimeLeft"];
+    let normalCookies = ["score", "rowNum", "timeTaken", "words", "score"];
+    xhttp.onreadystatechange = function() {
+        if(xhttp.readyState == 4 && xhttp.status==200) {
+            if(adminMode == "speed") {
+                for(let k = 0; k < speedCookies.length; k++) {
+                    createCookie(speedCookies[k], "");
+                    document.getElementById("modeGame").innerText = "Speed";
+                }
+            }
+            else {
+                for(let k = 0; k < normalCookies.length; k++) {
+                    createCookie(normalCookies[k], "");
+                    document.getElementById("modeGame").innerText = "Normal";
+                }   
+            }
+            var changedLettersModal = new bootstrap.Modal(
+                document.getElementById("changedLettersModal"),
+                {}
+              );
+              changedLettersModal.toggle();
+        }
+    };
+    obj = {'letters':letters};
+    submission = JSON.stringify(obj);
+    xhttp.open("POST", "http://127.0.0.1:5000/changeletters/" + adminMode)
+    xhttp.send(submission);
+    adminResetLetters();
+}

@@ -236,25 +236,31 @@ nav {
 .guessBox {
   height: 7vh;
   text-align: center;
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px var(--secondary-color);
 }
 
 .letter {
-  border: solid 2px black;
+  border: solid 2px var(--primary-color);
   text-align: center;
   height: 7vh;
 }
 
 .clickedLetter {
-  border: solid 2px black;
-  background-color: black;
-  color: white;
+  border: solid 2px var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   text-align: center;
   height: 7vh;
 }
 
 .buttonMargins {
   margin-top: 1vh;
+}
+
+.btn-dark {
+  background-color:var(--secondary-color) !important;
+  color:var(--primary-color) !important;
+
 }
 
 .title {
@@ -534,3 +540,34 @@ body {
 .toggleWrapper input.mobileToggle:checked + label:after {
   left: 24px;
 }
+
+#lettersAdmin {
+  height:50vh;
+  width:80%;
+  margin:auto;
+  table-layout:fixed;
+  border-collapse: separate;
+  border-spacing: 0.5vw;
+  text-align:center;
+
+}
+
+.letterAdmin {
+    height: 5vh;
+    text-align: center;
+}
+
+.chosenLettersAdmin {
+  border-collapse: separate;
+  border-spacing: 0.5vw;
+  width: 80%;
+  height: 7vh;
+  margin: auto;
+  table-layout: fixed;
+}
+
+.choseLetterAdmin {
+  height: 5vh;
+  text-align: center;
+  border-bottom: solid 2px var(--secondary-color);
+} 

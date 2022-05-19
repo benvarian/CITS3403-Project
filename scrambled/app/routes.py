@@ -1,5 +1,5 @@
 from audioop import avg
-from flask import render_template, flash, redirect, url_for, request, jsonify, Markup
+from flask import render_template, flash, redirect, url_for, request, jsonify, make_response
 from sqlalchemy import Numeric
 from app.models import Statistics
 from app import app, db
@@ -10,7 +10,7 @@ from app.models import User, Post
 from werkzeug.urls import url_parse
 import json
 from sqlalchemy.sql.expression import func
-from app.game import scrambledLetters, checkWordExists
+from app.game import scrambledLetters, checkWordExists, adminOverwrite
 import re
 from datetime import date
 
@@ -321,13 +321,29 @@ def lettersSpeed():
 
 
 @app.route("/submitscore/normal", methods=["GET"])
-def submitNormalScore(self):
-    json.loads(request.data)
-    return "hello"
+def submitNormalScore():
+    if current_user.is_authenticated:
+        gameStat = json.loads(request.data)
+    return make_response('True', 200)
 
 
 @app.route("/submitscore/speed", methods=["POST"])
 def submitSpeedScore():
-    gameStat = json.loads(request.data)
-    print(gameStat['speedScore'])
-    return "hello"
+    if current_user.is_authenticated:
+        gameStat = json.loads(request.data)
+    return make_response('True', 200)
+
+
+@app.route("/changeletters/normal", methods=["GET", "POST"])
+def changeLettersNormal():
+    letters = json.loads(request.data)['letters']
+    adminOverwrite(letters, "normal")
+    response = make_response('True', 200)
+    return response
+
+@app.route("/changeletters/speed", methods=["GET", "POST"])
+def changeLettersSpeed():
+    letters = json.loads(request.data)['letters']
+    adminOverwrite(letters, "speed")
+    response = make_response('True', 200)
+    return response
