@@ -1,60 +1,57 @@
-{% extends "base.html" %} 
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <div class="container-fluid">
   <div class="row gx-0">
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4 row gx-0 game-header">
-          <div class="col-6 border-right">
-              <h6 class="title"><b>Score</b></h6>
-              <h4 class="title" id="score"></h4>
-          </div>
-          <div class="col-6">
-              <h6 class="title"><b>Time Taken</b></h6>
-              <h4 class="title"><b id="minutes"></b><b>:</b><b id="seconds"></b></h4>
-          </div>
-          <hr>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4 row gx-0 game-header">
+      <div class="col-6 border-right">
+        <h6 class="title"><b>Score</b></h6>
+        <h4 class="title" id="score"></h4>
       </div>
-      <div class="col-lg-4"></div>
+      <div class="col-6">
+        <h6 class="title"><b>Time Taken</b></h6>
+        <h4 class="title"><b id="minutes"></b><b>:</b><b id="seconds"></b></h4>
+      </div>
+      <hr />
+    </div>
+    <div class="col-lg-4"></div>
   </div>
 </div>
 
 <div class="container-fluid">
   <div class="row gx-0">
-      <div class="col-lg-4"></div> 
-      <div class="col-lg-4">
-          <table class="submittedTable" id="submittedTable"> 
-          </table>
-          <table class="letterTable">
-            <tr id="guess"></tr>
-          </table>
-          <div class="container-fluid row gx-0">
-              <div class="col-3"></div>
-              <div class="col-2">
-                  <button class='btn btn-dark buttonMargins' id="submit">Submit</button>
-              </div>
-              <div class="col-2"></div>
-              <div class="col-2">
-                  <button class='btn btn-dark buttonMargins' id="reset">Reset</button>
-              </div>
-              <div class="col-3"></div>
-          </div>
-          <hr>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <table class="submittedTable" id="submittedTable"></table>
+      <table class="letterTable">
+        <tr id="guess"></tr>
+      </table>
+      <div class="container-fluid row gx-0">
+        <div class="col-3"></div>
+        <div class="col-2">
+          <button class="btn btn-dark buttonMargins" id="submit">Submit</button>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-2">
+          <button class="btn btn-dark buttonMargins" id="reset">Reset</button>
+        </div>
+        <div class="col-3"></div>
       </div>
-      <div class="col-lg-4"></div>
+      <hr />
+    </div>
+    <div class="col-lg-4"></div>
   </div>
 </div>
 <div class="container-fluid">
   <div class="row gx-0">
-      <h6 class="title">Letters</h6>
-      <div class="col-lg-4"></div>
-      <div class="col-lg-4">
-          <table class="letterTable">
-            <tr id="letterRow"></tr>
-          </table>
-      </div>
-      <div class="col-lg-4"></div>
+    <h6 class="title">Letters</h6>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <table class="letterTable">
+        <tr id="letterRow"></tr>
+      </table>
+    </div>
+    <div class="col-lg-4"></div>
   </div>
 </div>
 
@@ -67,26 +64,37 @@
       <div class="modal-header">
         <h5 class="modal-title">Congraulations!</h5>
         <button class="btn" data-bs-dismiss="modal">
-          <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
+          <span
+            class="bi bi-x-square squareColor-light"
+            id="squareColor2"
+          ></span>
         </button>
       </div>
       <div class="modal-body row">
-        <h4 class="title">You have completed your daily Normal Scrambled Game!</h4>
-        <h6 class="title">Your Score:</h6> 
-        <h4 class="title" id="finishedScore"></h4>
-        <br>
+        <h4 class="title">
+          You have completed your daily Normal Scrambled Game!
+        </h4>
+        <h6 class="title">Your Score:</h6>
+        <h3 class="title" id="finishedScore"></h3>
+        <br />
         <h6 class="title">Time Taken:</h6>
-        <h4 class='title' id="finishedTime"></h4>
-        <br>
-        <hr>
+        <h4 class="title" id="finishedTime"></h4>
+        <br />
+        <hr />
         <div class="col-6 border-right">
           <h6 class="title">Login to see statistics!</h6>
 
-          <button class="btn btn-dark" onclick="location.href='/speed'">Login!</button>
+          <div class="container" style="display: grid">
+            <button class="btn btn-primary" onclick="location.href='/speed'">
+              Login!
+            </button>
+          </div>
         </div>
         <div class="col-6">
-          <h6 class="title">Have you tried Speed Scrambled?</h6>
-          <button class="btn  btn-dark">Let's Play!</button>
+          <h6 class="title">Try Speed Scrambled!</h6>
+          <div class="container" style="display: grid;">
+            <button class="btn btn-primary">Let's Play!</button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,43 +1,39 @@
 {% extends "base.html" %} {% block app_content %}
-<head>
-  <title>Login</title>
-</head>
-<div class="container">
-  <div class="row gx-0">
-    <div class="col-lg-4" ></div>
-    <div class="col-lg-4">
-      <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Login to Scrambled!</h1>
-      <p class="centered">Login to see your statistics and compete with friends!</p>
-      <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        
-        <p>
-          {{ form.username.label }}<br />
-          {{ form.username(class_="form-control rounded-4") }}
-          {% for error in form.username.errors %}
-          <span style="color: red">[{{ error }}]</span>
-          {% endfor %}
-        </p>
-        <p>
-          {{ form.password.label }}<br />
-          {{ form.password(class_="form-control rounded-4") }}
-          {% for error in form.password.errors %}
-          <span style="color: red">[{{ error }}]</span>
-          {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit(class_="w-100 mb-2 btn btn-lg rounded-4 btn-primary") }}</p>
-      </form>
-      <p>
-        New User? <a href="{{ url_for('register') }}">Click to Register!</a>
-      </p>
-      <p>
-        Forgot Your Password?
-        <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
-      </p>
+  <main class="form-signin w-100 m-auto text-center">
+    <div class="container">
+      <div class="row gx-0">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+          <h3 class="h3 mb-3 fw-normal" style="text-align: center">
+            Login to see your statistics and compete with friends!
+          </h3>
+          
+          <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+              {{ form.username(class_="form-control rounded-4",placeholder_="Username")}} {% for error
+              in form.username.errors %}
+              <span style="color: red">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>
+              {{ form.password(class_="form-control rounded-4",placeholder_="Password") }} {% for error
+              in form.password.errors %}
+              <span style="color: red">[{{ error }}]</span>
+              {% endfor %}
+            </p>
+            <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+            <p>
+              {{ form.submit(class_="w-100 mb-2 btn btn-lg rounded-4 btn-primary") }}
+            </p>
+          </form>
+          <p>New User? <a href="{{ url_for('register') }}">Click to Register</a></p>
+          <p>Forgot Your Password? <a href="{{ url_for('reset_password_request') }}">Click to Reset</a></p>
+          <p class="mt-5 mb-3 text-muted">© 2022-2022</p>
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
     </div>
-    <div class="col-lg-4" ></div>
-  </div>
-</div>
-
+  </main>
+</body>
 {% endblock %}
