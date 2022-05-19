@@ -31,7 +31,12 @@ function initNormal() {
     colNum = 0;
     words = [];
     timeTaken = 0;
-    reloadPreviousGameState();
+    if(getCookie("overwriteNormal") != "True") {
+        reloadPreviousGameState();
+    }
+    else {
+        createCookie("overwriteNormal", "False");
+    }
     timer = startTimer(timeTaken);
     if(rowNum == 6) {
         finishedGame();   
@@ -50,7 +55,13 @@ function initSpeed() {
     speedColNum = 0;
     speedWords = [];
     speedTimeLeft = 120;
-    reloadPreviousGameState();
+    console.log(getCookie("overwriteSpeed"));
+    if(getCookie("overwriteSpeed") != "True") {
+        reloadPreviousGameState();
+    }
+    else {
+        createCookie("overwriteSpeed", "False");
+    }
     speedTimer = startTimer(speedTimeLeft);
     if(speedRowNum == 6 || speedTimeLeft <= 0) {
         finishedGame();
@@ -398,7 +409,8 @@ function createCookie(name, value) {
     var date = new Date();
     var midnight = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
     expires = "; expires=" + midnight.toGMTString();
-    document.cookie =  name + "=" + value + expires;
+    path = "; path='/'";
+    document.cookie =  name + "=" + value + expires + path;
 }
 
 // Gets the value of cookie with the specified name 
@@ -532,21 +544,13 @@ function adminSubmitLetters(adminMode) {
         letters[i] = document.getElementById("A" + String(i)).innerText
     }
     let xhttp = new XMLHttpRequest();
-    let speedCookies = ["speedScore", "speedRowNum", "speedWords", "speedScore", "speedTimeLeft"];
-    let normalCookies = ["score", "rowNum", "timeTaken", "words", "score"];
     xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status==200) {
             if(adminMode == "speed") {
-                for(let k = 0; k < speedCookies.length; k++) {
-                    createCookie(speedCookies[k], "");
-                    document.getElementById("modeGame").innerText = "Speed";
-                }
+                createCookie("overwriteSpeed", "True");
             }
             else {
-                for(let k = 0; k < normalCookies.length; k++) {
-                    createCookie(normalCookies[k], "");
-                    document.getElementById("modeGame").innerText = "Normal";
-                }   
+                createCookie("overwriteNormal", "True");
             }
             var changedLettersModal = new bootstrap.Modal(
                 document.getElementById("changedLettersModal"),
