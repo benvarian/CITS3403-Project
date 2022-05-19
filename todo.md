@@ -5,6 +5,7 @@
 3. lilburne - do his thang
 4. shanye - will fix the fucking function and make sure it works 
 5. sameer - 2. make title look better, 3. make buttons centered, 4. add fonts, 5. on hover of letters to guess, change to J clicker, check validator against each of the websites
+6. RIGHT OUT RULES THAT ADMIN CAN FOLLOW
 
 TEST USERS WITh DATA
 username: shayan 

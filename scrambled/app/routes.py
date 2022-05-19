@@ -40,88 +40,49 @@ def leaderboard():
 @login_required
 @app.route('/statistics/<username>', methods=['GET', 'POST'])
 def stats(username):
-    if username == 'admin':
-        stats = Statistics.query.filter_by(userId=username).order_by(Statistics.score).all()
-        averagegameScore = db.session.query(db.func.round(db.func.avg(Statistics.score)),0).outerjoin(User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).first()
-        scoresforNormalData = db.session.query(Statistics.score, Statistics.game_completed).outerjoin(User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "normal").all()
-        scoresforSpeedData = db.session.query(Statistics.score, Statistics.game_completed).outerjoin(User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "speed").all()
-        datesofSubmissions = db.session.query(Statistics.game_completed, Statistics.score).outerjoin(User, User.username == Statistics.userId).filter(Statistics.userId == username).order_by(Statistics.game_completed.asc()).limit(10).all()
-        gamesPlayedNormal = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='normal').count()
-        gamesPlayedSpeed = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='speed').count()
-        avgNormalScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'normal').first()
-        avgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'speed').first()
-        user = User.query.filter_by(username=username).first_or_404()
-        highestScoreToday = db.session.query(db.func.max(Statistics.score)).filter(Statistics.game_completed == date.today()).first()
+    stats = Statistics.query.filter_by(
+        userId=username).order_by(Statistics.score).all()
+    averagegameScore = db.session.query(db.func.round(db.func.avg(Statistics.score)),0).outerjoin(
+        User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).first()
+    scoresforNormalData = db.session.query(Statistics.score, Statistics.game_completed).outerjoin(
+        User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "normal").all()
+    scoresforSpeedData = db.session.query(Statistics.score, Statistics.game_completed).outerjoin(
+        User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "speed").all()
+    datesofSubmissions = db.session.query(Statistics.game_completed, Statistics.score).outerjoin(
+        User, User.username == Statistics.userId).filter(Statistics.userId == username).order_by(Statistics.game_completed.asc()).limit(10).all()
 
-        next_url = redirect(url_for('index'))
+    gamesPlayedNormal = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='normal').count()
+    gamesPlayedSpeed = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='speed').count()
+    avgNormalScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'normal').first()
+    avgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'speed').first()
     
-        if avgSpeedScore[0] == None:
-            avgSpeedScore = list(filter(None, avgSpeedScore))
-            speedModeAverage = 0
-        else:
-            speedModeAverage = int(avgSpeedScore[0])
-        if avgNormalScore[0] == None:
-            avgNormalScore = list(filter(None,avgNormalScore))
-            avgNormalScore = 0
-        else:
-            avgNormalScore = int(avgNormalScore[0])
-        
-        scoresforNormal = []
-        for amounts, _ in scoresforNormalData:
-            scoresforNormal.append(amounts)
-        scoresforSpeed = []
-        for amounts, _ in scoresforSpeedData:
-            scoresforSpeed.append(amounts)
-        dates = []
-        for amounts2, _ in datesofSubmissions:
-            dates.append(amounts2)
-        form = EmptyForm()
-        return render_template('statistics.html', next_url=next_url, stats=stats, averagegameScore=json.dumps(averagegameScore, indent=0, sort_keys=True, default=str), datesScore=json.dumps(scoresforNormal), datesofSubmissions=json.dumps(dates, indent=4, sort_keys=True, default=str), speedScores=json.dumps(scoresforSpeed, indent=4, sort_keys=True, default=str), user=user, 
-        form=form,gamesPlayedNormal=gamesPlayedNormal,gamesPlayedSpeed=gamesPlayedSpeed,speedModeAverage=speedModeAverage,avgNormalScore=avgNormalScore,highestScoreToday=highestScoreToday)
+    user = User.query.filter_by(username=username).first_or_404()
+
+    next_url = redirect(url_for('index'))
+
+    if avgSpeedScore[0] == None:
+        avgSpeedScore = list(filter(None, avgSpeedScore))
+        speedModeAverage = 0
     else:
-        stats = Statistics.query.filter_by(
-            userId=username).order_by(Statistics.score).all()
-        averagegameScore = db.session.query(db.func.round(db.func.avg(Statistics.score)),0).outerjoin(
-            User, User.username == Statistics.userId).group_by(Statistics.userId).filter(Statistics.userId == username).first()
-        scoresforNormalData = db.session.query(Statistics.score, Statistics.game_completed).outerjoin(
-            User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "normal").all()
-        scoresforSpeedData = db.session.query(Statistics.score, Statistics.game_completed).outerjoin(
-            User, User.username == Statistics.userId).filter(Statistics.userId == username).filter(Statistics.gameMode == "speed").all()
-        datesofSubmissions = db.session.query(Statistics.game_completed, Statistics.score).outerjoin(
-            User, User.username == Statistics.userId).filter(Statistics.userId == username).order_by(Statistics.game_completed.asc()).limit(10).all()
-
-        gamesPlayedNormal = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='normal').count()
-        gamesPlayedSpeed = Statistics.query.filter(Statistics.userId==username).filter(Statistics.gameMode=='speed').count()
-        avgNormalScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'normal').first()
-        avgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.userId==username).filter(Statistics.gameMode == 'speed').first()
-        
-        user = User.query.filter_by(username=username).first_or_404()
+        speedModeAverage = int(avgSpeedScore[0])
+    if avgNormalScore[0] == None:
+        avgNormalScore = list(filter(None,avgNormalScore))
+        avgNormalScore = 0
+    else:
+        avgNormalScore = int(avgNormalScore[0])
     
-        next_url = redirect(url_for('index'))
-    
-        if avgSpeedScore[0] == None:
-            avgSpeedScore = list(filter(None, avgSpeedScore))
-            speedModeAverage = 0
-        else:
-            speedModeAverage = int(avgSpeedScore[0])
-        if avgNormalScore[0] == None:
-            avgNormalScore = list(filter(None,avgNormalScore))
-            avgNormalScore = 0
-        else:
-            avgNormalScore = int(avgNormalScore[0])
-        
-        scoresforNormal = []
-        for amounts, _ in scoresforNormalData:
-            scoresforNormal.append(amounts)
-        scoresforSpeed = []
-        for amounts, _ in scoresforSpeedData:
-            scoresforSpeed.append(amounts)
-        dates = []
-        for amounts2, _ in datesofSubmissions:
-            dates.append(amounts2)
-        form = EmptyForm()
-        return render_template('statistics.html', next_url=next_url, stats=stats, averagegameScore=json.dumps(averagegameScore, indent=0, sort_keys=True, default=str), datesScore=json.dumps(scoresforNormal), datesofSubmissions=json.dumps(dates, indent=4, sort_keys=True, default=str), speedScores=json.dumps(scoresforSpeed, indent=4, sort_keys=True, default=str), user=user, 
-        form=form,gamesPlayedNormal=gamesPlayedNormal,gamesPlayedSpeed=gamesPlayedSpeed,speedModeAverage=speedModeAverage,avgNormalScore=avgNormalScore)
+    scoresforNormal = []
+    for amounts, _ in scoresforNormalData:
+        scoresforNormal.append(amounts)
+    scoresforSpeed = []
+    for amounts, _ in scoresforSpeedData:
+        scoresforSpeed.append(amounts)
+    dates = []
+    for amounts2, _ in datesofSubmissions:
+        dates.append(amounts2)
+    form = EmptyForm()
+    return render_template('statistics.html', next_url=next_url, stats=stats, averagegameScore=json.dumps(averagegameScore, indent=0, sort_keys=True, default=str), datesScore=json.dumps(scoresforNormal), datesofSubmissions=json.dumps(dates, indent=4, sort_keys=True, default=str), speedScores=json.dumps(scoresforSpeed, indent=4, sort_keys=True, default=str), user=user, 
+    form=form,gamesPlayedNormal=gamesPlayedNormal,gamesPlayedSpeed=gamesPlayedSpeed,speedModeAverage=speedModeAverage,avgNormalScore=avgNormalScore)
 
 
 
@@ -133,14 +94,12 @@ def login():
         user = re.sub('<', '', user)
         user = re.sub('>', '', user)
         username = user.strip()
-
         return redirect(url_for('stats', username=username))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            
             return redirect(url_for('index'))
         login_user(user, remember=form.remember_me.data)
 
@@ -347,3 +306,7 @@ def changeLettersSpeed():
     adminOverwrite(letters, "speed")
     response = make_response('True', 200)
     return response
+
+@app.route("/admin/<username>",methods=["GET","POST"])
+def admin(username):
+    return render_template('admin.html')

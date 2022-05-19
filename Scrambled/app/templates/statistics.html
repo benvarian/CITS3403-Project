@@ -1,49 +1,14 @@
 {% extends "base.html" %} {% block content %}
-<!-- <div id="fb-root"></div>
- <script
-  async
-  defer
-  crossorigin="anonymous"
-  src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v13.0"
-  nonce="COi510i3"
-></script> -->
-<!-- <div class="container-fluid row gx-0">
-  <div class="col-lg-4"></div>
-  <div class="col-lg-4">
-    <h4 class="title">Your Statistics for Scrambled!</h4>
-    <p class="centered"><b>Normal Scrambled</b></p>
-    <p class="centered">Games Played:</p>
-    <p class="centered">Number of game</p>
-    <p class="centered">Average Score:</p>
-    <p class="centered">Score</p>
-    <p class="centered">Average Time Taken</p>
-    <p class="centered">Time Taken</p>
-    <p class="centered"><b>Speed Scrambled</b></p>
-    <p class="centered">Games Played:</p>
-    <p class="centered">Number of game</p>
-    <p class="centered">Average Score</p>
-    <p class="centered">Score</p>
-    <hr />
-    <div class="share">
-      <p>Share with Friends</p>
-       <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
-      <div style="display: inline-flex;"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div> 
-    </div>
-  </div>
-  <div class="col-lg-4"></div>
-</div> -->
-{% if isAdmin %}
+
 <div class="row gx-0">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" style="text-align: center">
     <table class="table">
       <tr>
-        <td>
-
-          <p> Certified {{ highestScoreToday }} </p>
-          <p><a href="/logout">logout</a></p>
+        <td>      
           {% if user == current_user %}
           <h1>Hi {{ user.username }}!</h1>
+          <p><a href="/logout">logout</a></p>
           {% else %}
           <h1>Profile for: {{ user.username }}</h1>
           {% endif %}
@@ -122,57 +87,6 @@
     },
   });
 </script>
-{% else %}
-  <div class="container-fluid row gx-0">
-    <div class="col-lg-4 gx-0"></div>
-    <div class="col-lg-4 gx-0 row">
-      <h4 class="title">Admin game privileges</h4>
-      <h6 class="title">Click the letters you want for the day</h6>
-      <h6 class="title">Click the relevant submit button to change letters for the day</h6>
-      <table id="lettersAdmin">
-      </table>
-      <hr>
-      <h4 class="title">Letters</h4>
-      <table class="chosenLettersAdmin">
-        <tr id="chosenLettersAdmin"></tr>
-      </table>
-      <div class="col-4">
-        <button class="btn btn-dark buttonMargins" id="adminSpeedSubmit">Speed</button>
-      </div>
-      <div class="col-4">
-        <button class="btn btn-dark buttonMargins" id="adminReset">Reset</button>
-      </div>
-      <div class="col-4">
-          <button class="btn btn-dark buttonMargins" id="adminNormalSubmit">Normal</button>
-      </div>
-    </div>
-    <div class="col-lg-4"></div>
-  </div>
 
-
-  <div class="modal" id="changedLettersModal" tabindex="-1" role="dialog">
-    <div
-      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-      role="document"
-    >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Changed Letters!</h5>
-          <button class="btn" data-bs-dismiss="modal">
-            <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
-          </button>
-        </div>
-        <div class="modal-body row">
-          <p class="centered">You have sucessfully changed the letters for the day for <b id="modeGame"></b> Scrambled!</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    adminGameOverwrite();
-  </script>
-
-{% endif %}
 {% endblock %}
 
