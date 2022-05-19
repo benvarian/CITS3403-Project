@@ -32,85 +32,137 @@
   </div>
   <div class="col-lg-4"></div>
 </div> -->
-
+{% if isAdmin %}
 <div class="row gx-0">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" style="text-align: center">
-    <table class="table">
-      <tr>
-        <td>
-          <h1>Hi {{ user.username }}!</h1>
-          {% if user.about_me %}<p>About you: {{ user.about_me }}</p>{% endif %}
-          <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
-          {% if user == current_user %}
-          <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
-          {% elif not current_user.is_following(user) %}
-          <p>
-              <form action="{{ url_for('follow', username=user.username) }}" method="post">
-                  {{ form.hidden_tag() }}
-                  {{ form.submit(value='Follow', class_='btn btn-primary') }}
-              </form>
-          </p>
-          {% else %}
-          <p>
-              <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
-                  {{ form.hidden_tag() }}
-                  {{ form.submit(value='Unfollow',class_='btn btn-primary') }}
-              </form>
-          </p>
-          {% endif %}
-      </td>
-    </tr>
-    </table>
-    <h6>WILL DELTE RIGHT BEN: {{ averagegameScore }}</h6>
-    <h6>Games of Normal Scrambled Played: {{ gamesPlayedNormal }} </h6>
-    <h6>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </h6>
-    <h6>Average Score for Normal Mode: {{ avgNormalScore }} </h6>
-    <h6>Average Score for Speed Mode: {{ avgSpeedScore }} </h6>
-    <canvas id="myChart" width="200" height="200"></canvas>
+      <table class="table">
+        <tr>
+          <td>
+            <h1>Hi {{ user.username }}!</h1>
+            {% if user.about_me %}<p>About you: {{ user.about_me }}</p>{% endif %}
+            <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
+            {% if user == current_user %}
+            <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+            {% elif not current_user.is_following(user) %}
+            <p>
+                <form action="{{ url_for('follow', username=user.username) }}" method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(value='Follow', class_='btn btn-primary') }}
+                </form>
+            </p>
+            {% else %}
+            <p>
+                <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                    {{ form.hidden_tag() }}
+                    {{ form.submit(value='Unfollow',class_='btn btn-primary') }}
+                </form>
+            </p>
+            {% endif %}
+        </td>
+      </tr>
+      </table>
+      <h6>WILL DELTE RIGHT BEN: {{ averagegameScore }}</h6>
+      <h6>Games of Normal Scrambled Played: {{ gamesPlayedNormal }} </h6>
+      <h6>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </h6>
+      <h6>Average Score for Normal Mode: {{ avgNormalScore }} </h6>
+      <h6>Average Score for Speed Mode: {{ avgSpeedScore }} </h6>
+      <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  <div class="col-sm-2"></div>
-</div>
 
-<script>
-  let scoreofgameNormal = JSON.parse({{ datesScore | tojson }});
-  let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }})
-  let dates = JSON.parse({{ datesofSubmissions | tojson }})
-  let average = JSON.parse({{ averagegameScore | tojson }})
-  const ctx = document.getElementById("myChart").getContext("2d");
-  const myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: dates,
-      datasets: [
-        {
-          label: "Normal Mode",
-          data: scoreofgameNormal,
-          backgroundColor: '#3380ff',
-          borderColor:'#3380ff',
-          borderWidth: 2,
-          tension: 0,
+  <script>
+    let scoreofgameNormal = JSON.parse({{ datesScore | tojson }});
+    let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }})
+    let dates = JSON.parse({{ datesofSubmissions | tojson }})
+    let average = JSON.parse({{ averagegameScore | tojson }})
+    const ctx = document.getElementById("myChart").getContext("2d");
+    const myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: dates,
+        datasets: [
+          {
+            label: "Normal Scrambled",
+            data: scoreofgameNormal,
+            backgroundColor: '#3380ff',
+            borderColor:'#3380ff',
+            borderWidth: 2,
+            tension: 0,
 
-        },
-        {label: 'Speed Mode',
-          data: scoreofgameSpeed,
-          backgroundColor: '#da0037',
-          borderColor: '#da0037',
-          borderWidth: 2,
-          tension: 0
-        },
-      ],
-    },
-    options: {
-      scales: {
-        x: {
-          beginAtZero: true
-        },
-        y: {
-          suggestedMin: 250
+          },
+          {label: 'Speed Scrambled',
+            data: scoreofgameSpeed,
+            backgroundColor: '#da0037',
+            borderColor: '#da0037',
+            borderWidth: 2,
+            tension: 0
+          },
+        ],
+      },
+      options: {
+        scales: {
+          x: {
+            beginAtZero: true
+          },
+          y: {
+            suggestedMin: 250
+          },
         },
       },
-    },
-  });
-</script>
+    });
+  </script>
+{% else %}
+  <div class="container-fluid row gx-0">
+    <div class="col-lg-4 gx-0"></div>
+    <div class="col-lg-4 gx-0 row">
+      <h4 class="title">Admin game privileges</h4>
+      <h6 class="title">Click the letters you want for the day</h6>
+      <h6 class="title">Click the relevant submit button to change letters for the day</h6>
+      <table id="lettersAdmin">
+      </table>
+      <hr>
+      <h4 class="title">Letters</h4>
+      <table class="chosenLettersAdmin">
+        <tr id="chosenLettersAdmin"></tr>
+      </table>
+      <div class="col-4">
+        <button class="btn btn-dark buttonMargins" id="adminSpeedSubmit">Speed</button>
+      </div>
+      <div class="col-4">
+        <button class="btn btn-dark buttonMargins" id="adminReset">Reset</button>
+      </div>
+      <div class="col-4">
+          <button class="btn btn-dark buttonMargins" id="adminNormalSubmit">Normal</button>
+      </div>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+
+
+  <div class="modal" id="changedLettersModal" tabindex="-1" role="dialog">
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+      role="document"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Changed Letters!</h5>
+          <button class="btn" data-bs-dismiss="modal">
+            <span class="bi bi-x-square squareColor-light" id="squareColor2"></span>
+          </button>
+        </div>
+        <div class="modal-body row">
+          <p class="centered">You have sucessfully changed the letters for the day for <b id="modeGame"></b> Scrambled!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    adminGameOverwrite();
+  </script>
+
+{% endif %}
 {% endblock %}

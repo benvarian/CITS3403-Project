@@ -108,3 +108,17 @@ def checkWordExists(word):
     if wordLower in myData:
         return True
     return False
+
+def adminOverwrite(letters, mode):
+    alphabet = {"A":1, "E":1, "I":1, "O":1, "U":1,"F":4, "J":8, "K":5,
+     "Q":10, "V":4, "X":8, "Z":10, "B":3, "C":3, "D":2, "G":2,"L":1,
+      "H":4, "M":3, "N":1, "P":3, "R":1, "S":1, "T":1, "Y":4, "W":4}
+    if mode == "normal": 
+        f = open("./app/game/nletters.txt", "w")
+    else:
+        f = open("./app/game/sletters.txt", "w")
+    for letter in letters:
+        f.write(letter + " " + str(alphabet[letter])+"\n")
+    f.close()
+            
+
