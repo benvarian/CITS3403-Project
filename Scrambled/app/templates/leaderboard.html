@@ -5,22 +5,41 @@
 <div class="container-fluid">
   <div class="row gx-0">
     <div class="col-sm-2"></div>
-    <div class="col-sm-8" style="text-align: center;">
+    <div class="col-sm-8" style="text-align: center">
       <h1>Top 10 Scores</h1>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <input
+            type="username"
+            class="form-control"
+            id="username_search"
+            placeholder="username"
+          />
+        </div>
+        <div class="col-md-6">
+          <buttton class="btn btn-primary" type="submit" id="search_stats_user"
+            >Search</buttton
+          >
+        </div>
+      </div>
       <table class="table">
         <thead>
           <tr>
             <th>Score</th>
             <th>Name</th>
             <th>Time Taken</th>
-            
           </tr>
         </thead>
         <tbody>
           {% for statistic in stats %}
           <tr>
             <td>{{ statistic.score }}</td>
-            <td>{{ statistic.userId }}</td>
+            <td
+              onclick="location.href='statistics/{{statistic.userId}}'"
+              style="cursor: pointer"
+            >
+              {{ statistic.userId }}
+            </td>
             <td>{{ statistic.timeTaken }}</td>
           </tr>
           {% endfor %}
@@ -30,5 +49,12 @@
     <div class="col-sm-2"></div>
   </div>
 </div>
-
+<script>
+  let searchUser = document.getElementById("search_stats_user");
+  searchUser.addEventListener("click", () => {
+    searchfor = document.getElementById("username_search").value;
+    console.log(searchfor);
+    window.location = 'statistics/' + searchfor;
+  });
+</script>
 {% endblock %}

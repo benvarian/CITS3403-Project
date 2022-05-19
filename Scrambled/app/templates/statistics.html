@@ -39,7 +39,11 @@
     <table class="table">
       <tr>
         <td>
+          {% if user == current_user %}
           <h1>Hi {{ user.username }}!</h1>
+          {% else %}
+          <h1>Profile for: {{ user.username }}</h1>
+          {% endif %}
           {% if user.about_me %}<p>About you: {{ user.about_me }}</p>{% endif %}
           <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
           {% if user == current_user %}
@@ -62,11 +66,11 @@
       </td>
     </tr>
     </table>
-    <h6>WILL DELTE RIGHT BEN: {{ averagegameScore }}</h6>
     <h6>Games of Normal Scrambled Played: {{ gamesPlayedNormal }} </h6>
     <h6>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </h6>
     <h6>Average Score for Normal Mode: {{ avgNormalScore }} </h6>
-    <h6>Average Score for Speed Mode: {{ avgSpeedScore }} </h6>
+    <h6>Average Score for Speed Mode: {{ speedModeAverage }} </h6>
+    <p><a href="{{ url_for('leaderboard') }}">Leaderboard</a></p>
     <canvas id="myChart" width="200" height="200"></canvas>
   </div>
   <div class="col-sm-2"></div>
@@ -74,9 +78,11 @@
 
 <script>
   let scoreofgameNormal = JSON.parse({{ datesScore | tojson }});
-  let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }})
-  let dates = JSON.parse({{ datesofSubmissions | tojson }})
-  let average = JSON.parse({{ averagegameScore | tojson }})
+  let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }});
+  let dates = JSON.parse({{ datesofSubmissions | tojson }});
+  let average = JSON.parse({{ averagegameScore | tojson }});
+
+
   const ctx = document.getElementById("myChart").getContext("2d");
   const myChart = new Chart(ctx, {
     type: "line",
