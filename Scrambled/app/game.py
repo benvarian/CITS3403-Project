@@ -103,6 +103,8 @@ def letterstoUse():
 def checkWordExists(word):
     filename = '../Scrambled/words_file.csv'
     wordLower = word.lower()
+    if len(word) < 3:
+        return False
     data = pandas.read_csv(filename, header=0)
     myData = list(data.values)
     if wordLower in myData:
