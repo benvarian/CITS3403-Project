@@ -489,7 +489,7 @@ function darkMode(theme) {
 var adminCol;
 function adminGameOverwrite() {
     alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",
-                "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U",
+                "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
                 "V", "W", "X", "Y", "Z"]
     let alphabetCount = 0;
     for(let i = 0; i < 6; i++) {
@@ -506,6 +506,8 @@ function adminGameOverwrite() {
         }
         document.getElementById("lettersAdmin").appendChild(row);
     }
+    let finalRow = document.createElement("tr");
+    
     adminCol = 0;
 
     let chosenLetterRow = document.getElementById("chosenLettersAdmin");
