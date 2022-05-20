@@ -1,0 +1,18 @@
+1) Becomes a scroll for smaller screen (up/ down)
+2) 'Login to compete with friends' could have a border colour
+3) Welcome page looks meh
+4) Can still do duplicates
+5) Three letter rule works now but maybe make wrong word message more general to include duplicates and too short requirements
+6) Words could be centred in the ouput (eh) could also do numbers (1. 2. 3.)
+7) About you: for admin needs to change words
+8) Scrambled gameplay modal could be written better
+9) Could have oops modal with different colour
+10) The x for oops modal in dark mode is black (same with congrats modal)
+11) Idk about the blue in dark mode for game modes in the conograts modal
+12) Gridlines for graph in dark mode are black
+13) Blue button for dark mode in leaderboard page too
+14) Text color needs changing for dark mode register page
+15) Sign up worked but when logged in as diff user still have words filled in from when signed in as admin
+16) Couldn't test changing letters as admin (didn't know how to access it)
+17) After game is finished if you submit a wrong word the modal still pops up (works correctly for word is right, it won't actually submit)
+18) Games played/ average is either a lie or the graph doesn't show full game history
