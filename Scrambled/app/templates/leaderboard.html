@@ -1,27 +1,9 @@
 {% extends "base.html" %} {% block content %}
-<head>
-  <title>Leaderboard</title>
-</head>
 <div class="container-fluid">
   <div class="row gx-0">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8" style="text-align: center">
-      <h1>Top 10 Scores</h1>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <input
-            type="username"
-            class="form-control"
-            id="username_search"
-            placeholder="username"
-          />
-        </div>
-        <div class="col-md-6">
-          <buttton class="btn btn-primary" type="submit" id="search_stats_user"
-            >Search</buttton
-          >
-        </div>
-      </div>
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4" style="text-align: center">
+      <h4>Friend's Leaderboard</h4>
       <table class="table">
         <thead>
           <tr>
@@ -45,6 +27,23 @@
           {% endfor %}
         </tbody>
       </table>
+      <hr>
+      <h6>Find Friends!</h6>
+      <div class="row g-3">
+        <div class="col-md-9">
+          <input
+            type="username"
+            class="form-control"
+            id="username_search"
+            placeholder="username"
+          />
+        </div>
+        <div class="col-md-3">
+          <buttton class="btn btn-primary" type="submit" id="search_stats_user"
+            >Search</buttton
+          >
+        </div>
+      </div>
     </div>
     <div class="col-sm-2"></div>
   </div>

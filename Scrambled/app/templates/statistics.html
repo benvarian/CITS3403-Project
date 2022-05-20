@@ -1,46 +1,55 @@
 {% extends "base.html" %} {% block content %}
 <div class="row gx-0">
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8" style="text-align: center">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4" style="text-align: center">
     <table class="table">
       <tr>
         <td>
           {% if user == current_user %}
-          <h1>Hi {{ user.username }}!</h1>
-          <p><a href="/logout">logout</a></p>
+          <h4>Hi {{ user.username }}!</h4>
           {% else %}
-          <h1>Profile for: {{ user.username }}</h1>
+          <h4>{{ user.username }}'s Profile</h4>
           {% endif %}
           {% if user.about_me %}<p>About you: {{ user.about_me }}</p>{% endif %}
-          <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
           {% if user == current_user %}
+
           <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+          <p><a href="/logout">Logout</a></p>
           {% elif not current_user.is_following(user) %}
           <p>
               <form action="{{ url_for('follow', username=user.username) }}" method="post">
                   {{ form.hidden_tag() }}
-                  {{ form.submit(value='Follow', class_='btn btn-primary') }}
+                  {{ form.submit(value='Friend!', class_='btn btn-primary') }}
               </form>
-          </p>
+            </p>
+            <p class="centered"><a href="{{ url_for('leaderboard') }}">Return to Leaderboard</a></p>
+            <p class="centered"><a href="/login">Return to your profile</a></p>
+              
           {% else %}
           <p>
               <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
                   {{ form.hidden_tag() }}
-                  {{ form.submit(value='Unfollow',class_='btn btn-primary') }}
+                  {{ form.submit(value='Unfriend',class_='btn btn-primary') }}
               </form>
           </p>
+          <p class="centered"><a href="{{ url_for('leaderboard') }}">Return to Leaderboard</a></p>
+          <p class="centered"><a href="/login">Return to your profile</a></p>
           {% endif %}
       </td>
     </tr>
     </table>
-    <h6>Games of Normal Scrambled Played: {{ gamesPlayedNormal }} </h6>
-    <h6>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </h6>
-    <h6>Average Score for Normal Mode: {{ avgNormalScore }} </h6>
-    <h6>Average Score for Speed Mode: {{ speedModeAverage }} </h6>
-    <p><a href="{{ url_for('leaderboard') }}">Leaderboard</a></p>
-    <canvas id="myChart" width="200" height="200"></canvas>
+    <h6>Normal Scrambled Statistics</h6>
+    <p>Games of Normal Scrambled Played: {{ gamesPlayedNormal }} </p>
+    <p>Average Score for Normal Mode: {{ avgNormalScore }} </p> <br>
+    <h6>Speed Scrambled Statistics</h6>
+    <p>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </p>
+    <p>Average Score for Speed Mode: {{ speedModeAverage }} </p>
+    {% if user == current_user %}
+    <p><a href="{{ url_for('leaderboard') }}">Compete with friends on the Scrambled Leaderboard!</a></p>
+    {% endif %}
+    <canvas id="myChart" width="50" height="50"></canvas>
   </div>
-  <div class="col-sm-2"></div>
+  <div class="col-lg-4"></div>
 </div>
 
 <script>
@@ -80,7 +89,7 @@
           beginAtZero: true
         },
         y: {
-          suggestedMin: 250
+          suggestedMin: 0
         },
       },
     },

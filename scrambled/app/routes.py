@@ -99,10 +99,9 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect(url_for('index'))
+            return redirect(url_for("login"))
         login_user(user, remember=form.remember_me.data)
-
-        return redirect(url_for('index'))
+        return redirect(url_for('stats', username=user.username))
     return render_template('login.html', title='Sign In', form=form)
 
 
@@ -298,7 +297,6 @@ def submitNormalScore():
 def submitSpeedScore():
     if current_user.is_authenticated:
         gameStat = json.loads(request.data)
-        print(gameStat["speedScore"])
         user = str(current_user)
         user = re.sub('User', '', user)
         user = re.sub('<', '', user)
@@ -337,3 +335,5 @@ def admin():
             return render_template("admin.html")
         else:
             return redirect(url_for('index'))
+    else:
+        return redirect(url_for('index'))

@@ -95,11 +95,6 @@ nav {
   height: 7vh;
 }
 
-p i {
-  float: right;
-  position: relative;
-}
-
 .buttonMargins {
   margin-top: 1vh;
 }
@@ -201,6 +196,10 @@ p > b {
 
 nav {
   margin-bottom: 1vw;
+}
+
+a {
+  color:var(--secondary-color) !important;
 }
 
 .border-right {
