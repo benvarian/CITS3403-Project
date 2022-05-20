@@ -14,8 +14,6 @@
                 <h4 class="title"><b id="minutes"></b><b>:</b><b id="seconds"></b></h4>
             </div>
             <hr>
-            <h6 class="centered">Speed Scrambled</h6>
-            <p class="centered"><b>The clock is ticking...</b></p>
         </div>
         <div class="col-lg-4"></div>
     </div>
@@ -78,15 +76,21 @@
           <h6 class="title">Your Score:</h6> 
           <h4 class="title" id="finishedScore"></h4>
           <br>
-          <a href="/login">Login to see statistics and compete with friends!</a>
           <hr>
           <div class="col-6 border-right">
-            <h6 class="title">Time Until Next Scrambled!</h6>
-            <h4 class="title">Time</h4>
+              <h6 class="title">Login to see statistics!</h6>
+
+            <div class="container" style="display: grid">
+              <button class="btn btn-primary" onclick="location.href='/login'">
+                Login!
+              </button>
+            </div>
           </div>
           <div class="col-6">
-            <h6 class="title">Play Normal Scrambled!</h6>
-            <button class="title btn">Let's Play!</button>
+            <h6 class="title">Try Normal Scrambled!</h6>
+            <div class="container" style="display: grid;">
+              <button class="btn btn-primary" onclick="location.href='/index'">Let's Play!</button>
+            </div>
           </div>
         </div>
       </div>
