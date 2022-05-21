@@ -240,6 +240,9 @@ a {
 
 .letter {
   border: solid 2px var(--primary-color);
+  background-color:#0d6efd;
+  border-radius:1vh;
+  color:white;
   text-align: center;
   height: 7vh;
 }
@@ -247,6 +250,7 @@ a {
 .clickedLetter {
   border: solid 2px var(--secondary-color);
   background-color: var(--secondary-color);
+  border-radius:1vh;
   color: var(--primary-color);
   text-align: center;
   height: 7vh;

@@ -4,18 +4,22 @@ from datetime import date
 from datetime import datetime
 import pandas
 
+def writeLetters(mode):
+    if mode == "speed":
+        f = open("./app/game/sletters.txt", "w")
+    else:
+        f = open("./app/game/nletters.txt", "w")
+    letters = letterstoUse()
+    for letter in letters:
+        f.write(letter[0] + " " + str(letter[1])+"\n")
+    f.close()
+    return letters
+
 def scrambledLetters(mode):
     try:
         if checkTime(mode):
-            if mode == "speed":
-                f = open("./app/game/sletters.txt", "w")
-            else:
-                f = open("./app/game/nletters.txt", "w")
-            letters = letterstoUse()
-            for letter in letters:
-                f.write(letter[0] + " " + str(letter[1])+"\n")
-            f.close()
-            return [letters, checkOverwrite(mode)]
+            letters = writeLetters(mode)
+            return [letters, False]
         else:
             if mode == "speed":
                 f = open("./app/game/sletters.txt", "r")
@@ -29,15 +33,8 @@ def scrambledLetters(mode):
             f.close()
             return [letters, checkOverwrite(mode)]
     except:
-        if mode == "speed":
-            f = open("./app/game/sletters.txt", "w")
-        else:
-            f = open("./app/game/nletters.txt", "w")
-        letters = letterstoUse()
-        for letter in letters:
-            f.write(letter[0] + " " + str(letter[1])+"\n")
-        f.close()
-        return [letters, checkOverwrite(mode)]
+        letters = writeLetters(mode)
+        return [letters, True]
 
 def checkTime(mode):
     pathname = "./app/game/last_update"
@@ -58,7 +55,8 @@ def checkTime(mode):
             f_write.write(new_date_string)
             f_write.close()
             return True
-        return False
+        else:
+            return False
     except: 
         f = open(pathname, 'w')
         new_date = date.today()
@@ -103,8 +101,6 @@ def letterstoUse():
 def checkWordExists(word):
     filename = '../Scrambled/words_file.csv'
     wordLower = word.lower()
-    if len(word) < 3:
-        return False
     data = pandas.read_csv(filename, header=0)
     myData = list(data.values)
     if wordLower in myData:
@@ -135,6 +131,7 @@ def checkOverwrite(mode):
             f = open("./app/game/noverwrite.txt", "r")
         overwriteCheck = f.read()
         f.close()
+        print(overwriteCheck)
         if overwriteCheck == "True": 
             if mode == "speed":
                 f_write = open("./app/game/soverwrite.txt", "w")

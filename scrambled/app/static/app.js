@@ -41,6 +41,7 @@ function initNormal() {
 
 // Initialises speed mode
 function initSpeed() {
+    document.getElementById("title").innerText = "Speed Scrambled"
     mode = "speed";
     document.getElementById("gameMode").setAttribute("href", "/index");
     createSubmitTable();
@@ -125,7 +126,7 @@ function createSubmitTable() {
 }
 
 // Get letters for the day and creates letter array and guess array
-function createWordAndGuessTable(letters, overwrite) {
+function createWordAndGuessTable(letters) {
     for(let k = 0; k < 7; k++) {
         let letter = document.createElement("td");
         letter.innerHTML = letters[k][0] + "<sub>" + letters[k][1] + "</sub>";
@@ -152,8 +153,8 @@ function getLettersAndScores() {
         if(this.readyState == 4 && this.status == 200) {
             let result = JSON.parse(this.responseText);
             createWordAndGuessTable(result.letters);
-            console.log(result.overwrite);
-            cookieOverwrite(result.overwrite);
+            overwrite = result.overwrite;
+            cookieOverwrite(overwrite);
         }
     }
     if(mode == "speed") {
@@ -167,19 +168,20 @@ function getLettersAndScores() {
 
 // Resets cookies for overwrite of letters
 function cookieOverwrite(overwrite) {
-    if(overwrite == true) {
-        let cookieList = []
+    if(overwrite) {
+        let cookieList = [];
         if(mode == "speed") {
             speedCookies = ['speedRowNum', 'speedWords', 'speedScore', 'speedTimeLeft'];
             cookieList = speedCookies;
         }
         else {
             normalCookies = ['rowNum', 'words', 'score', 'timeTaken'];
-            cookieList = normalCookies
+            cookieList = normalCookies;
         }
         for(let i = 0; i < cookieList.length; i++) {
-            createCookie(cookieList[i], "");
+            createCookie(cookieList[i], "");       
         }
+        document.location.reload(true);
     }
 }
 
@@ -271,7 +273,7 @@ function checkWord() {
         xhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 outcome = (JSON.parse(this.responseText)).outcome;
-                checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord);
+                checkedWordResponse(outcome, columns, rows, scoreIncrease, cookieWord);
             }
         }
         xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
@@ -279,7 +281,7 @@ function checkWord() {
     }
 }
 
-function checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord) {
+function checkedWordResponse(outcome, columns, rows, scoreIncrease, cookieWord) {
     if(outcome) {
         for(let k = 0; k < columns; k++) {
             let guessBoxID =  "G" + k;
@@ -319,6 +321,7 @@ function checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookie
             {}
           );
         wrongWord.toggle();
+        resetWord();
     }
 }
 
@@ -453,7 +456,6 @@ function getCookie(name) {
 // Dark Mode Support 
 function darkModeButton() {
     var theme = localStorage.getItem("theme");
-    console.log(theme);
     if(theme == "light") {
         theme = "dark";
         localStorage.setItem("theme", "dark");
@@ -571,10 +573,10 @@ function adminSubmitLetters(adminMode) {
     xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status==200) {
             if(adminMode == "speed") {
-                createCookie("overwriteSpeed", "True");
+                document.getElementById("modeGame").innerText = "Speed";
             }
             else {
-                createCookie("overwriteNormal", "True");
+                document.getElementById("modeGame").innerText = "Normal";
             }
             var changedLettersModal = new bootstrap.Modal(
                 document.getElementById("changedLettersModal"),
