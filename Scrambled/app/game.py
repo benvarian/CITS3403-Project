@@ -15,7 +15,7 @@ def scrambledLetters(mode):
             for letter in letters:
                 f.write(letter[0] + " " + str(letter[1])+"\n")
             f.close()
-            return letters
+            return [letters, checkOverwrite(mode)]
         else:
             if mode == "speed":
                 f = open("./app/game/sletters.txt", "r")
@@ -27,7 +27,7 @@ def scrambledLetters(mode):
                 line = line.strip('\n')
                 letters.append((line.split(" ")))
             f.close()
-            return letters
+            return [letters, checkOverwrite(mode)]
     except:
         if mode == "speed":
             f = open("./app/game/sletters.txt", "w")
@@ -37,7 +37,7 @@ def scrambledLetters(mode):
         for letter in letters:
             f.write(letter[0] + " " + str(letter[1])+"\n")
         f.close()
-        return letters
+        return [letters, checkOverwrite(mode)]
 
 def checkTime(mode):
     pathname = "./app/game/last_update"
@@ -117,8 +117,34 @@ def adminOverwrite(letters, mode):
       "H":4, "M":3, "N":1, "P":3, "R":1, "S":1, "T":1, "Y":4, "W":4}
     if mode == "normal": 
         f = open("./app/game/nletters.txt", "w")
+        f_overwrite = open("./app/game/noverwrite.txt", "w")
     else:
         f = open("./app/game/sletters.txt", "w")
+        f_overwrite = open("./app/game/soverwrite.txt", "w")
     for letter in letters:
         f.write(letter + " " + str(alphabet[letter])+"\n")
+    f_overwrite.write("True")
+    f_overwrite.close()
     f.close()
+
+def checkOverwrite(mode):
+    try:
+        if mode == "speed":
+            f = open("./app/game/soverwrite.txt", "r")
+        else:
+            f = open("./app/game/noverwrite.txt", "r")
+        overwriteCheck = f.read()
+        f.close()
+        if overwriteCheck == "True": 
+            print("IM SO CONFUSED")
+            # if mode == "speed":
+            #     f_write = open("./app/game/soverwrite.txt", "w")
+            # else:
+            #     f_write = open("./app/game/noverwrite.txt", "w")
+            # f_write.write()
+            # f_write.close()
+            return True
+        else:
+            return False
+    except:
+        return False

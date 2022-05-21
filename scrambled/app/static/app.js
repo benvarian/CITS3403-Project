@@ -31,12 +31,7 @@ function initNormal() {
     colNum = 0;
     words = [];
     timeTaken = 0;
-    if(getCookie("overwriteNormal") != "True") {
-        reloadPreviousGameState();
-    }
-    else {
-        createCookie("overwriteNormal", "False");
-    }
+    reloadPreviousGameState();
     timer = startTimer(timeTaken);
     if(rowNum == 6) {
         finishedGame();   
@@ -56,13 +51,7 @@ function initSpeed() {
     speedColNum = 0;
     speedWords = [];
     speedTimeLeft = 120;
-    console.log(getCookie("overwriteSpeed"));
-    if(getCookie("overwriteSpeed") != "True") {
-        reloadPreviousGameState();
-    }
-    else {
-        createCookie("overwriteSpeed", "False");
-    }
+    reloadPreviousGameState();
     speedTimer = startTimer(speedTimeLeft);
     if(speedRowNum == 6 || speedTimeLeft <= 0) {
         finishedGame();
@@ -136,7 +125,7 @@ function createSubmitTable() {
 }
 
 // Get letters for the day and creates letter array and guess array
-function createWordAndGuessTable(letters) {
+function createWordAndGuessTable(letters, overwrite) {
     for(let k = 0; k < 7; k++) {
         let letter = document.createElement("td");
         letter.innerHTML = letters[k][0] + "<sub>" + letters[k][1] + "</sub>";
@@ -163,6 +152,7 @@ function getLettersAndScores() {
         if(this.readyState == 4 && this.status == 200) {
             let result = JSON.parse(this.responseText);
             createWordAndGuessTable(result.letters);
+            cookieOverwrite(result.overwrite);
         }
     }
     if(mode == "speed") {
@@ -172,6 +162,24 @@ function getLettersAndScores() {
         xhhtp.open("GET", "http://127.0.0.1:5000/letters/normal");
     }
     xhhtp.send();
+}
+
+// Resets cookies for overwrite of letters
+function cookieOverwrite(overwrite) {
+    if(overwrite == true) {
+        let cookieList = []
+        if(mode == "speed") {
+            speedCookies = ['speedRowNum', 'speedWords', 'speedScore', 'speedTimeLeft'];
+            cookieList = speedCookies;
+        }
+        else {
+            normalCookies = ['rowNum', 'words', 'score', 'timeTaken'];
+            cookieList = normalCookies
+        }
+        for(let i = 0; i < cookieList.length; i++) {
+            createCookie(cookieList[i], "");
+        }
+    }
 }
 
 // Game functionality functions
