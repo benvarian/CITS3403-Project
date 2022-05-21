@@ -136,15 +136,16 @@ def checkOverwrite(mode):
         overwriteCheck = f.read()
         f.close()
         if overwriteCheck == "True": 
-            print("IM SO CONFUSED")
-            # if mode == "speed":
-            #     f_write = open("./app/game/soverwrite.txt", "w")
-            # else:
-            #     f_write = open("./app/game/noverwrite.txt", "w")
-            # f_write.write()
-            # f_write.close()
+            if mode == "speed":
+                f_write = open("./app/game/soverwrite.txt", "w")
+                f_write.write("False")
+                f_write.close()
+            else:
+                f_write = open("./app/game/noverwrite.txt", "w")
+                f_write.write("False")
+                f_write.close()
             return True
         else:
             return False
     except:
-        return False
+        return False 

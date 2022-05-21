@@ -152,6 +152,7 @@ function getLettersAndScores() {
         if(this.readyState == 4 && this.status == 200) {
             let result = JSON.parse(this.responseText);
             createWordAndGuessTable(result.letters);
+            console.log(result.overwrite);
             cookieOverwrite(result.overwrite);
         }
     }
@@ -254,18 +255,28 @@ function checkWord() {
         columns = colNum;
         rows = rowNum;
     }
-    let word = getWord(columns)[0];
-    let scoreIncrease = getWord(columns)[1];
-    let cookieWord = getWord(columns)[2];
-    xhttp = new XMLHttpRequest()
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            outcome = (JSON.parse(this.responseText)).outcome;
-            checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord);
-        }
+    if(rows == 6 || (mode=="speed" && speedTimeLeft == 0)) {
+        var finishedGameModal = new bootstrap.Modal(
+            document.getElementById("finishedGameModal"),
+            {}
+          );
+          finishedGameModal.toggle();
+        resetWord();
     }
-    xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
-    xhttp.send();
+    else {
+        let word = getWord(columns)[0];
+        let scoreIncrease = getWord(columns)[1];
+        let cookieWord = getWord(columns)[2];
+        xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = function() {
+            if(this.readyState == 4 && this.status == 200) {
+                outcome = (JSON.parse(this.responseText)).outcome;
+                checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord);
+            }
+        }
+        xhttp.open("GET", "http://127.0.0.1:5000/checkword?word=" + word, true)
+        xhttp.send();
+    }
 }
 
 function checkedWordResponse(outcome, columns, rows, word, scoreIncrease, cookieWord) {
@@ -459,9 +470,7 @@ function darkMode(theme) {
     const gearColor = document.getElementById("gearMode");
     const questionColor = document.getElementById("questionMode");
     const idcolorMode = document.getElementById("idMode");
-    const xColor1 = document.getElementById("squareColor1");
-    const xColor2 = document.getElementById("squareColor2");
-
+    const squares = document.getElementsByClassName("bi-x-square")
     if (theme == "light") {
         document.body.classList.toggle("dark-theme");
         navBarColor.classList.remove("bg-dark");
@@ -472,9 +481,10 @@ function darkMode(theme) {
         questionColor.classList.add("question-light");
         idcolorMode.classList.remove("id-dark");
         idcolorMode.classList.add("id-light");
-        xColor1.classList.remove("squareColor-dark");
-        xColor2.classList.remove("squareColor-dark");
-        xColor2.classList.add("squareColor-light");
+        for(let i = 0; i < squares.length; i++) {
+            squares[i].classList.remove("squareColor-dark");
+            squares[i].classList.add("squareColor-light");
+        } 
     } 
     else if(theme == "dark") {
         document.body.classList.toggle("dark-theme");
@@ -486,10 +496,10 @@ function darkMode(theme) {
         questionColor.classList.add("question-dark");
         idcolorMode.classList.remove("id-light");
         idcolorMode.classList.add("id-dark");
-        xColor1.classList.remove("squareColor-light");
-        xColor1.classList.add("squareColor-dark");
-        xColor2.classList.remove("squareColor-light");
-        xColor2.classList.add("squareColor-dark");
+        for(let i = 0; i < squares.length; i++) {
+            squares[i].classList.remove("squareColor-light");
+            squares[i].classList.add("squareColor-dark");
+        }
     }
 }
 
@@ -500,7 +510,7 @@ function adminGameOverwrite() {
                 "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
                 "V", "W", "X", "Y", "Z"]
     let alphabetCount = 0;
-    for(let i = 0; i < 6; i++) {
+    for(let i = 0; i < 7; i++) {
         let row = document.createElement("tr");
         for(let k = 0; k < 4; k++) {
             let letter = document.createElement("td");
@@ -511,11 +521,13 @@ function adminGameOverwrite() {
             letter.className = "letterAdmin";
             row.appendChild(letter);
             alphabetCount++;
+            if(alphabetCount == 26) {
+                break;
+            }
         }
         document.getElementById("lettersAdmin").appendChild(row);
     }
-    let finalRow = document.createElement("tr");
-    
+
     adminCol = 0;
 
     let chosenLetterRow = document.getElementById("chosenLettersAdmin");
@@ -535,11 +547,11 @@ function adminGameOverwrite() {
 }
 
 function adminClickLetter(letter) {
-    if(adminCol <= 6) {
+    if(adminCol < 7) {
         let chosenLetter = document.getElementById("A" + String(adminCol));
         chosenLetter.innerText = letter.innerText;
+        adminCol++;
     }
-    adminCol++;
 }
 
 function adminResetLetters() {

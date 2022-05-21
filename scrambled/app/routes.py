@@ -278,8 +278,6 @@ def lettersSpeed():
     lettersResponse = jsonify({'letters': letters, "overwrite":overwrite})
     return lettersResponse
 
-
-
 @app.route("/submitscore/normal", methods=["POST"])
 def submitNormalScore():
     if current_user.is_authenticated:
