@@ -267,13 +267,13 @@ a {
   color: var(--secondary-color);
 }
 h1 {
-  color: var(--secondary-color);
+  color: var(--secondary-color) !important;
 }
 h2 {
   color: var(--secondary-color);
 }
 h3 {
-  color: var(--secondary-color);
+  color: var(--secondary-color) !important;
 }
 h4 {
   color: var(--secondary-color);
