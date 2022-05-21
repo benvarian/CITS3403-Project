@@ -95,7 +95,6 @@
             </div>
             <div class="col-4 toggleWrapper">
               <button class="btn btn-dark" onclick="darkModeButton()">Change Mode</button>
-              <label for="dark-mode"></label>
             </div>
           </div>
         </div>
@@ -146,14 +145,13 @@
       provided in the app_content block #} {% block app_content %}{% endblock %}
     </div>
     {% endblock %}
+    <script>
+      if (localStorage.getItem("theme") == "light" || localStorage.getItem("theme") == null) {
+            localStorage.setItem("theme", "light");
+      }
+      else {
+            darkMode(localStorage.getItem("theme"));
+      }
+    </script>
   </body>
-  <!--Dark Mode support-->
-  <script>
-    if (localStorage.getItem("theme") == "light" || localStorage.getItem("theme") == null) {
-          localStorage.setItem("theme", "light");
-    }
-    else {
-          darkMode(localStorage.getItem("theme"));
-    }
-  </script>
 </html>

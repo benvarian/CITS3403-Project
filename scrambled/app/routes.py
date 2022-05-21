@@ -125,23 +125,6 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
-@app.route('/user/<username>')
-@login_required
-def user(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('index') \
-        if posts.has_next else None
-    prev_url = url_for('stats', username=user.username) \
-        if posts.has_prev else None
-    form = EmptyForm()
-    return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url, form=form)
-
-
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -209,21 +192,6 @@ def unfollow(username):
         return redirect(url_for('stats', username=username))
     else:
         return redirect(url_for('index'))
-
-
-@app.route('/explore')
-@login_required
-def explore():
-    page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('explore', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('explore', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template("game.html", title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
-
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():

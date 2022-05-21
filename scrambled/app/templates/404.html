@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid row">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
-        <h4 class="title">An unexpected error has occurred</h1>
+        <h4 class="title">An unexpected error has occurred</h4>
         <p class="title">The administrator has been notified. Sorry for the inconvenience!</p>
         <p class="title">-the Scrambled Team</p>
-        <p><a href="{{ url_for('welcome') }}">Return to Scrambled Welcome Page!</a></p>
+        <p class="title"><a href="{{ url_for('welcome') }}">Return to Scrambled Welcome Page</a></p>
     </div>
     <div class="col-lg-4"></div>
+</div>
 {% endblock %}
