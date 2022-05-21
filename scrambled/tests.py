@@ -15,8 +15,8 @@ class UserModelCase(unittest.TestCase):
         db.drop_all()
 
     def test_password_hashing(self):
-        test_susan = User(username='ben')
-        test_susan.set_password('shayan')
+        test_ben = User(username='ben')
+        test_ben.set_password('ben')
         test_admin = User(username='admin')
         test_admin.set_password('admin')
         self.assertFalse(test_admin.check_password('test'))
