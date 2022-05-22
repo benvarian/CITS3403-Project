@@ -16,25 +16,23 @@
           <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
           <p><a href="/logout">Logout</a></p>
             {% if user.username == 'admin' %}
-            <p><a href="{{url_for('admin')}}">Change the letters for the day</a></p>
+            <p><a href="{{url_for('admin')}}">Change the letters for the day and view aggregated statistics</a></p>
             {% endif %}
-          {% elif not current_user.is_following(user) %}
-          <p>
-              <form action="{{ url_for('follow', username=user.username) }}" method="post">
-                  {{ form.hidden_tag() }}
-                  {{ form.submit(value='Friend!', class_='btn btn-primary') }}
-              </form>
-            </p>
-            <p class="centered"><a href="{{ url_for('leaderboard') }}">Return to Leaderboard</a></p>
-            <p class="centered"><a href="/login">Return to your profile</a></p>
-              
+            <h6>Find Friends!</h6>
+            <div class="row g-3">
+              <div class="col-md-9">
+                <input
+                    type="username"
+                    class="form-control"
+                    id="username_search"
+                    placeholder="username"
+                  />
+                </div>
+              <div class="col-md-3">
+                <buttton class="btn btn-primary" type="submit" id="search_stats_user">Search</buttton>
+              </div>
+            </div>
           {% else %}
-          <p>
-              <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
-                  {{ form.hidden_tag() }}
-                  {{ form.submit(value='Unfriend',class_='btn btn-primary') }}
-              </form>
-          </p>
           <p class="centered"><a href="{{ url_for('leaderboard') }}">Return to Leaderboard</a></p>
           <p class="centered"><a href="/login">Return to your profile</a></p>
           {% endif %}
@@ -48,7 +46,7 @@
     <p>Games of Speed Scrambled Played: {{ gamesPlayedSpeed }} </p>
     <p>Average Score for Speed Mode: {{ speedModeAverage }} </p>
     {% if user == current_user %}
-    <p><a href="{{ url_for('leaderboard') }}">Compete with friends on the Scrambled Leaderboard!</a></p>
+    <p><a href="{{ url_for('leaderboard') }}">Look at today's statistics and leaderboard!</a></p>
     {% endif %}
     <canvas id="myChart" width="50" height="50"></canvas>
   </div>
@@ -56,6 +54,13 @@
 </div>
 
 <script>
+  let searchUser = document.getElementById("search_stats_user");
+  searchUser.addEventListener("click", () => {
+    searchfor = document.getElementById("username_search").value;
+    console.log(searchfor);
+    window.location = 'statistics/' + searchfor;
+  });
+
   let scoreofgameNormal = JSON.parse({{ datesScore | tojson }});
   let scoreofgameSpeed = JSON.parse({{ speedScores | tojson }});
   let dates = JSON.parse({{ datesofSubmissions | tojson }});

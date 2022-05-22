@@ -3,7 +3,15 @@
   <div class="row gx-0">
     <div class="col-lg-4"></div>
     <div class="col-lg-4" style="text-align: center">
-      <h4>Friend's Leaderboard</h4>
+      <h4 class="title">Today's Statistics</h4>
+      <h6 class="centered">Normal Scrambled</h6>
+      <p class="centered">Games of Normal Scrambled Played: {{ todayGamesPlayedNormal }} </p>
+      <p class="centered">Average Score for Normal Mode: {{ todayAvgNormalScore }} </p> <br>
+      <h6 class="centered">Speed Scrambled</h6>
+      <p class="centered">Games of Speed Scrambled Played: {{ todayGamesPlayedSpeed }} </p>
+      <p class="centered">Average Score for Speed Mode: {{ todayAvgSpeedScore }} </p>
+      <hr>
+      <h4>Top 10 Leaderboard</h4>
       <table class="table">
         <thead>
           <tr>
@@ -27,33 +35,8 @@
           {% endfor %}
         </tbody>
       </table>
-      <hr>
-      <h6>Find Friends!</h6>
-      <div class="row g-3">
-        <div class="col-md-9">
-          <input
-            type="username"
-            class="form-control"
-            id="username_search"
-            placeholder="username"
-          />
-        </div>
-        <div class="col-md-3">
-          <buttton class="btn btn-primary" type="submit" id="search_stats_user"
-            >Search</buttton
-          >
-        </div>
-      </div>
     </div>
     <div class="col-sm-2"></div>
   </div>
 </div>
-<script>
-  let searchUser = document.getElementById("search_stats_user");
-  searchUser.addEventListener("click", () => {
-    searchfor = document.getElementById("username_search").value;
-    console.log(searchfor);
-    window.location = 'statistics/' + searchfor;
-  });
-</script>
 {% endblock %}

@@ -3,9 +3,11 @@
 Agile Web Dev Project for CITS3403 
 
 1. the purpose of the web application, explaining the design of the game
-    - 
+    - th
 
 2. the architecture of the web application.
+
+
 3. describe how to launch the web application.
     1. cd scrambled/
     2. source venv/bin/activate

@@ -33,8 +33,24 @@ def speed():
 
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
+    todayGamesPlayedNormal = Statistics.query.filter(Statistics.game_completed==date.today()).filter(Statistics.gameMode=="normal").count()
+    todayGamesPlayedSpeed = Statistics.query.filter(Statistics.game_completed==date.today()).filter(Statistics.gameMode=="speed").count()
+    todayAvgNormalScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.gameMode == 'normal').filter(Statistics.game_completed==date.today()).first()
+    todayAvgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.gameMode == 'speed').filter(Statistics.game_completed==date.today()).first()
+
+    if todayAvgSpeedScore[0] == None:
+        todayAvgSpeedScore = list(filter(None, todayAvgSpeedScore))
+        todayAvgSpeedScore = 0
+    else:
+        todayAvgSpeedScore = int(todayAvgSpeedScore[0])
+    if todayAvgNormalScore[0] == None:
+        todayAvgNormalScore = list(filter(None,avgNormalScore))
+        todayAvgNormalScore = 0
+    else:
+        todayAvgNormalScore = int(todayAvgNormalScore[0])
     top10 = Statistics.query.order_by(Statistics.score.desc()).limit(10).all()
-    return render_template('leaderboard.html', stats=top10)
+    return render_template('leaderboard.html', stats=top10, todayAvgNormalScore=todayAvgNormalScore,
+            todayAvgSpeedScore=todayAvgSpeedScore, todayGamesPlayedNormal=todayGamesPlayedNormal, todayGamesPlayedSpeed=todayGamesPlayedSpeed)
 
 
 @login_required
@@ -296,6 +312,21 @@ def changeLettersSpeed():
 @app.route("/alter", methods=["GET", "POST"])
 @login_required
 def admin():
+    gamesPlayedNormal = Statistics.query.filter(Statistics.gameMode=='normal').count()
+    gamesPlayedSpeed = Statistics.query.filter(Statistics.gameMode=='speed').count()
+    avgNormalScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.gameMode == 'normal').first()
+    avgSpeedScore = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.gameMode == 'speed').first()
+    if avgSpeedScore[0] == None:
+        avgSpeedScore = list(filter(None, avgSpeedScore))
+        avgSpeedScore = 0
+    else:
+        avgSpeedScore = int(avgSpeedScore[0])
+    if avgNormalScore[0] == None:
+        avgNormalScore = list(filter(None,avgNormalScore))
+        avgNormalScore = 0
+    else:
+        avgNormalScore = int(avgNormalScore[0])
+    
     if current_user.is_authenticated:
         user = str(current_user)
         user = re.sub('User', '', user)
@@ -303,7 +334,7 @@ def admin():
         user = re.sub('>', '', user)
         username = user.strip()
         if username == 'admin':
-            return render_template("admin.html")
+            return render_template("admin.html", gamesPlayedNormal=gamesPlayedNormal, gamesPlayedSpeed=gamesPlayedSpeed, avgNormalScore=avgNormalScore, avgSpeedScore=avgSpeedScore)
         else:
             return redirect(url_for('index'))
     else:
