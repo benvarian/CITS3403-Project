@@ -1,0 +1,1102 @@
+git log main --graph > log.txt
+
+* commit 5499e55bc12cb2ca357b1c6a95c4e164956bb14b
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sun May 22 10:23:53 2022 +0800
+| 
+|     movement of things around the place
+| 
+* commit 7e06d89666f147e03735598bc4bc16d241f9cc15
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 17:39:32 2022 +0800
+| 
+|     cleaning 2.0
+| 
+* commit 6395ee9a974c52e4219a3d6c565374f555c35420
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 17:39:20 2022 +0800
+| 
+|     cleaning
+| 
+* commit e581664f358745f1c534286733a4293d208f7142
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 14:30:45 2022 +0800
+| 
+|     reload
+| 
+* commit b32a69de859ce14defd59c861483b5d00f786ce2
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 12:34:58 2022 +0800
+| 
+|     dark mode fixes
+| 
+* commit 0480ce6de295824bdb41d8dabce28ee02786a7fd
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 12:27:45 2022 +0800
+| 
+|     style changed
+| 
+* commit 4ee66f68ca82b65ea7e22a52e4e4b65a6cab30e0
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 12:05:58 2022 +0800
+| 
+|     buttons centering
+| 
+* commit c5ffd1db5c57f5c1429f0f4b4504d75573544446
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 11:34:49 2022 +0800
+| 
+|     Some other game fixes
+| 
+* commit 14049e6752646859167bca8f672ae7acbc2437b4
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Sat May 21 09:57:48 2022 +0800
+| 
+|     admin overwrite fixes
+| 
+* commit b190e475e7348cc24a621ad99aa82f25c08c3bf0
+| Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| Date:   Fri May 20 13:07:56 2022 +0800
+| 
+|     Final Check up
+| 
+* commit 2eaa11388af8c152b4ac742171221355a90d855f
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Fri May 20 11:32:06 2022 +0800
+| 
+|     update speed.html
+| 
+* commit 42c8b90b0e57a979af6012564cc2e1133190f6f4
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Fri May 20 11:23:35 2022 +0800
+| 
+|     routes fixed + user page improvemetns
+| 
+* commit 70ae3594e20b3cf3115d867c654f2d6f85b32ec2
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Fri May 20 11:23:00 2022 +0800
+| 
+|     Almost finishing touches (hopefully)
+| 
+* commit 1591999a9c5a575a34b62e978dbdd2a54b6ff2e0
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Thu May 19 21:51:07 2022 +0800
+| 
+|     changed route to alter the game, allowed only the admin to access said wesbite
+| 
+* commit 0ea4674c2ba6a68df1606185822b45923cfa0447
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Thu May 19 21:40:52 2022 +0800
+| 
+|     updated reset_password_request, and some other things might be pushed
+|   
+*   commit 1b6ff096519accc44f7094b5049e018f374ce71a
+|\  Merge: 15a6f7d e4c567a
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Thu May 19 20:06:58 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | 
+| * commit e4c567a8e2b58141a7aa0d29f0d2f1d7b51699e3
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Thu May 19 20:04:54 2022 +0800
+| | 
+| |     fixed admin
+| |   
+| *   commit ef9458c72956b290b21eb5e27be53b8a55b5e102
+| |\  Merge: 71be8f6 d94a2a3
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Thu May 19 20:04:46 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | |   
+| | *   commit d94a2a329eabdc1049228c27e13b8d2c689f28a6
+| | |\  Merge: d701812 f69cce8
+| | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | Date:   Thu May 19 20:02:27 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | | 
+| | * | commit d701812f0aaefe67cbe8fc6d49bc309a93020632
+| | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | Date:   Thu May 19 19:57:08 2022 +0800
+| | | | 
+| | | |     modal changes
+| | | | 
+| | * | commit 61c2f36cb1d7cf0de97b5a3e5ac571c5f1c79b96
+| | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | Date:   Thu May 19 19:56:01 2022 +0800
+| | | | 
+| | | |     modal for wrong word
+| | | | 
+| * | | commit 71be8f66808fbbf5f0ed680d1c6444b701e5d73d
+| | |/  Author: lilburne1 <benlilburne@outlook.com>
+| |/|   Date:   Thu May 19 20:04:11 2022 +0800
+| | |   
+| | |       admin fixes
+| | | 
+* | | commit 15a6f7d8c02e9c2e45377a92c585ff7dfbeebf4e
+|/ /  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| |   Date:   Thu May 19 20:05:32 2022 +0800
+| |   
+| |       varian breaking admin page
+| |   
+* |   commit f69cce82adae138797d0004f725de0599b39676b
+|\ \  Merge: 6c2618b d0d12b8
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Thu May 19 18:43:11 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| * | commit d0d12b85e4e979c6726c7f6118b941b62d7c0939
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Thu May 19 18:19:08 2022 +0800
+| | | 
+| | |     fixed dark mode
+| | | 
+| * | commit 05d4796487c50e9cc5ab065ed55ef21253a28335
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Thu May 19 18:14:29 2022 +0800
+| | | 
+| | |     dark mode + admin copied over
+| | | 
+* | | commit 6c2618b1b34fcc427e49197f9028a9ede98e7d50
+|/ /  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| |   Date:   Thu May 19 18:41:39 2022 +0800
+| |   
+| |       thurs night changes
+| |   
+* |   commit bdb1ffe062961a14521e721f5e51552d69e52fdc
+|\ \  Merge: a185a50 0283dd9
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Thu May 19 17:58:17 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| * | commit 0283dd909901442af588451e2735ea7e28910679
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Thu May 19 17:10:12 2022 +0800
+| | | 
+| | |     made login, register look nicer, updates css colors as there was a duplicate for dark mode
+| | | 
+| * | commit a069be1cf5082c2afa9e4ee452ecf1f022653e2e
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Thu May 19 16:09:49 2022 +0800
+| | | 
+| | |     cleaned up route page for errors (Stats), added more functionality to leaderboard.html page
+| | | 
+* | | commit a185a5088b045aea4d5bb105ed4672b28a6f70f9
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Thu May 19 17:58:11 2022 +0800
+| | | 
+| | |     comit
+| | | 
+* | | commit 4046c32a0cc2556e988093ad8d2e6e8d731ee77e
+|/ /  Author: lilburne1 <benlilburne@outlook.com>
+| |   Date:   Thu May 19 17:58:00 2022 +0800
+| |   
+| |       speed fix
+| | 
+* | commit 576769c763ee401d51f5bcb1f2dcbbf1bd735ab4
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Wed May 18 23:46:37 2022 +0800
+| | 
+| |     need to remove alerts when follow is done -> done in routes file, cleaned up follow and unfollow button
+| | 
+* | commit c21507407c1d6e0ab6ac06c719f0363a2cd1579d
+|/  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+|   Date:   Wed May 18 23:43:25 2022 +0800
+|   
+|       cleaned up stats page, allowed user to edit profile and redirects to their stats page afterwards, added following in, cleaned up routes.py file especially the stats one
+| 
+* commit cc2b769c3a9d3ec6ee6f5ca91526a79c5708ccb8
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Wed May 18 15:12:16 2022 +0800
+| 
+|     added social media buttons, need to get average to work in routes.py
+| 
+* commit 654031cf7b4c526c2c3ddc3c0867eb1dd92db1c9
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Wed May 18 14:22:37 2022 +0800
+| 
+|     added more test data,cleaned up regex statement,added test users in todo.md
+| 
+* commit fe4efff8ba27d35281acce8d076e11941d9120b7
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Wed May 18 14:22:32 2022 +0800
+| 
+|     added more test data,cleaned up regex statement,added test users in todo.md
+| 
+* commit e2d73f3eac4f6eb51c6f069ae470a7b23685a10f
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Tue May 17 23:30:33 2022 +0800
+| 
+|     got chart working for both modes, need to change color, fixed db up, made stats routes more complex
+| 
+* commit 333537632d4e2009e6a256be088f0d7656529e9b
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Tue May 17 19:50:20 2022 +0800
+| 
+|     major fixes
+| 
+* commit d6bcc56950ecaec4b9759f425e07b2b2c8724c68
+| Author: lilburne1 <benlilburne@outlook.com>
+| Date:   Tue May 17 19:49:55 2022 +0800
+| 
+|     Javascript fixes, registration fix
+|   
+*   commit 41bf1f54993cdb9392bc13a1a8034156e4b3ddb6
+|\  Merge: 5c954eb 79cd090
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Mon May 16 20:40:56 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | 
+| * commit 79cd0904a8c0d05c90a8da5139f9f793dbbef962
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon May 16 13:56:25 2022 +0800
+| | 
+| |     cleaning up
+| | 
+| * commit e916b3dfc290860aaebcdbbe5689ec58d0bcbc45
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon May 16 13:56:13 2022 +0800
+| | 
+| |     cleaning up
+| | 
+* | commit 5c954eb79ed2af497a53e0118a0d4ab4eb020453
+|/  Author: lilburne1 <benlilburne@outlook.com>
+|   Date:   Mon May 16 20:39:23 2022 +0800
+|   
+|       Fixes to problems caused by the merge
+| 
+* commit cc2fd34f11927d56408b90105283bfc68d511130
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Mon May 16 13:42:49 2022 +0800
+| 
+|     cleaning up
+|   
+*   commit 6619a0763e430a61159f9166b62f5d74ca335614
+|\  Merge: d77f7a5 ffedc91
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon May 16 13:41:04 2022 +0800
+| | 
+| |     merge with moving-files-around
+| | 
+| * commit ffedc91a2e65547bade2da2f5d01990c96cae306
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon May 16 13:31:45 2022 +0800
+| | 
+| |     pre-merge changes
+| | 
+| * commit c28f00ddb7c2edc8edbe68e3a869f7a1f4ebe295
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sun May 15 00:08:56 2022 +0800
+| | 
+| |     moved most of it around now, trying to get stats route to work properly
+| | 
+| * commit 4384c08f4151752510e66a140f037220b41f4246
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sat May 14 19:41:06 2022 +0800
+| | 
+| |     sat night, fix the loading of stuff
+| | 
+| * commit 42950824ec0db77b2739dcd1a16b81cc64dd00a1
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sat May 14 15:54:02 2022 +0800
+| | 
+| |     halfway through merging
+| | 
+| * commit 95b375f8d9917ba5a7ac3152f8e6dc0afcda476f
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sat May 14 13:27:52 2022 +0800
+| | 
+| |     saturday changes
+| | 
+| * commit 810bbea15d8a72ab67ab9bc466ddbbbd3d2b2d02
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sat May 14 13:25:23 2022 +0800
+| | 
+| |     saturday changes
+| | 
+| * commit b93700c58cf9f90277456ecef32a9509a7eafdab
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri May 13 23:53:02 2022 +0800
+| | 
+| |     fri night changes
+| | 
+| * commit 3e85a48a4bcf1fd3156421ef5ce7245ceaa15a3c
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri May 13 18:24:08 2022 +0800
+| | 
+| |     updated tests for foreignkey in stats table
+| | 
+| * commit 5ef1c0ddfb2ba1cd72db88500b5d39155d024eb4
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri May 13 13:01:06 2022 +0800
+| | 
+| |     changes to readme and tests.py
+| | 
+| * commit 3ee710f46c9b62f0edc0a6e243e06e10bd604fbc
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri May 13 12:17:11 2022 +0800
+| | 
+| |     small fixes
+| | 
+| * commit 1e4c2af413d38e9293e3b00143de5cab2feb05c8
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri May 13 00:00:23 2022 +0800
+| | 
+| |     changing around looks of things to be more modern
+| | 
+| * commit 90a034cb1d08801709debafca9c7168930c27841
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Thu May 12 22:25:13 2022 +0800
+| | 
+| |     top 10/new leaderboard page, still stuck on global avg, about to fix up color modes
+| | 
+| * commit 4207414e73e54254abb9c5bae6c9781d18ac6b69
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Thu May 12 20:32:00 2022 +0800
+| | 
+| |     chart working for all users, about to add in second line
+| | 
+| * commit ccbf90898302b1515fac34dab86be6d7f90d55d0
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Thu May 12 17:13:49 2022 +0800
+| | 
+| |     before adding the chart in
+| | 
+| * commit 7c3af8da30cf56847c7008705b254dd90d6b2b86
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Thu May 12 15:39:42 2022 +0800
+| | 
+| |     fixed db, got stats page working properly, as well with a specific user
+| | 
+| * commit 05160a6b3953e5fc831d70269cfe995f65f1f5c6
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Wed May 11 22:30:12 2022 +0800
+| | 
+| |     need to change the database to work
+| | 
+| * commit 1b1d5c1b90892ef62b96d11cf5c7da94deeef4f2
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Wed May 11 15:55:52 2022 +0800
+| | 
+| |     broken database
+| | 
+| * commit e2b6067b755b6f371961001cebd5c6d74fdef3ca
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Tue May 10 23:43:03 2022 +0800
+| | 
+| |     moved around, fixed main problems, allows game to run in this branch, trying to add a new table
+| |   
+| *   commit dafcc2d27209d9cabd87d81c4cb3ed9f584d0471
+| |\  Merge: f02b534 6c6c2be
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Mon May 9 22:51:11 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project into moving-files-around
+| | | 
+| * | commit f02b534f740c19f088d92c3ed4ba18aa740698b2
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Mon May 9 22:49:49 2022 +0800
+| | | 
+| | |     update
+| | | 
+| * | commit 8aa8589a4b956de14643d955cf1e0dd42be22f97
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Mon May 9 15:05:38 2022 +0800
+| | | 
+| | |     added letter generator and word checker
+| | | 
+| * | commit de187439af48553f46cdec99149faa1ec8203683
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Thu May 5 23:53:06 2022 +0800
+| | | 
+| | |     cleaning up and adding stats stuff in
+| | | 
+* | | commit d77f7a59054f05d417eb1facd01780ab23104ce8
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Sun May 15 14:00:37 2022 +0800
+| | | 
+| | |     fixed game
+| | | 
+* | | commit e6655f5e42f4ac4da0c6fb1c1fbf4e4bc46da69c
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Sat May 14 21:33:39 2022 +0800
+| | | 
+| | |     Game Word Checking Function
+| | | 
+* | | commit 247a1496707a64f0b89c0aed05982fb52f271e1b
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Sat May 14 21:07:44 2022 +0800
+| | | 
+| | |     got basics of game to work
+| | | 
+* | | commit 2eb8fb65bd4d600ae33f64baf2457e16e6e3e569
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Sat May 14 20:27:10 2022 +0800
+| | | 
+| | |     allowed the game to receive the word and not the first letter
+| | |   
+* | |   commit 28a1756a0acbf9448f5898febcce1c87b3bf5e3e
+|\ \ \  Merge: a6ee227 bd539ef
+| | | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | | Date:   Sat May 14 20:26:25 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | |   
+| * | |   commit bd539ef5ad1280e48fb1bcb506a06cc2ffa244fa
+| |\ \ \  Merge: 9f476e3 78f2091
+| | | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | | Date:   Sat May 14 20:21:33 2022 +0800
+| | | | | 
+| | | | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | | | 
+| * | | | commit 9f476e31f51b01b4ecf0b7b4c7835e83f267bc63
+| | | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | | Date:   Sat May 14 19:41:15 2022 +0800
+| | | | | 
+| | | | |     Game Functionality Edits
+| | | | | 
+* | | | | commit a6ee22745d50f7ae5e0265505e560acfb23abb49
+| |/ / /  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+|/| | |   Date:   Sat May 14 20:25:52 2022 +0800
+| | | |   
+| | | |       allowed the game to receive the word and not the first letter
+| | | | 
+* | | | commit 78f2091d9f67870338032f933d7763350f60fe15
+|/ / /  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | |   Date:   Sat May 14 20:18:06 2022 +0800
+| | |   
+| | |       allowed the game to receive the word and not the first letter
+| | | 
+* | | commit ee3183745a289955a7a398e0274f9ab47e67ae70
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Sat May 14 19:40:11 2022 +0800
+| | | 
+| | |     Word Checker Function
+| | | 
+* | | commit 3d595b9ee729d6347b2735c2b3606409b1e47702
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Sat May 14 16:27:14 2022 +0800
+| | | 
+| | |     Revert "Merge branch 'main' of https://github.com/benvarian/CITS3403Project"
+| | |     
+| | |     This reverts commit d64e6bfe1f83bef233863b0ace9513a11354fea8, reversing
+| | |     changes made to 1a081a1332e4c90e4f7e7d8510681a1a5cb7c728.
+| | |   
+* | |   commit d64e6bfe1f83bef233863b0ace9513a11354fea8
+|\ \ \  Merge: 1a081a1 90955a7
+| | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | Date:   Sat May 14 16:25:58 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | | 
+| * | | commit 90955a7fa4def5f77b7de0a3a558bbda61acf541
+| | | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | | Date:   Sat May 14 16:01:10 2022 +0800
+| | | | 
+| | | |     had to install pandas on venv, updated pip to shut it up
+| | | | 
+* | | | commit 1a081a1332e4c90e4f7e7d8510681a1a5cb7c728
+|\| | | Merge: bbbd8d9 db11c18
+| | | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | | Date:   Sat May 14 14:58:22 2022 +0800
+| | | | 
+| | | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | |   
+| * | |   commit db11c18df329ae9942b8e11baa269c957c8a8165
+| |\ \ \  Merge: 2bbfbff f36a074
+| | | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | | Date:   Sat May 14 13:07:56 2022 +0800
+| | | | | 
+| | | | |     Merge branch 'speedMode'
+| | | | | 
+| | * | | commit f36a07405586c47a3ad770107e6b81766f4d88eb
+| | | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | | Date:   Sat May 14 13:07:22 2022 +0800
+| | | | | 
+| | | | |     Slight changes
+| | | | | 
+| | * | | commit fb32fff89d7d430fb988f24e72d32d35d54b52ea
+| | | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | | Date:   Sat May 14 09:52:30 2022 +0800
+| | | | | 
+| | | | |     Bug Fixes for Speed Mode
+| | | | | 
+| | * | | commit 1bd68cbf2b530c5e6c6798d3bf3d34f24368ff6b
+| | | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | | Date:   Fri May 13 10:06:05 2022 +0800
+| | | | | 
+| | | | |     Initial Speed Mode additions
+| | | | | 
+* | | | | commit bbbd8d9b857de929bdc7e1e2fca5fc8784ecdc16
+|/ / / /  Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | |   Date:   Sat May 14 12:57:43 2022 +0800
+| | | |   
+| | | |       Game Functionality
+| | | | 
+* | | | commit 2bbfbff21114d9a1a86257fbb49c76815f2d3848
+|/ / /  Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | |   Date:   Fri May 13 14:19:57 2022 +0800
+| | |   
+| | |       Game Functionality
+| | |   
+* | |   commit c94d65e69f611a880a36ebb3537d5145f40159e9
+|\ \ \  Merge: 0d709ee d3033f7
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Tue May 10 14:32:01 2022 +0800
+| | | | 
+| | | |     Merge branch 'gameAdditions'
+| | | | 
+| * | | commit d3033f71008a70124c86459cc75aaf6bbfaaf27f
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Tue May 10 14:30:10 2022 +0800
+| | | | 
+| | | |     Daily change created
+| | | | 
+| * | | commit eed6311c64165c82f11194510cf7856bd33433fe
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Tue May 10 11:00:33 2022 +0800
+| | | | 
+| | | |     24 hour reset update
+| | | | 
+| * | | commit 58871360b5f657bd832c93a1441802c799c9b42b
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Tue May 10 09:50:35 2022 +0800
+| | | | 
+| | | |     Significant Changes to game back end
+| | | | 
+| * | | commit 2a911677a5935dd7923f009effa77c86339677b4
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Mon May 9 21:03:04 2022 +0800
+| | | | 
+| | | |     functionality of game
+| | | | 
+| * | | commit 1e7f92a2d9e0e3c8bfddcf9641df82630abed830
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Mon May 9 21:02:15 2022 +0800
+| | | | 
+| | | |     Server functionality
+| | | | 
+| * | | commit b707521df84f61f44f0478c690ba6c62f5e37210
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Mon May 9 13:57:10 2022 +0800
+| | | | 
+| | | |     Rules Modal Changes
+| | | | 
+| * | | commit 65f1c1a4fac3a9eaa74bc71e8e281e8d5852b193
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Mon May 9 10:07:57 2022 +0800
+| | | | 
+| | | |     Fixed loading of previous words
+| | | | 
+| * | | commit dda6fc82a261aae978238485b32afafcebf2908e
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Mon May 9 08:51:23 2022 +0800
+| | | | 
+| | | |     Finished Game Functionality
+| | | | 
+| * | | commit 311f8b769ec48981481a0dd419ead760e603ea54
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Mon May 9 08:50:49 2022 +0800
+| | | | 
+| | | |     Schema for User Statistics
+| | | | 
+| * | | commit 02dc710d7d911184e273786795ad4abcc665cb2a
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Sun May 8 17:32:06 2022 +0800
+| | | | 
+| | | |     Game finish elements added
+| | | | 
+| * | | commit 1ac7aa4e2727855bd94c199f28491856149d9b0c
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Sun May 8 16:41:45 2022 +0800
+| | | | 
+| | | |     Timer and Initialisation fixed
+| | | | 
+| * | | commit 1c10f788f6699d93f3cfcf8a3cdfa23c3beb851e
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Sat May 7 20:09:51 2022 +0800
+| | | | 
+| | | |     Return User Cookie Set Up
+| | | | 
+| * | | commit e1d7f4add54acbd55564620b08053d6c169c9486
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Sat May 7 11:30:29 2022 +0800
+| | | | 
+| | | |     Cookies Functionality
+| | | | 
+| * | | commit a57f6cd3824c105098fe9445c8a3df7a8f7de456
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Sat May 7 09:58:14 2022 +0800
+| | | | 
+| | | |     JavaScript Improvements
+| | | | 
+| * | | commit d56c25fa18ca8aa6067ec537d76939b0d4d145e9
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Sat May 7 09:39:22 2022 +0800
+| | | | 
+| | | |     Adding in word guess functionality
+| | | | 
+| * | | commit 2e7f57a984dcd106e3e73391a844be97d00a3b20
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Fri May 6 12:10:13 2022 +0800
+| | | | 
+| | | |     CSS Changes for Game
+| | | | 
+| * | | commit 1af83a12cf0f639b6bba342da6342267a3f13e5b
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Fri May 6 11:54:05 2022 +0800
+| | | | 
+| | | |     Removed User Modal from base.html
+| | | | 
+| * | | commit 7734366ca14437f862a085b931b3c16d5833c4fd
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Fri May 6 11:51:19 2022 +0800
+| | | | 
+| | | |     Timer added and index/game merged
+| | | | 
+| * | | commit db0eaf270ee68624c688fef87faebf729ca99cd5
+| | | | Author: lilburne1 <benlilburne@outlook.com>
+| | | | Date:   Fri May 6 11:35:03 2022 +0800
+| | | | 
+| | | |     game_addition
+| | | | 
+* | | | commit 0d709eee6a41a1b29ffabbc7b4a1b6b753f6e76f
+| |_|/  Author: lilburne1 <benlilburne@outlook.com>
+|/| |   Date:   Tue May 10 14:30:58 2022 +0800
+| | |   
+| | |       Cache
+| | | 
+* | | commit 6c6c2bea9e3223e819a02380eea2dfef20714c6f
+|/ /  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| |   Date:   Mon May 9 17:15:48 2022 +0800
+| |   
+| |       changed login form to look a bit nicer
+| | 
+* | commit 4d7e7c322349136feea033b120c4d7279235eb44
+|\| Merge: da0ed35 e825e1e
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Fri May 6 11:31:58 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| |   
+| *   commit e825e1ed4fb10f4c6aa7d243e0b138faf80a0e83
+| |\  Merge: 2ce36bb eaccc7f
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Thu May 5 15:09:19 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| | * commit eaccc7fac37e88ad74a8bd97398da7b00cf97f36
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Thu May 5 13:10:52 2022 +0800
+| | | 
+| | |     Added Cleaned Word Database
+| | | 
+| | * commit c1bae5ff6dfc7e7cb06ead0ca10cca5074f8a6e1
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Thu May 5 12:39:30 2022 +0800
+| | | 
+| | |     Moved game testing to a branch
+| | | 
+| | * commit f0ca6fbbee8fb1d387b937f025ac668ecd788eff
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Wed May 4 13:07:30 2022 +0800
+| | | 
+| | |     Testing
+| | | 
+| | * commit 31bc86d917cf8753cb8e80c18a06b2c8578b0413
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Wed May 4 13:07:23 2022 +0800
+| | | 
+| | |     Testing
+| | | 
+| * | commit 2ce36bb777a476f90389951a9ed35fead7cf70fa
+| |/  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| |   Date:   Thu May 5 15:08:32 2022 +0800
+| |   
+| |       db edit
+| |   
+| *   commit c5df414342175e7390ed8acf0e3084f5edb3179f
+| |\  Merge: 59b0b75 46dde03
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Mon May 2 22:54:42 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| | * commit 46dde032a8e24161e8af112262fb7e6fb8b9ebb6
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Mon May 2 19:18:22 2022 +0800
+| | | 
+| | |     before shayane kills me
+| | | 
+| | * commit a508e533f724b8cbb0d6a965f656c39e42301966
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Mon May 2 12:54:41 2022 +0800
+| | | 
+| | |     timer added on game page
+| | | 
+| * | commit 59b0b754562dd7d3b8271453dacca8ea50babdc6
+| |\| Merge: 9f886d1 86d1b42
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Mon May 2 22:54:27 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| * | commit 9f886d1050371852f1c1c52059d2053c7dd7d870
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Mon May 2 00:31:43 2022 +0800
+| | | 
+| | |     Update app.db
+| | | 
+| * | commit 3489306eaf9385af6bde30ddd3723b52221d8982
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Mon May 2 00:28:20 2022 +0800
+| | | 
+| | |     update
+| | |   
+* | |   commit da0ed35d03597f91e310860abff98970618773c2
+|\ \ \  Merge: 4599532 86d1b42
+| | |/  Author: lilburne1 <benlilburne@outlook.com>
+| |/|   Date:   Mon May 2 08:47:39 2022 +0800
+| | |   
+| | |       Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| * | commit 86d1b42ac4e18cd6e7199be66421b031ef3a1833
+| |/  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| |   Date:   Mon May 2 00:27:03 2022 +0800
+| |   
+| |       game template added
+| |   
+| *   commit 3d6df018fc60a88a6003131bd61644786e603b56
+| |\  Merge: 6c2e32b 6e142e2
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Sun May 1 23:44:47 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | | 
+| * | commit 6c2e32b5dbe7eabfd3dc48c99b43090b6c28a9f7
+| | | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | | Date:   Sun May 1 23:43:24 2022 +0800
+| | | 
+| | |     test
+| | | 
+* | | commit 4599532065d3697430bb3db810abb579b8a98573
+| |/  Author: lilburne1 <benlilburne@outlook.com>
+|/|   Date:   Mon May 2 08:46:20 2022 +0800
+| |   
+| |       Game Page established
+| | 
+* | commit 6e142e2ad5c8e76ab3205724b9bac258338202c3
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sun May 1 13:23:19 2022 +0800
+| | 
+| |     dark mode on all aspects on index
+| | 
+* | commit 66fe359c6c3c9fd2535f04f94afe2a03adb64259
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sun May 1 00:01:18 2022 +0800
+| | 
+| |     dark mode on some aspects need to go deeper
+| | 
+* | commit 2dd1a77357c51a6d3282dc99b4edd639867670fb
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Sun May 1 00:00:59 2022 +0800
+| | 
+| |     dark mode on some aspects need to go deeper
+| | 
+* | commit 5d03620bda3bb7477224ac6e0c5e9c384c8fe898
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 29 16:21:24 2022 +0800
+| | 
+| |     afternoon update
+| | 
+* | commit 79d174ac52de152b23dfb6622717df0277557112
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 29 16:21:03 2022 +0800
+| | 
+| |     afternoon update
+| | 
+* | commit e2962a3704de734eafc9c96dc415358850d1de48
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 29 13:35:45 2022 +0800
+| | 
+| |     allows scrmabeld to go to home page
+| | 
+* | commit 0dc390ab9a6fe115dab2b82874b1e2a8e62e7481
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 29 13:32:35 2022 +0800
+| | 
+| |     dependencies
+| |   
+* |   commit 13b00c60f4dbf2561e6dbf29570e4dd74dc53eb0
+|\ \  Merge: 3f8d206 9306de4
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Fri Apr 29 13:14:14 2022 +0800
+| | | 
+| | |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | |   
+| * |   commit 9306de48b305fb304e73ce711c94f31f5f230879
+| |\ \  Merge: 212c489 f0132c0
+| | |/  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| |/|   Date:   Fri Apr 29 13:02:50 2022 +0800
+| | |   
+| | |       Bens Merge
+| | | 
+* | | commit 3f8d206c07074279e12830c1583df47afeccdbc4
+| | | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | | Date:   Fri Apr 29 13:13:47 2022 +0800
+| | | 
+| | |     howtorun.md
+| | |   
+* | |   commit 4687077e6d9cf5fc1dcf3c9dc9358e5d007dbf88
+|\ \ \  Merge: 212c489 f0132c0
+| |/ /  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+|/| /   Date:   Fri Apr 29 13:02:50 2022 +0800
+| |/    
+| |         pls work
+| |         Bens Merge
+| | 
+| * commit f0132c02e7160e35c75a40d0a7a1518ea5bc81db
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 29 12:48:20 2022 +0800
+| | 
+| |     pre merge
+| | 
+| * commit ba4cb4c65ff15338990ddf8bcfb1db39ab3dd6bc
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 29 11:35:53 2022 +0800
+| | 
+| |     friday stuff morn
+| | 
+| * commit 85506eaa08d39313b8420c48cea8d4d717c0301e
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Tue Apr 26 23:07:01 2022 +0800
+| | 
+| |     trying to add modals support
+| | 
+| * commit e616ffadf0a2baca6939a8d5d15d153f10ac973b
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Tue Apr 26 21:56:15 2022 +0800
+| | 
+| |     updated base and stlyes to match newer content
+| | 
+| * commit d847b49006c02efb1744311baa65d94422a759d6
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Tue Apr 26 21:42:00 2022 +0800
+| | 
+| |     moved styles
+| | 
+| * commit 4c02bacf18fb676d5a824d516602119332b9cc13
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Tue Apr 26 21:41:10 2022 +0800
+| | 
+| |     added our own base.html and attempting to format properly
+| | 
+| * commit 57dfc1d21411400612d68c6339c9625c4e951366
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 22:20:10 2022 +0800
+| | 
+| |     trying to get bootstrap to work
+| | 
+| * commit f0d24c943a8f1f6d5c36c12fcd3c92b4aec4e791
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 21:52:45 2022 +0800
+| | 
+| |     Email support for passwrod resets
+| | 
+| * commit cf8b6c7d63a47c167217ac6944bc2fb5aafdb3ae
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 21:31:22 2022 +0800
+| | 
+| |     Pagination
+| | 
+| * commit e674198c422fa7c76d671e358d3233baff7e0792
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 21:16:18 2022 +0800
+| | 
+| |     Following
+| | 
+| * commit 94a0f19ba2a0d0d3d30b4949dc7c1d254c9d0f76
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 21:01:11 2022 +0800
+| | 
+| |     Error handling
+| | 
+| * commit 75b29eeb7bcb0b6a3b24d898ddc6dfe870a46589
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 20:37:10 2022 +0800
+| | 
+| |     Profile
+| | 
+| * commit 3a9d8f367450b00680d03efa59f91f7a39ac14f0
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 20:33:14 2022 +0800
+| | 
+| |     Login and profile
+| | 
+| * commit 1b32f7cb5e13942b16f4dbf6ddbab765a6b9e327
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 20:01:51 2022 +0800
+| | 
+| |     Database added
+| | 
+| * commit 76ee1144ae78e8dafdaba596497f80b003a1404f
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 19:49:30 2022 +0800
+| | 
+| |     flask stuff
+| | 
+| * commit c4110733c150c7754eb739dd8613c0e56c3dfae1
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Fri Apr 22 19:33:49 2022 +0800
+| | 
+| |     flask stuff
+| |   
+* |   commit 212c48993bb91dd3b0130d5a1de87f31331993d0
+|\ \  Merge: cc72382 1d0b9b8
+| | | Author: lilburne1 <benlilburne@outlook.com>
+| | | Date:   Fri Apr 29 11:39:14 2022 +0800
+| | | 
+| | |     Merge branch 'main' into Front-End-Additions
+| | | 
+| * | commit 1d0b9b8e1b386bd0fb469d56417e97d5f5d284dd
+| |/  Author: lilburne1 <benlilburne@outlook.com>
+| |   Date:   Fri Apr 29 11:35:06 2022 +0800
+| |   
+| |       Front End Addition Merge
+| | 
+| * commit 1f5c48fb24412f38359d56b8cf10dd92eb3edf51
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 13:13:01 2022 +0800
+| | 
+| |     added to do page
+| | 
+| * commit 99d570e9d9fa166f07f31ec27a845d1af2a4cb7c
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 13:09:30 2022 +0800
+| | 
+| |     Changing tings
+| | 
+| * commit ad0a8ff35b847c89675cb3dc4f051436d520f118
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 13:07:19 2022 +0800
+| | 
+| |     hopeuflly this works
+| | 
+| * commit b872c1910ef12db889e41e29497d74240f1a8658
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 12:54:47 2022 +0800
+| | 
+| |     Update style.css
+| | 
+| * commit 21e29201424025b78c988ab5a7cbc0d90502d044
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 12:41:09 2022 +0800
+| | 
+| |     Update index.html
+| | 
+| * commit 41aa0f2eb993ee2cce566d2f7b895ff82cea4f87
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 12:38:30 2022 +0800
+| | 
+| |     Update index.html
+| | 
+* | commit cc72382eba95008a07cb43ad034e46054c4e18e1
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Thu Apr 28 22:06:56 2022 +0800
+| | 
+| |     Init function additions and minor CSS additions
+| | 
+* | commit 4194a768871e22f657c22750385519e3d326afb3
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Tue Apr 26 21:26:17 2022 +0800
+| | 
+| |     Centering
+| | 
+* | commit 13abd17e09df819db486e2dc0160a209ebc9c665
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Mon Apr 25 12:31:28 2022 +0800
+| | 
+| |     Settings and game container added
+| | 
+* | commit e4217764ef59b2480b265f28ed472283337cf401
+|/  Author: lilburne1 <benlilburne@outlook.com>
+|   Date:   Mon Apr 18 18:00:26 2022 +0800
+|   
+|       CSS Updates + Gamebox addition
+|   
+*   commit a6537f475f5857f41241a81f50b4c9675382e890
+|\  Merge: 0bdaded 4520de6
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Mon Apr 18 12:33:10 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | 
+| * commit 4520de6925b80f172f3c4980fea8a70f07c13ee9
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 12:25:57 2022 +0800
+| | 
+| |     Moved Website to folder
+| | 
+* | commit 0bdadeddb81640bf9f42206562a0e3324ca82be5
+|/  Author: lilburne1 <benlilburne@outlook.com>
+|   Date:   Mon Apr 18 12:33:04 2022 +0800
+|   
+|       Rules List
+|   
+*   commit 9c12c69d0d4aaf14242a7469286d767b45883436
+|\  Merge: 20066d5 88db7c2
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Mon Apr 18 12:22:40 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project
+| | 
+| * commit 88db7c2f4ac6dcb3fe35e09ce64d2e982aef278a
+| | Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| | Date:   Mon Apr 18 12:21:59 2022 +0800
+| | 
+| |     Update README.md
+| |     
+| |     test
+| | 
+* | commit 20066d5202de88b6eb5225b19080ff062ef14850
+|/  Author: lilburne1 <benlilburne@outlook.com>
+|   Date:   Mon Apr 18 12:22:34 2022 +0800
+|   
+|       Initial Commit
+|   
+*   commit 2ac707d24553a92b0116d448eac47de149ed9762
+|\  Merge: 3be131f 0a6f173
+| | Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+| | Date:   Mon Apr 18 12:19:30 2022 +0800
+| | 
+| |     Merge branch 'main' of https://github.com/benvarian/CITS3403Project into main
+| | 
+| * commit 0a6f173e579a46779884713b1e4b90f4e437cfb5
+| | Author: lilburne1 <benlilburne@outlook.com>
+| | Date:   Mon Apr 18 12:14:18 2022 +0800
+| | 
+| |     Add files via upload
+| | 
+* | commit 3be131ffe4e2b79c932fc98d32a8e8570af38713
+|/  Author: ShayanSaebi45 <Shayan.Saebi45@gmail.com>
+|   Date:   Mon Apr 18 12:15:49 2022 +0800
+|   
+|       test
+| 
+* commit 5c03bd29751f16f0f59f7cd5a10a08857b0f58b2
+| Author: benvarian <88700858+benvarian@users.noreply.github.com>
+| Date:   Mon Apr 18 11:30:12 2022 +0800
+| 
+|     Update
+| 
+* commit 4a4402fb0571f74277f2348be055ad324e3bdfef
+  Author: benvarian <88700858+benvarian@users.noreply.github.com>
+  Date:   Mon Apr 18 11:18:45 2022 +0800
+  
+      Initial commit
