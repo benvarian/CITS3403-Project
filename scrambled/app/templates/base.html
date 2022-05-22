@@ -40,9 +40,24 @@
     />
     <script src="{{  url_for('static', filename='app.js')  }}"></script>
     <title>Scrambled</title>
+
+    <!--Facebook integration-->
+    <meta property="og:url"           content="http://127.0.0.1:5000/" />
+    <meta property="og:type"          content="website" />
   </head>
 
   <body>
+    <!--Facebook loaded in (taken from Facebook developer's website)-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-light navbar-fixed-top" id="navBar">
       <div class="container-fluid row gx-0">

@@ -107,6 +107,7 @@ nav {
 
 .buttonMargins {
   margin-top: 1vh;
+  margin-bottom:1vh;
 }
 
 .title {
@@ -274,3 +275,4 @@ body {
   text-align: center;
   border-bottom: solid 2px var(--secondary-color);
 } 
+
