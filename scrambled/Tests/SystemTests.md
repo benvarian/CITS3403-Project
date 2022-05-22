@@ -5,6 +5,10 @@ Tester account usable for testing:
     Username: tester
     Password: password
 
+Admin account usable for admin access:
+    Username: admin
+    Password: admin 
+
 Login Procedure Test:
     Testing Failure for wrong password:
         1. Go to login page on the website
