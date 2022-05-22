@@ -44,7 +44,7 @@ def leaderboard():
     else:
         todayAvgSpeedScore = int(todayAvgSpeedScore[0])
     if todayAvgNormalScore[0] == None:
-        todayAvgNormalScore = list(filter(None,avgNormalScore))
+        todayAvgNormalScore = list(filter(None, todayAvgNormalScore))
         todayAvgNormalScore = 0
     else:
         todayAvgNormalScore = int(todayAvgNormalScore[0])
@@ -274,7 +274,6 @@ def submitNormalScore():
         user = re.sub('>', '', user)
         username = user.strip()
         stats = Statistics(score=gameStat['score'], gameMode="normal", timeTaken=gameStat['timeTaken'], userId=username)
-        print(stats)
         db.session.add(stats)
         db.session.commit()
     return make_response('True', 200)

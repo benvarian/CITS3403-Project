@@ -25,7 +25,7 @@ Agile Web Dev Project for CITS3403
 
 4. Describe some unit tests for the web application, and how to run them.
     1. make sure the directory is located inside Scrambled 
-    2. run python3 tests.py
+    2. run python3 Test/tests.py
 
 ## Short description of some unit tests
 

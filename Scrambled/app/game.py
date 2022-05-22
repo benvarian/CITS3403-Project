@@ -131,7 +131,6 @@ def checkOverwrite(mode):
             f = open("./app/game/noverwrite.txt", "r")
         overwriteCheck = f.read()
         f.close()
-        print(overwriteCheck)
         if overwriteCheck == "True": 
             if mode == "speed":
                 f_write = open("./app/game/soverwrite.txt", "w")
