@@ -3,6 +3,7 @@ import unittest
 
 from app import app, db
 from app.models import User, Statistics
+import re
 
 class StatisticsModelCase(unittest.TestCase):
     def setUp(self):
@@ -31,13 +32,18 @@ class StatisticsModelCase(unittest.TestCase):
         admin_game1 = Statistics(id='1',score ='40',timeTaken="1:49", gameMode="normal", userId='admin')
         admin_game2 = Statistics(id='2',score ='35',timeTaken="2:49", gameMode="normal", userId='admin')
         admin_game3 =  Statistics(id='3',score ='45',timeTaken="1:29", gameMode="normal", userId='admin')
-        admin_game4 = Statistics(id='3',score ='60',timeTaken="1:39", gameMode="normal", userId='admin')
+        admin_game4 = Statistics(id='4',score ='60',timeTaken="1:39", gameMode="normal", userId='admin')
 
         db.session.add_all([admin_game1, admin_game2, admin_game3, admin_game4])
 
         average = db.session.query(db.func.round(db.func.avg(Statistics.score),0)).filter(Statistics.gameMode == 'normal').first()
+        average = str(average)
+        average= re.sub(',','',average)
+        average= re.sub('\(','',average)
+        average= re.sub('\)','',average)
+        average = float(average)
         self.assertFalse(average==50)
-        self.assertTrue(45==average)
+        self.assertTrue(45.0==average)
 
     def test_game_count(self):
         admin_game1 = Statistics(id='1',score ='40',timeTaken="1:49", gameMode="normal", userId='admin')
